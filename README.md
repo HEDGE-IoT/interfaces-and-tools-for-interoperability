@@ -47,16 +47,16 @@ NOTE: the EDC dataspace connector interoperability enabler is used at level 3 (t
 
 Recognizing the complexity of semantic interoperability, the HEDGE-IoT project has prioritized the production and dissemination of clear, practical educational resources. This helps energy professionals, IT developers, and other stakeholders understand and apply these concepts confidently, fostering innovation and practical adoption across Europe.
 
-- [Linked Data and Ontologies tutorial](https://git.dstech.info/hedge-iot/interfaces-and-tools-for-interoperability/-/tree/master/Educational%20Material/Linked%20Data%20and%20Ontologies%20tutorial) 
-- [SAREF tutorial](https://git.dstech.info/hedge-iot/interfaces-and-tools-for-interoperability/-/tree/master/Educational%20Material/SAREF%20tutorial) 
-- [SAREF4ENER tutorial](https://git.dstech.info/hedge-iot/interfaces-and-tools-for-interoperability/-/tree/master/Educational%20Material/SAREF4ENER%20tutorial) 
-- [IEC CIM tutorial](https://git.dstech.info/hedge-iot/interfaces-and-tools-for-interoperability/-/tree/master/Educational%20Material/IEC%20CIM%20tutorial)
+- [Linked Data and Ontologies tutorial](./Educational%20Material/Linked%20Data%20and%20Ontologies%20tutorial) 
+- [SAREF tutorial](./Educational%20Material/SAREF%20tutorial) 
+- [SAREF4ENER tutorial](./Educational%20Material/SAREF4ENER%20tutorial) 
+- [IEC CIM tutorial](./Educational%20Material/IEC%20CIM%20tutorial)
 - [IEC 62325-301 tutorial](https://msites.epri.com/rd/research/062333/common-information-model-primer/chapter-1-introduction-to-the-iec-cim)
 - [IEC 61850 tutorial](https://www.omicronenergy.com/en/training/courses/detail/introduction-to-iec-61850-1/2155/)
-- [PowerCIM tutorial](https://git.dstech.info/hedge-iot/interfaces-and-tools-for-interoperability/-/tree/master/Educational%20Material/PowerCIM%20tutorial) 
+- [PowerCIM tutorial](./Educational%20Material/PowerCIM%20tutorial) 
 - Ontology-Driven Constraint Tester tutorial
-- [Semantic Treehouse tutorial](https://git.dstech.info/hedge-iot/interfaces-and-tools-for-interoperability/-/tree/master/Educational%20Material/Semantic%20Treehouse%20tutorial) 
-- [Knowledge Engine tutorial](https://git.dstech.info/hedge-iot/interfaces-and-tools-for-interoperability/-/tree/master/Educational%20Material/Knowledge%20Engine%20tutorial)
+- [Semantic Treehouse tutorial](./Educational%20Material/Semantic%20Treehouse%20tutorial) 
+- [Knowledge Engine tutorial](./Educational%20Material/Knowledge%20Engine%20tutorial)
 - [Semantic Interoperability Famework (SIF) tutorials](https://gitlab.inesctec.pt/groups/interconnect-public/-/wikis/home#tutorials)
  
 ## Extended interfaces for Interoperability 
