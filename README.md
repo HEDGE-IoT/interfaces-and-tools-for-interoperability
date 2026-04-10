@@ -30,7 +30,7 @@ This section introduces the “interoperability enablers”, namely semantic mod
 **Semantic tools**
 - [PowerCIM](https://www.koncar.hr/en/digital-solutions-and-platforms) 
 - [Semantic Treehouse](https://www.semantic-treehouse.nl/) 
-- [Ontology-Driven Constraint Tester (ODCT)](https://www.springerprofessional.de/en/design-of-an-ontology-driven-constraint-tester-odct-and-applicat/50633306) 
+- [Ontology-Driven Constraint Tester (ODCT)](https://www.trialog.com/en/ontology-driven-constraint-odc-tester/) 
 
 **Semantic Middleware**
 - [Knowledge Engine](https://www.knowledge-engine.eu/)
