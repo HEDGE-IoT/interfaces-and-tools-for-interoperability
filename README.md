@@ -53,8 +53,8 @@ Recognizing the complexity of semantic interoperability, the HEDGE-IoT project h
 - [IEC CIM tutorial](./Educational%20Material/IEC%20CIM%20tutorial)
 - [IEC 62325-301 tutorial](https://msites.epri.com/rd/research/062333/common-information-model-primer/chapter-1-introduction-to-the-iec-cim)
 - [IEC 61850 tutorial](https://www.omicronenergy.com/en/training/courses/detail/introduction-to-iec-61850-1/2155/)
-- [PowerCIM tutorial](./Educational%20Material/PowerCIM%20tutorial) 
-- Ontology-Driven Constraint Tester tutorial
+- [PowerCIM tutorial](./Educational%20Material/PowerCIM%20tutorial)
+- [Ontology-Driven Constraint (ODC) Tester tutorial](./Educational%20Material/Ontology-Driven%20Constraint%20%28ODC%29%20Tester)
 - [Semantic Treehouse tutorial](./Educational%20Material/Semantic%20Treehouse%20tutorial) 
 - [Knowledge Engine tutorial](./Educational%20Material/Knowledge%20Engine%20tutorial)
 - [Semantic Interoperability Famework (SIF) tutorials](https://gitlab.inesctec.pt/groups/interconnect-public/-/wikis/home#tutorials)
