@@ -1,0 +1,711 @@
+<h2 id="overv" class="list">Behavioral Interoperability Testing Ontology (BITO): Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This ontology has the following classes and properties.</span>
+<h4>Classes</h4>
+<ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#http://www.w3.org/ns/prov#Activity" title="http://www.w3.org/ns/prov#Activity">Activity</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/ns/prov#Agent" title="http://www.w3.org/ns/prov#Agent">Agent</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/AlternativesGroup"
+         title="https://saref.etsi.org/saref4ener/AlternativesGroup">Alternatives group</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/core/Appliance" title="https://saref.etsi.org/core/Appliance">Appliance</a>
+   </li>
+   <li>
+      <a href="#BehavioralConstraint" title="https://w3id.org/bito#BehavioralConstraint">Behavioral constraint</a>
+   </li>
+   <li>
+      <a href="#BehavioralElement" title="https://w3id.org/bito#BehavioralElement">Behavioral element</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/core/Device" title="https://saref.etsi.org/core/Device">Device</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/ns/prov#Entity" title="http://www.w3.org/ns/prov#Entity">Entity</a>
+   </li>
+   <li>
+      <a href="#ExpectedOperationalOutcome" title="https://w3id.org/bito#ExpectedOperationalOutcome">Expected operational outcome</a>
+   </li>
+   <li>
+      <a href="#ExpectedStateTransition" title="https://w3id.org/bito#ExpectedStateTransition">Expected state transition</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2006/time#Instant" title="http://www.w3.org/2006/time#Instant">Instant</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/2006/time#Interval" title="http://www.w3.org/2006/time#Interval">Interval</a>
+   </li>
+   <li>
+      <a href="#ObservedEvent" title="https://w3id.org/bito#ObservedEvent">Observed event</a>
+   </li>
+   <li>
+      <a href="#ObservedExecution" title="https://w3id.org/bito#ObservedExecution">Observed execution</a>
+   </li>
+   <li>
+      <a href="#ObservedStateChange" title="https://w3id.org/bito#ObservedStateChange">Observed state change</a>
+   </li>
+   <li>
+      <a href="#OrderingConstraint" title="https://w3id.org/bito#OrderingConstraint">Ordering constraint</a>
+   </li>
+   <li>
+      <a href="#OutcomeConstraint" title="https://w3id.org/bito#OutcomeConstraint">Outcome constraint</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/PowerProfile" title="https://saref.etsi.org/saref4ener/PowerProfile">Power profile</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/PowerSequence" title="https://saref.etsi.org/saref4ener/PowerSequence">Power sequence</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/PowerSequenceState"
+         title="https://saref.etsi.org/saref4ener/PowerSequenceState">Power sequence state</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/core/PowerUnit" title="https://saref.etsi.org/core/PowerUnit">Power unit</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/core/PropertyValue" title="https://saref.etsi.org/core/PropertyValue">Property value</a>
+   </li>
+   <li>
+      <a href="#Scenario" title="https://w3id.org/bito#Scenario">Scenario</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/Slot" title="https://saref.etsi.org/saref4ener/Slot">Slot</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/core/State" title="https://saref.etsi.org/core/State">State</a>
+   </li>
+   <li>
+      <a href="#StateConstraint" title="https://w3id.org/bito#StateConstraint">State constraint</a>
+   </li>
+   <li>
+      <a href="#StructuralContainer" title="https://w3id.org/bito#StructuralContainer">Structural container</a>
+   </li>
+   <li>
+      <a href="#StructuralElement" title="https://w3id.org/bito#StructuralElement">Structural element</a>
+   </li>
+   <li>
+      <a href="#TimingConstraint" title="https://w3id.org/bito#TimingConstraint">Timing constraint</a>
+   </li>
+   <li>
+      <a href="#TraceEvidence" title="https://w3id.org/bito#TraceEvidence">Trace evidence</a>
+   </li>
+   <li>
+      <a href="#TransitionConstraint" title="https://w3id.org/bito#TransitionConstraint">Transition constraint</a>
+   </li>
+   <li>
+      <a href="#TriggerConstraint" title="https://w3id.org/bito#TriggerConstraint">Trigger constraint</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/core/UnitOfMeasure" title="https://saref.etsi.org/core/UnitOfMeasure">Unit of measure</a>
+   </li>
+   <li>
+      <a href="#UseCase" title="https://w3id.org/bito#UseCase">Use case</a>
+   </li>
+   <li>
+      <a href="#UseCaseFunction" title="https://w3id.org/bito#UseCaseFunction">Use case function</a>
+   </li>
+   <li>
+      <a href="#ValidationResult" title="https://w3id.org/bito#ValidationResult">Validation result</a>
+   </li>
+   <li>
+      <a href="#ValidationVerdict" title="https://w3id.org/bito#ValidationVerdict">Validation verdict</a>
+   </li>
+</ul><h4>Object Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#appliesTo" title="https://w3id.org/bito#appliesTo">applies to</a>
+   </li>
+   <li>
+      <a href="#basedOnTraceEvidence" title="https://w3id.org/bito#basedOnTraceEvidence">based on trace evidence</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/belongsTo" title="https://saref.etsi.org/saref4ener/belongsTo">belongs to</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/core/consistsOf" title="https://saref.etsi.org/core/consistsOf">consists of</a>
+   </li>
+   <li>
+      <a href="#hasBehavioralConstraint" title="https://w3id.org/bito#hasBehavioralConstraint">has behavioral constraint</a>
+   </li>
+   <li>
+      <a href="#hasBelongingElement" title="https://w3id.org/bito#hasBelongingElement">Has Belonging Element</a>
+   </li>
+   <li>
+      <a href="#hasExpectedOperationalOutcome"
+         title="https://w3id.org/bito#hasExpectedOperationalOutcome">has expected operational outcome</a>
+   </li>
+   <li>
+      <a href="#hasExpectedStateTransition" title="https://w3id.org/bito#hasExpectedStateTransition">has expected state transition</a>
+   </li>
+   <li>
+      <a href="#hasInteractingActorSystem" title="https://w3id.org/bito#hasInteractingActorSystem">has interacting actor system</a>
+   </li>
+   <li>
+      <a href="#hasIUT" title="https://w3id.org/bito#hasIUT">has IUT</a>
+   </li>
+   <li>
+      <a href="#hasObservedEvent" title="https://w3id.org/bito#hasObservedEvent">has observed event</a>
+   </li>
+   <li>
+      <a href="#hasObservedExecution" title="https://w3id.org/bito#hasObservedExecution">has observed execution</a>
+   </li>
+   <li>
+      <a href="#hasObservedSourceState" title="https://w3id.org/bito#hasObservedSourceState">has observed source state</a>
+   </li>
+   <li>
+      <a href="#hasObservedStateChange" title="https://w3id.org/bito#hasObservedStateChange">has observed state change</a>
+   </li>
+   <li>
+      <a href="#hasObservedTargetState" title="https://w3id.org/bito#hasObservedTargetState">has observed target state</a>
+   </li>
+   <li>
+      <a href="#hasRelevantPowerSequence" title="https://w3id.org/bito#hasRelevantPowerSequence">has relevant power sequence</a>
+   </li>
+   <li>
+      <a href="#hasScenario" title="https://w3id.org/bito#hasScenario">has scenario</a>
+   </li>
+   <li>
+      <a href="#hasSourceState" title="https://w3id.org/bito#hasSourceState">has source state</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/core/hasState" title="https://saref.etsi.org/core/hasState">has state</a>
+   </li>
+   <li>
+      <a href="#hasTargetState" title="https://w3id.org/bito#hasTargetState">has target state</a>
+   </li>
+   <li>
+      <a href="#hasTraceEvidence" title="https://w3id.org/bito#hasTraceEvidence">has trace evidence</a>
+   </li>
+   <li>
+      <a href="#hasTriggeringInteraction" title="https://w3id.org/bito#hasTriggeringInteraction">has triggering interaction</a>
+   </li>
+   <li>
+      <a href="#hasValidationResult" title="https://w3id.org/bito#hasValidationResult">has validation result</a>
+   </li>
+   <li>
+      <a href="#hasVerdict" title="https://w3id.org/bito#hasVerdict">has verdict</a>
+   </li>
+   <li>
+      <a href="#isAppliedBy" title="https://w3id.org/bito#isAppliedBy">Is Applied By</a>
+   </li>
+   <li>
+      <a href="#isBehavioralConstraintOf" title="https://w3id.org/bito#isBehavioralConstraintOf">Is Behavioral Constraint Of</a>
+   </li>
+   <li>
+      <a href="#isComponentOf" title="https://w3id.org/bito#isComponentOf">Is Component Of</a>
+   </li>
+   <li>
+      <a href="#isExpectedOperationalOutcomeOf"
+         title="https://w3id.org/bito#isExpectedOperationalOutcomeOf">Is Expected Operational Outcome Of</a>
+   </li>
+   <li>
+      <a href="#isExpectedStateTransitionOf" title="https://w3id.org/bito#isExpectedStateTransitionOf">Is Expected State Transition Of</a>
+   </li>
+   <li>
+      <a href="#isInteractingActorSystemOf" title="https://w3id.org/bito#isInteractingActorSystemOf">Is Interacting Actor System Of</a>
+   </li>
+   <li>
+      <a href="#isIUTOf" title="https://w3id.org/bito#isIUTOf">Is IUT Of</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/core/isMeasuredIn" title="https://saref.etsi.org/core/isMeasuredIn">is measured in</a>
+   </li>
+   <li>
+      <a href="#isObservedEventOf" title="https://w3id.org/bito#isObservedEventOf">Is Observed Event Of</a>
+   </li>
+   <li>
+      <a href="#isObservedExecutionOf" title="https://w3id.org/bito#isObservedExecutionOf">Is Observed Execution Of</a>
+   </li>
+   <li>
+      <a href="#isObservedFormerPreferredPowerSequenceOf"
+         title="https://w3id.org/bito#isObservedFormerPreferredPowerSequenceOf">Is Observed Former Preferred Power Sequence Of</a>
+   </li>
+   <li>
+      <a href="#isObservedOptionalPowerSequenceOf"
+         title="https://w3id.org/bito#isObservedOptionalPowerSequenceOf">Is Observed Optional Power Sequence Of</a>
+   </li>
+   <li>
+      <a href="#isObservedPreferredPowerSequenceOf"
+         title="https://w3id.org/bito#isObservedPreferredPowerSequenceOf">Is Observed Preferred Power Sequence Of</a>
+   </li>
+   <li>
+      <a href="#isObservedScheduledPowerSequenceOf"
+         title="https://w3id.org/bito#isObservedScheduledPowerSequenceOf">Is Observed Scheduled Power Sequence Of</a>
+   </li>
+   <li>
+      <a href="#isObservedSelectedPowerSequenceOf"
+         title="https://w3id.org/bito#isObservedSelectedPowerSequenceOf">Is Observed Selected Power Sequence Of</a>
+   </li>
+   <li>
+      <a href="#isObservedSourceStateOf" title="https://w3id.org/bito#isObservedSourceStateOf">Is Observed Source State Of</a>
+   </li>
+   <li>
+      <a href="#isObservedStateChangeOf" title="https://w3id.org/bito#isObservedStateChangeOf">Is Observed State Change Of</a>
+   </li>
+   <li>
+      <a href="#isObservedTargetStateOf" title="https://w3id.org/bito#isObservedTargetStateOf">Is Observed Target State Of</a>
+   </li>
+   <li>
+      <a href="#isRelevantPowerSequenceOf" title="https://w3id.org/bito#isRelevantPowerSequenceOf">Is Relevant Power Sequence Of</a>
+   </li>
+   <li>
+      <a href="#isRequestedPowerSequenceOf" title="https://w3id.org/bito#isRequestedPowerSequenceOf">Is Requested Power Sequence Of</a>
+   </li>
+   <li>
+      <a href="#isScenarioOf" title="https://w3id.org/bito#isScenarioOf">is scenario of</a>
+   </li>
+   <li>
+      <a href="#isSourceStateOf" title="https://w3id.org/bito#isSourceStateOf">Is Source State Of</a>
+   </li>
+   <li>
+      <a href="#isStateOf" title="https://w3id.org/bito#isStateOf">Is State Of</a>
+   </li>
+   <li>
+      <a href="#isTargetStateOf" title="https://w3id.org/bito#isTargetStateOf">Is Target State Of</a>
+   </li>
+   <li>
+      <a href="#isTraceEvidenceBasisOf" title="https://w3id.org/bito#isTraceEvidenceBasisOf">Is Trace Evidence Basis Of</a>
+   </li>
+   <li>
+      <a href="#isTraceEvidenceOf" title="https://w3id.org/bito#isTraceEvidenceOf">Is Trace Evidence Of</a>
+   </li>
+   <li>
+      <a href="#isTriggeringInteractionOf" title="https://w3id.org/bito#isTriggeringInteractionOf">Is Triggering Interaction Of</a>
+   </li>
+   <li>
+      <a href="#isUnitOfMeasureFor" title="https://w3id.org/bito#isUnitOfMeasureFor">Is Unit Of Measure For</a>
+   </li>
+   <li>
+      <a href="#isUseCaseFunctionForScenario"
+         title="https://w3id.org/bito#isUseCaseFunctionForScenario">Is Use Case Function For Scenario</a>
+   </li>
+   <li>
+      <a href="#isValidatedBy" title="https://w3id.org/bito#isValidatedBy">Is Validated By</a>
+   </li>
+   <li>
+      <a href="#isValidationResultOf" title="https://w3id.org/bito#isValidationResultOf">Is Validation Result Of</a>
+   </li>
+   <li>
+      <a href="#isVerdictOf" title="https://w3id.org/bito#isVerdictOf">Is Verdict Of</a>
+   </li>
+   <li>
+      <a href="#observedFormerPreferredPowerSequence"
+         title="https://w3id.org/bito#observedFormerPreferredPowerSequence">observed former preferred power sequence</a>
+   </li>
+   <li>
+      <a href="#observedOptionalPowerSequence"
+         title="https://w3id.org/bito#observedOptionalPowerSequence">observed optional power sequence</a>
+   </li>
+   <li>
+      <a href="#observedPreferredPowerSequence"
+         title="https://w3id.org/bito#observedPreferredPowerSequence">observed preferred power sequence</a>
+   </li>
+   <li>
+      <a href="#observedScheduledPowerSequence"
+         title="https://w3id.org/bito#observedScheduledPowerSequence">observed scheduled power sequence</a>
+   </li>
+   <li>
+      <a href="#observedSelectedPowerSequence"
+         title="https://w3id.org/bito#observedSelectedPowerSequence">observed selected power sequence</a>
+   </li>
+   <li>
+      <a href="#realizedByUseCaseFunction" title="https://w3id.org/bito#realizedByUseCaseFunction">realized by use case function</a>
+   </li>
+   <li>
+      <a href="#requestedPowerSequence" title="https://w3id.org/bito#requestedPowerSequence">requested power sequence</a>
+   </li>
+   <li>
+      <a href="#validatesConstraint" title="https://w3id.org/bito#validatesConstraint">validates constraint</a>
+   </li>
+</ul><h4>Data Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#acceptanceOutcome" title="https://w3id.org/bito#acceptanceOutcome">acceptance outcome</a>
+   </li>
+   <li>
+      <a href="#acceptedAt" title="https://w3id.org/bito#acceptedAt">accepted at</a>
+   </li>
+   <li>
+      <a href="#achievesExpectedOutcome" title="https://w3id.org/bito#achievesExpectedOutcome">achieves expected outcome</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/ns/prov#endedAtTime" title="http://www.w3.org/ns/prov#endedAtTime">ended at time</a>
+   </li>
+   <li>
+      <a href="#entityId" title="https://w3id.org/bito#entityId">entity ID</a>
+   </li>
+   <li>
+      <a href="#entityType" title="https://w3id.org/bito#entityType">entity type</a>
+   </li>
+   <li>
+      <a href="#eventOrderIndex" title="https://w3id.org/bito#eventOrderIndex">event order index</a>
+   </li>
+   <li>
+      <a href="#evidenceMode" title="https://w3id.org/bito#evidenceMode">evidence mode</a>
+   </li>
+   <li>
+      <a href="#evidencePreservesInteractionContext"
+         title="https://w3id.org/bito#evidencePreservesInteractionContext">evidence preserves interaction context</a>
+   </li>
+   <li>
+      <a href="#evidencePreservesObservedBehavior"
+         title="https://w3id.org/bito#evidencePreservesObservedBehavior">evidence preserves observed behavior</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/hasDefaultDuration"
+         title="https://saref.etsi.org/saref4ener/hasDefaultDuration">has default duration</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/hasEarliestStartTime"
+         title="https://saref.etsi.org/saref4ener/hasEarliestStartTime">has earliest start time</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/hasEndTime" title="https://saref.etsi.org/saref4ener/hasEndTime">has end time</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/core/hasIdentifier" title="https://saref.etsi.org/core/hasIdentifier">has identifier</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/hasLatestEndTime"
+         title="https://saref.etsi.org/saref4ener/hasLatestEndTime">has latest end time</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/hasStartTime" title="https://saref.etsi.org/saref4ener/hasStartTime">has start time</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/core/hasValue" title="https://saref.etsi.org/core/hasValue">has value</a>
+   </li>
+   <li>
+      <a href="#interactionEndpoint" title="https://w3id.org/bito#interactionEndpoint">interaction endpoint</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/isPausable" title="https://saref.etsi.org/saref4ener/isPausable">is pausable</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/isStoppable" title="https://saref.etsi.org/saref4ener/isStoppable">is stoppable</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/nodeRemoteControllable"
+         title="https://saref.etsi.org/saref4ener/nodeRemoteControllable">node remote controllable</a>
+   </li>
+   <li>
+      <a href="#observedAt" title="https://w3id.org/bito#observedAt">observed at</a>
+   </li>
+   <li>
+      <a href="#observedExecutionEnd" title="https://w3id.org/bito#observedExecutionEnd">observed execution end</a>
+   </li>
+   <li>
+      <a href="#observedExecutionStart" title="https://w3id.org/bito#observedExecutionStart">observed execution start</a>
+   </li>
+   <li>
+      <a href="#observedInteractionKind" title="https://w3id.org/bito#observedInteractionKind">observed interaction kind</a>
+   </li>
+   <li>
+      <a href="#observedPlanStatus" title="https://w3id.org/bito#observedPlanStatus">observed plan status</a>
+   </li>
+   <li>
+      <a href="#observedPlanUpdatedAt" title="https://w3id.org/bito#observedPlanUpdatedAt">observed plan updated at</a>
+   </li>
+   <li>
+      <a href="#observedRunStatus" title="https://w3id.org/bito#observedRunStatus">observed run status</a>
+   </li>
+   <li>
+      <a href="#requestTimestamp" title="https://w3id.org/bito#requestTimestamp">request timestamp</a>
+   </li>
+   <li>
+      <a href="#requestedStartTime" title="https://w3id.org/bito#requestedStartTime">requested start time</a>
+   </li>
+   <li>
+      <a href="#satisfiesConstraint" title="https://w3id.org/bito#satisfiesConstraint">satisfies constraint</a>
+   </li>
+   <li>
+      <a href="#scenarioName" title="https://w3id.org/bito#scenarioName">scenario name</a>
+   </li>
+   <li>
+      <a href="#scenarioNumber" title="https://w3id.org/bito#scenarioNumber">scenario number</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/sequenceRemoteControllable"
+         title="https://saref.etsi.org/saref4ener/sequenceRemoteControllable">sequence remote controllable</a>
+   </li>
+   <li>
+      <a href="#http://www.w3.org/ns/prov#startedAtTime" title="http://www.w3.org/ns/prov#startedAtTime">started at time</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/supportsReselection"
+         title="https://saref.etsi.org/saref4ener/supportsReselection">supports reselection</a>
+   </li>
+   <li>
+      <a href="#ucfName" title="https://w3id.org/bito#ucfName">UCF name</a>
+   </li>
+   <li>
+      <a href="#useCaseName" title="https://w3id.org/bito#useCaseName">use case name</a>
+   </li>
+   <li>
+      <a href="#useCaseVersion" title="https://w3id.org/bito#useCaseVersion">use case version</a>
+   </li>
+   <li>
+      <a href="#validationMessage" title="https://w3id.org/bito#validationMessage">validation message</a>
+   </li>
+</ul><h4>Named Individuals</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#AlternativesGroup_1"
+         title="https://w3id.org/bito/example/flexible-start#AlternativesGroup_1">Alternatives group 1</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#CCM" title="https://w3id.org/bito/example/flexible-start#CCM">CCM</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/Completed" title="https://saref.etsi.org/saref4ener/Completed">Completed</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Dishwasher_000000000001"
+         title="https://w3id.org/bito/example/flexible-start#Dishwasher_000000000001">Dishwasher 000000000001</a>
+   </li>
+   <li>
+      <a href="#FAIL" title="https://w3id.org/bito#FAIL">FAIL</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#FlexibleStartUseCase"
+         title="https://w3id.org/bito/example/flexible-start#FlexibleStartUseCase">Flexible Start use case</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Transition_S3_FormerPreferredInactive"
+         title="https://w3id.org/bito/example/flexible-start#Transition_S3_FormerPreferredInactive">Former preferred sequence inactive transition</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/Inactive" title="https://saref.etsi.org/saref4ener/Inactive">Inactive</a>
+   </li>
+   <li>
+      <a href="#INCONCLUSIVE" title="https://w3id.org/bito#INCONCLUSIVE">INCONCLUSIVE</a>
+   </li>
+   <li>
+      <a href="#PASS" title="https://w3id.org/bito#PASS">PASS</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Transition_S1_PlanAvailable"
+         title="https://w3id.org/bito/example/flexible-start#Transition_S1_PlanAvailable">Plan available transition</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#PowerProfile_000000000001"
+         title="https://w3id.org/bito/example/flexible-start#PowerProfile_000000000001">Power profile 000000000001</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#PowerSequence_44"
+         title="https://w3id.org/bito/example/flexible-start#PowerSequence_44">Power sequence 44</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#PowerSequence_45"
+         title="https://w3id.org/bito/example/flexible-start#PowerSequence_45">Power sequence 45</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Transition_S2_PreferredSequenceShifted"
+         title="https://w3id.org/bito/example/flexible-start#Transition_S2_PreferredSequenceShifted">Preferred sequence shifted transition</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Constraint_S1_PlanStatus"
+         title="https://w3id.org/bito/example/flexible-start#Constraint_S1_PlanStatus">S1 plan status constraint</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Constraint_S1_PlanStructure"
+         title="https://w3id.org/bito/example/flexible-start#Constraint_S1_PlanStructure">S1 plan structure constraint</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Constraint_S2_RequestAccepted"
+         title="https://w3id.org/bito/example/flexible-start#Constraint_S2_RequestAccepted">S2 request accepted constraint</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Constraint_S2_RunCompleted"
+         title="https://w3id.org/bito/example/flexible-start#Constraint_S2_RunCompleted">S2 run completed constraint</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Constraint_S2_StartTimeUpdated"
+         title="https://w3id.org/bito/example/flexible-start#Constraint_S2_StartTimeUpdated">S2 start time updated constraint</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Constraint_S3_FormerPreferredInactive"
+         title="https://w3id.org/bito/example/flexible-start#Constraint_S3_FormerPreferredInactive">S3 former preferred inactive constraint</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Constraint_S3_RequestAccepted"
+         title="https://w3id.org/bito/example/flexible-start#Constraint_S3_RequestAccepted">S3 request accepted constraint</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Constraint_S3_RunCompleted"
+         title="https://w3id.org/bito/example/flexible-start#Constraint_S3_RunCompleted">S3 run completed constraint</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Constraint_S3_SelectedSequenceScheduled"
+         title="https://w3id.org/bito/example/flexible-start#Constraint_S3_SelectedSequenceScheduled">S3 selected sequence scheduled constraint</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Scenario1"
+         title="https://w3id.org/bito/example/flexible-start#Scenario1">Scenario 1</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Execution_S1"
+         title="https://w3id.org/bito/example/flexible-start#Execution_S1">Scenario 1 observed execution</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Event_S1_PlanObservation"
+         title="https://w3id.org/bito/example/flexible-start#Event_S1_PlanObservation">Scenario 1 plan observation</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#TraceEvidence_S1"
+         title="https://w3id.org/bito/example/flexible-start#TraceEvidence_S1">Scenario 1 trace evidence</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Outcome_S1_ValidPlan"
+         title="https://w3id.org/bito/example/flexible-start#Outcome_S1_ValidPlan">Scenario 1 valid plan outcome</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#ValidationResult_S1"
+         title="https://w3id.org/bito/example/flexible-start#ValidationResult_S1">Scenario 1 validation result</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Scenario2"
+         title="https://w3id.org/bito/example/flexible-start#Scenario2">Scenario 2</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Execution_S2"
+         title="https://w3id.org/bito/example/flexible-start#Execution_S2">Scenario 2 observed execution</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Outcome_S2_PreferredSequenceShifted"
+         title="https://w3id.org/bito/example/flexible-start#Outcome_S2_PreferredSequenceShifted">Scenario 2 preferred sequence shifted outcome</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#ObservedStateChange_S2_Sequence44Scheduled"
+         title="https://w3id.org/bito/example/flexible-start#ObservedStateChange_S2_Sequence44Scheduled">Scenario 2 sequence 44 remains scheduled</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Event_S2_ShiftRequest"
+         title="https://w3id.org/bito/example/flexible-start#Event_S2_ShiftRequest">Scenario 2 shift request</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#TraceEvidence_S2"
+         title="https://w3id.org/bito/example/flexible-start#TraceEvidence_S2">Scenario 2 trace evidence</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#ValidationResult_S2"
+         title="https://w3id.org/bito/example/flexible-start#ValidationResult_S2">Scenario 2 validation result</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Scenario3"
+         title="https://w3id.org/bito/example/flexible-start#Scenario3">Scenario 3</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Outcome_S3_AlternativeSequenceSelected"
+         title="https://w3id.org/bito/example/flexible-start#Outcome_S3_AlternativeSequenceSelected">Scenario 3 alternative sequence selected outcome</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Execution_S3"
+         title="https://w3id.org/bito/example/flexible-start#Execution_S3">Scenario 3 observed execution</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Event_S3_SelectRequest"
+         title="https://w3id.org/bito/example/flexible-start#Event_S3_SelectRequest">Scenario 3 select request</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#ObservedStateChange_S3_Sequence44Inactive"
+         title="https://w3id.org/bito/example/flexible-start#ObservedStateChange_S3_Sequence44Inactive">Scenario 3 sequence 44 becomes inactive</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#ObservedStateChange_S3_Sequence45Scheduled"
+         title="https://w3id.org/bito/example/flexible-start#ObservedStateChange_S3_Sequence45Scheduled">Scenario 3 sequence 45 becomes scheduled</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#TraceEvidence_S3"
+         title="https://w3id.org/bito/example/flexible-start#TraceEvidence_S3">Scenario 3 trace evidence</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#ValidationResult_S3"
+         title="https://w3id.org/bito/example/flexible-start#ValidationResult_S3">Scenario 3 validation result</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/saref4ener/Scheduled" title="https://saref.etsi.org/saref4ener/Scheduled">Scheduled</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Transition_S3_SelectedSequenceScheduled"
+         title="https://w3id.org/bito/example/flexible-start#Transition_S3_SelectedSequenceScheduled">Selected sequence scheduled transition</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Slot_44_0"
+         title="https://w3id.org/bito/example/flexible-start#Slot_44_0">Slot 44 0</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Slot_44_1"
+         title="https://w3id.org/bito/example/flexible-start#Slot_44_1">Slot 44 1</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Slot_44_2"
+         title="https://w3id.org/bito/example/flexible-start#Slot_44_2">Slot 44 2</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Slot_44_3"
+         title="https://w3id.org/bito/example/flexible-start#Slot_44_3">Slot 44 3</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Slot_44_4"
+         title="https://w3id.org/bito/example/flexible-start#Slot_44_4">Slot 44 4</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Slot_44_5"
+         title="https://w3id.org/bito/example/flexible-start#Slot_44_5">Slot 44 5</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Slot_44_6"
+         title="https://w3id.org/bito/example/flexible-start#Slot_44_6">Slot 44 6</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Slot_44_7"
+         title="https://w3id.org/bito/example/flexible-start#Slot_44_7">Slot 44 7</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Slot_44_8"
+         title="https://w3id.org/bito/example/flexible-start#Slot_44_8">Slot 44 8</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Slot_44_9"
+         title="https://w3id.org/bito/example/flexible-start#Slot_44_9">Slot 44 9</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Slot_45_0"
+         title="https://w3id.org/bito/example/flexible-start#Slot_45_0">Slot 45 0</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Slot_45_1"
+         title="https://w3id.org/bito/example/flexible-start#Slot_45_1">Slot 45 1</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#Slot_45_2"
+         title="https://w3id.org/bito/example/flexible-start#Slot_45_2">Slot 45 2</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#UCF_Plan_With_Power_Sequences"
+         title="https://w3id.org/bito/example/flexible-start#UCF_Plan_With_Power_Sequences">UCF Plan With Power Sequences</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#UCF_Select_Power_Sequence"
+         title="https://w3id.org/bito/example/flexible-start#UCF_Select_Power_Sequence">UCF Select Power Sequence</a>
+   </li>
+   <li>
+      <a href="#https://w3id.org/bito/example/flexible-start#UCF_Shift_Preferred_Power_Sequence"
+         title="https://w3id.org/bito/example/flexible-start#UCF_Shift_Preferred_Power_Sequence">UCF Shift Preferred Power Sequence</a>
+   </li>
+   <li>
+      <a href="#https://saref.etsi.org/core/Watt" title="https://saref.etsi.org/core/Watt">Watt</a>
+   </li>
+</ul><iframe src="webvowl/index.html"></iframe> 

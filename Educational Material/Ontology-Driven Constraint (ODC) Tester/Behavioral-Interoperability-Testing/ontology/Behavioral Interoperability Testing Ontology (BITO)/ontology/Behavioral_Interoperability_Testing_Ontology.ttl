@@ -1,0 +1,2361 @@
+@prefix : <https://w3id.org/bito#> .
+@prefix ex: <https://w3id.org/bito/example/flexible-start#> .
+@prefix bito: <https://w3id.org/bito#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix saref: <https://saref.etsi.org/core/> .
+@prefix s4ener: <https://saref.etsi.org/saref4ener/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <https://w3id.org/bito> .
+
+<https://w3id.org/bito> rdf:type owl:Ontology ;
+                        owl:versionIRI <https://w3id.org/bito/1.0.0> ;
+                        dcterms:created "2026-05-20"^^xsd:date ;
+                        dcterms:creator "Cornelis Bouter (TNO)"@en ,
+                                        "Laura Daniele (TNO)"@en ,
+                                        "Tareq Md Rabiul Hossain Chy (Trialog)"@en ;
+                        dcterms:description "Ontology for representing use cases, scenarios, expected behavior, observed execution evidence, constraints, validation results, and verdicts for ontology-driven behavioral validation."@en ;
+                        dcterms:license <https://creativecommons.org/licenses/by/4.0/> ;
+                        dcterms:modified "2026-06-03"^^xsd:date ;
+                        dcterms:title "Behavioral Interoperability Testing Ontology (BITO)"@en ;
+                        vann:preferredNamespacePrefix "bito"@en ;
+                        vann:preferredNamespaceUri "https://w3id.org/bito#" ;
+                        rdfs:comment "It contains the behavioral vocabulary, selected reused ontology terms, and instances."@en ;
+                        owl:versionInfo "1.0.0"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/created
+dcterms:created rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/bito#sourceOntology
+bito:sourceOntology rdf:type owl:AnnotationProperty ;
+                   rdfs:comment "Ontology or vocabulary from which the term is reused or in which the term is defined."@en ;
+                   rdfs:isDefinedBy <https://w3id.org/bito> ;
+                   rdfs:label "source ontology"@en ;
+                   bito:sourceOntology <https://w3id.org/bito> ;
+                   bito:sourceTermPage bito:sourceOntology .
+
+
+###  https://w3id.org/bito#sourceTermPage
+bito:sourceTermPage rdf:type owl:AnnotationProperty ;
+                   rdfs:comment "Term IRI or reference page for the class, property, or individual."@en ;
+                   rdfs:isDefinedBy <https://w3id.org/bito> ;
+                   rdfs:label "source term page"@en ;
+                   bito:sourceOntology <https://w3id.org/bito> ;
+                   bito:sourceTermPage bito:sourceTermPage .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#duration
+xsd:duration rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://saref.etsi.org/core/consistsOf
+saref:consistsOf rdf:type owl:ObjectProperty ;
+                 owl:inverseOf bito:isComponentOf ;
+                 rdfs:domain bito:StructuralContainer ;
+                 rdfs:range bito:StructuralElement ;
+                 rdfs:comment "Reused to connect power profiles to alternatives groups, alternatives groups to power sequences, and power sequences to slots."@en ;
+                 rdfs:isDefinedBy saref: ;
+                 rdfs:label "consists of"@en ;
+                 bito:sourceOntology saref: ;
+                 bito:sourceTermPage saref:consistsOf .
+
+
+###  https://saref.etsi.org/core/hasState
+saref:hasState rdf:type owl:ObjectProperty ;
+               owl:inverseOf bito:isStateOf ;
+               rdfs:domain bito:BehavioralElement ;
+               rdfs:range saref:State ;
+               rdfs:comment "Reused to connect an entity to a state."@en ;
+               rdfs:isDefinedBy saref: ;
+               rdfs:label "has state"@en ;
+               bito:sourceOntology saref: ;
+               bito:sourceTermPage saref:hasState .
+
+
+###  https://saref.etsi.org/core/isMeasuredIn
+saref:isMeasuredIn rdf:type owl:ObjectProperty ;
+                   owl:inverseOf bito:isUnitOfMeasureFor ;
+                   rdfs:domain saref:PropertyValue ;
+                   rdfs:range saref:UnitOfMeasure ;
+                   rdfs:comment "Reused to connect a value to its unit of measure."@en ;
+                   rdfs:isDefinedBy saref: ;
+                   rdfs:label "is measured in"@en ;
+                   bito:sourceOntology saref: ;
+                   bito:sourceTermPage saref:isMeasuredIn .
+
+
+###  https://saref.etsi.org/saref4ener/belongsTo
+s4ener:belongsTo rdf:type owl:ObjectProperty ;
+                 owl:inverseOf bito:hasBelongingElement ;
+                 rdfs:domain bito:StructuralElement ;
+                 rdfs:range bito:StructuralContainer ;
+                 rdfs:comment "Reused to connect slots, power sequences, alternatives groups, and power profiles to their containing element."@en ;
+                 rdfs:isDefinedBy s4ener: ;
+                 rdfs:label "belongs to"@en ;
+                 bito:sourceOntology s4ener: ;
+                 bito:sourceTermPage s4ener:belongsTo .
+
+
+###  https://w3id.org/bito#appliesTo
+bito:appliesTo rdf:type owl:ObjectProperty ;
+              owl:inverseOf bito:isAppliedBy ;
+              rdfs:domain bito:BehavioralConstraint ;
+              rdfs:range bito:BehavioralElement ;
+              rdfs:comment "Links a behavioral constraint to the behavioral element it constrains."@en ;
+              rdfs:isDefinedBy <https://w3id.org/bito> ;
+              rdfs:label "applies to"@en ;
+              bito:sourceOntology <https://w3id.org/bito> ;
+              bito:sourceTermPage bito:appliesTo .
+
+
+###  https://w3id.org/bito#basedOnTraceEvidence
+bito:basedOnTraceEvidence rdf:type owl:ObjectProperty ;
+                         owl:inverseOf bito:isTraceEvidenceBasisOf ;
+                         rdfs:domain bito:ValidationResult ;
+                         rdfs:range bito:TraceEvidence ;
+                         rdfs:comment "Links a validation result to the trace evidence used to derive it."@en ;
+                         rdfs:isDefinedBy <https://w3id.org/bito> ;
+                         rdfs:label "based on trace evidence"@en ;
+                         bito:sourceOntology <https://w3id.org/bito> ;
+                         bito:sourceTermPage bito:basedOnTraceEvidence .
+
+
+###  https://w3id.org/bito#hasBehavioralConstraint
+bito:hasBehavioralConstraint rdf:type owl:ObjectProperty ;
+                            owl:inverseOf bito:isBehavioralConstraintOf ;
+                            rdfs:domain bito:Scenario ;
+                            rdfs:range bito:BehavioralConstraint ;
+                            rdfs:comment "Links a scenario to an applicable behavioral constraint."@en ;
+                            rdfs:isDefinedBy <https://w3id.org/bito> ;
+                            rdfs:label "has behavioral constraint"@en ;
+                            bito:sourceOntology <https://w3id.org/bito> ;
+                            bito:sourceTermPage bito:hasBehavioralConstraint .
+
+
+###  https://w3id.org/bito#hasBelongingElement
+bito:hasBelongingElement rdf:type owl:ObjectProperty ;
+                        rdfs:domain bito:StructuralContainer ;
+                        rdfs:range bito:StructuralElement ;
+                        rdfs:comment "Links a structural container to a structural element it directly contains, such as a power sequence to its slots."@en ;
+                        rdfs:isDefinedBy <https://w3id.org/bito> ;
+                        rdfs:label "Has Belonging Element"@en ;
+                        bito:sourceOntology <https://w3id.org/bito> ;
+                        bito:sourceTermPage bito:hasBelongingElement .
+
+
+###  https://w3id.org/bito#hasExpectedOperationalOutcome
+bito:hasExpectedOperationalOutcome rdf:type owl:ObjectProperty ;
+                                  owl:inverseOf bito:isExpectedOperationalOutcomeOf ;
+                                  rdfs:domain bito:Scenario ;
+                                  rdfs:range bito:ExpectedOperationalOutcome ;
+                                  rdfs:comment "Links a scenario to the outcome expected from valid execution."@en ;
+                                  rdfs:isDefinedBy <https://w3id.org/bito> ;
+                                  rdfs:label "has expected operational outcome"@en ;
+                                  bito:sourceOntology <https://w3id.org/bito> ;
+                                  bito:sourceTermPage bito:hasExpectedOperationalOutcome .
+
+
+###  https://w3id.org/bito#hasExpectedStateTransition
+bito:hasExpectedStateTransition rdf:type owl:ObjectProperty ;
+                               owl:inverseOf bito:isExpectedStateTransitionOf ;
+                               rdfs:domain bito:Scenario ;
+                               rdfs:range bito:ExpectedStateTransition ;
+                               rdfs:comment "Links a scenario to an expected state transition."@en ;
+                               rdfs:isDefinedBy <https://w3id.org/bito> ;
+                               rdfs:label "has expected state transition"@en ;
+                               bito:sourceOntology <https://w3id.org/bito> ;
+                               bito:sourceTermPage bito:hasExpectedStateTransition .
+
+
+###  https://w3id.org/bito#hasIUT
+bito:hasIUT rdf:type owl:ObjectProperty ;
+           owl:inverseOf bito:isIUTOf ;
+           rdfs:domain bito:Scenario ;
+           rdfs:range saref:Device ;
+           rdfs:comment "Links a scenario to the implementation under test."@en ;
+           rdfs:isDefinedBy <https://w3id.org/bito> ;
+           rdfs:label "has IUT"@en ;
+           bito:sourceOntology <https://w3id.org/bito> ;
+           bito:sourceTermPage bito:hasIUT .
+
+
+###  https://w3id.org/bito#hasInteractingActorSystem
+bito:hasInteractingActorSystem rdf:type owl:ObjectProperty ;
+                              owl:inverseOf bito:isInteractingActorSystemOf ;
+                              rdfs:domain bito:Scenario ;
+                              rdfs:range prov:Agent ;
+                              rdfs:comment "Links a scenario to the external actor or system interacting with the IUT."@en ;
+                              rdfs:isDefinedBy <https://w3id.org/bito> ;
+                              rdfs:label "has interacting actor system"@en ;
+                              bito:sourceOntology <https://w3id.org/bito> ;
+                              bito:sourceTermPage bito:hasInteractingActorSystem .
+
+
+###  https://w3id.org/bito#hasObservedEvent
+bito:hasObservedEvent rdf:type owl:ObjectProperty ;
+                     owl:inverseOf bito:isObservedEventOf ;
+                     rdfs:domain bito:ObservedExecution ;
+                     rdfs:range bito:ObservedEvent ;
+                     rdfs:comment "Links an observed execution to an observed event."@en ;
+                     rdfs:isDefinedBy <https://w3id.org/bito> ;
+                     rdfs:label "has observed event"@en ;
+                     bito:sourceOntology <https://w3id.org/bito> ;
+                     bito:sourceTermPage bito:hasObservedEvent .
+
+
+###  https://w3id.org/bito#hasObservedExecution
+bito:hasObservedExecution rdf:type owl:ObjectProperty ;
+                         owl:inverseOf bito:isObservedExecutionOf ;
+                         rdfs:domain bito:Scenario ;
+                         rdfs:range bito:ObservedExecution ;
+                         rdfs:comment "Links a scenario to its observed execution evidence context."@en ;
+                         rdfs:isDefinedBy <https://w3id.org/bito> ;
+                         rdfs:label "has observed execution"@en ;
+                         bito:sourceOntology <https://w3id.org/bito> ;
+                         bito:sourceTermPage bito:hasObservedExecution .
+
+
+###  https://w3id.org/bito#hasObservedSourceState
+bito:hasObservedSourceState rdf:type owl:ObjectProperty ;
+                           owl:inverseOf bito:isObservedSourceStateOf ;
+                           rdfs:domain bito:ObservedStateChange ;
+                           rdfs:range saref:State ;
+                           rdfs:comment "Links an observed state change to its observed source state."@en ;
+                           rdfs:isDefinedBy <https://w3id.org/bito> ;
+                           rdfs:label "has observed source state"@en ;
+                           bito:sourceOntology <https://w3id.org/bito> ;
+                           bito:sourceTermPage bito:hasObservedSourceState .
+
+
+###  https://w3id.org/bito#hasObservedStateChange
+bito:hasObservedStateChange rdf:type owl:ObjectProperty ;
+                           owl:inverseOf bito:isObservedStateChangeOf ;
+                           rdfs:domain bito:ObservedExecution ;
+                           rdfs:range bito:ObservedStateChange ;
+                           rdfs:comment "Links an observed execution to an observed state change."@en ;
+                           rdfs:isDefinedBy <https://w3id.org/bito> ;
+                           rdfs:label "has observed state change"@en ;
+                           bito:sourceOntology <https://w3id.org/bito> ;
+                           bito:sourceTermPage bito:hasObservedStateChange .
+
+
+###  https://w3id.org/bito#hasObservedTargetState
+bito:hasObservedTargetState rdf:type owl:ObjectProperty ;
+                           owl:inverseOf bito:isObservedTargetStateOf ;
+                           rdfs:domain bito:ObservedStateChange ;
+                           rdfs:range saref:State ;
+                           rdfs:comment "Links an observed state change to its observed target state."@en ;
+                           rdfs:isDefinedBy <https://w3id.org/bito> ;
+                           rdfs:label "has observed target state"@en ;
+                           bito:sourceOntology <https://w3id.org/bito> ;
+                           bito:sourceTermPage bito:hasObservedTargetState .
+
+
+###  https://w3id.org/bito#hasRelevantPowerSequence
+bito:hasRelevantPowerSequence rdf:type owl:ObjectProperty ;
+                             owl:inverseOf bito:isRelevantPowerSequenceOf ;
+                             rdfs:domain bito:BehavioralElement ;
+                             rdfs:range s4ener:PowerSequence ;
+                             rdfs:comment "Links a behavioral element to the power sequence relevant for it."@en ;
+                             rdfs:isDefinedBy <https://w3id.org/bito> ;
+                             rdfs:label "has relevant power sequence"@en ;
+                             bito:sourceOntology <https://w3id.org/bito> ;
+                             bito:sourceTermPage bito:hasRelevantPowerSequence .
+
+
+###  https://w3id.org/bito#hasScenario
+bito:hasScenario rdf:type owl:ObjectProperty ;
+                owl:inverseOf bito:isScenarioOf ;
+                rdfs:domain bito:UseCase ;
+                rdfs:range bito:Scenario ;
+                rdfs:comment "Links a use case to a scenario that belongs to it."@en ;
+                rdfs:isDefinedBy <https://w3id.org/bito> ;
+                rdfs:label "has scenario"@en ;
+                bito:sourceOntology <https://w3id.org/bito> ;
+                bito:sourceTermPage bito:hasScenario .
+
+
+###  https://w3id.org/bito#hasSourceState
+bito:hasSourceState rdf:type owl:ObjectProperty ;
+                   owl:inverseOf bito:isSourceStateOf ;
+                   rdfs:domain bito:ExpectedStateTransition ;
+                   rdfs:range saref:State ;
+                   rdfs:comment "Links an expected transition to its source state."@en ;
+                   rdfs:isDefinedBy <https://w3id.org/bito> ;
+                   rdfs:label "has source state"@en ;
+                   bito:sourceOntology <https://w3id.org/bito> ;
+                   bito:sourceTermPage bito:hasSourceState .
+
+
+###  https://w3id.org/bito#hasTargetState
+bito:hasTargetState rdf:type owl:ObjectProperty ;
+                   owl:inverseOf bito:isTargetStateOf ;
+                   rdfs:domain bito:ExpectedStateTransition ;
+                   rdfs:range saref:State ;
+                   rdfs:comment "Links an expected transition to its target state."@en ;
+                   rdfs:isDefinedBy <https://w3id.org/bito> ;
+                   rdfs:label "has target state"@en ;
+                   bito:sourceOntology <https://w3id.org/bito> ;
+                   bito:sourceTermPage bito:hasTargetState .
+
+
+###  https://w3id.org/bito#hasTraceEvidence
+bito:hasTraceEvidence rdf:type owl:ObjectProperty ;
+                     owl:inverseOf bito:isTraceEvidenceOf ;
+                     rdfs:domain bito:ObservedExecution ;
+                     rdfs:range bito:TraceEvidence ;
+                     rdfs:comment "Links an observed execution to the trace evidence used for validation."@en ;
+                     rdfs:isDefinedBy <https://w3id.org/bito> ;
+                     rdfs:label "has trace evidence"@en ;
+                     bito:sourceOntology <https://w3id.org/bito> ;
+                     bito:sourceTermPage bito:hasTraceEvidence .
+
+
+###  https://w3id.org/bito#hasTriggeringInteraction
+bito:hasTriggeringInteraction rdf:type owl:ObjectProperty ;
+                             owl:inverseOf bito:isTriggeringInteractionOf ;
+                             rdfs:domain bito:Scenario ;
+                             rdfs:range bito:ObservedEvent ;
+                             rdfs:comment "Links a scenario to the event, request, command, signal, or condition that initiates or influences behavior."@en ;
+                             rdfs:isDefinedBy <https://w3id.org/bito> ;
+                             rdfs:label "has triggering interaction"@en ;
+                             bito:sourceOntology <https://w3id.org/bito> ;
+                             bito:sourceTermPage bito:hasTriggeringInteraction .
+
+
+###  https://w3id.org/bito#hasValidationResult
+bito:hasValidationResult rdf:type owl:ObjectProperty ;
+                        owl:inverseOf bito:isValidationResultOf ;
+                        rdfs:domain bito:ObservedExecution ;
+                        rdfs:range bito:ValidationResult ;
+                        rdfs:comment "Links an observed execution to its validation result."@en ;
+                        rdfs:isDefinedBy <https://w3id.org/bito> ;
+                        rdfs:label "has validation result"@en ;
+                        bito:sourceOntology <https://w3id.org/bito> ;
+                        bito:sourceTermPage bito:hasValidationResult .
+
+
+###  https://w3id.org/bito#hasVerdict
+bito:hasVerdict rdf:type owl:ObjectProperty ;
+               owl:inverseOf bito:isVerdictOf ;
+               rdfs:domain bito:ValidationResult ;
+               rdfs:range bito:ValidationVerdict ;
+               rdfs:comment "Links a validation result to its verdict."@en ;
+               rdfs:isDefinedBy <https://w3id.org/bito> ;
+               rdfs:label "has verdict"@en ;
+               bito:sourceOntology <https://w3id.org/bito> ;
+               bito:sourceTermPage bito:hasVerdict .
+
+
+###  https://w3id.org/bito#isAppliedBy
+bito:isAppliedBy rdf:type owl:ObjectProperty ;
+                rdfs:domain bito:BehavioralElement ;
+                rdfs:range bito:BehavioralConstraint ;
+                rdfs:comment "Specifies the behavioral constraint that applies to this behavioral element."@en ;
+                rdfs:isDefinedBy <https://w3id.org/bito> ;
+                rdfs:label "Is Applied By"@en ;
+                bito:sourceOntology <https://w3id.org/bito> ;
+                bito:sourceTermPage bito:isAppliedBy .
+
+
+###  https://w3id.org/bito#isBehavioralConstraintOf
+bito:isBehavioralConstraintOf rdf:type owl:ObjectProperty ;
+                             rdfs:domain bito:BehavioralConstraint ;
+                             rdfs:range bito:Scenario ;
+                             rdfs:comment "Specifies the scenario to which this behavioral constraint belongs."@en ;
+                             rdfs:isDefinedBy <https://w3id.org/bito> ;
+                             rdfs:label "Is Behavioral Constraint Of"@en ;
+                             bito:sourceOntology <https://w3id.org/bito> ;
+                             bito:sourceTermPage bito:isBehavioralConstraintOf .
+
+
+###  https://w3id.org/bito#isComponentOf
+bito:isComponentOf rdf:type owl:ObjectProperty ;
+                  rdfs:domain bito:StructuralElement ;
+                  rdfs:range bito:StructuralContainer ;
+                  rdfs:comment "Links a structural element to the structural container it is part of, such as a slot to its power sequence."@en ;
+                  rdfs:isDefinedBy <https://w3id.org/bito> ;
+                  rdfs:label "Is Component Of"@en ;
+                  bito:sourceOntology <https://w3id.org/bito> ;
+                  bito:sourceTermPage bito:isComponentOf .
+
+
+###  https://w3id.org/bito#isExpectedOperationalOutcomeOf
+bito:isExpectedOperationalOutcomeOf rdf:type owl:ObjectProperty ;
+                                   rdfs:domain bito:ExpectedOperationalOutcome ;
+                                   rdfs:range bito:Scenario ;
+                                   rdfs:comment "Specifies the scenario of which this expected operational outcome is a part."@en ;
+                                   rdfs:isDefinedBy <https://w3id.org/bito> ;
+                                   rdfs:label "Is Expected Operational Outcome Of"@en ;
+                                   bito:sourceOntology <https://w3id.org/bito> ;
+                                   bito:sourceTermPage bito:isExpectedOperationalOutcomeOf .
+
+
+###  https://w3id.org/bito#isExpectedStateTransitionOf
+bito:isExpectedStateTransitionOf rdf:type owl:ObjectProperty ;
+                                rdfs:domain bito:ExpectedStateTransition ;
+                                rdfs:range bito:Scenario ;
+                                rdfs:comment "Specifies the scenario of which this expected state transition is a part."@en ;
+                                rdfs:isDefinedBy <https://w3id.org/bito> ;
+                                rdfs:label "Is Expected State Transition Of"@en ;
+                                bito:sourceOntology <https://w3id.org/bito> ;
+                                bito:sourceTermPage bito:isExpectedStateTransitionOf .
+
+
+###  https://w3id.org/bito#isIUTOf
+bito:isIUTOf rdf:type owl:ObjectProperty ;
+            rdfs:domain saref:Device ;
+            rdfs:range bito:Scenario ;
+            rdfs:comment "Specifies the scenario in which this device serves as the implementation under test."@en ;
+            rdfs:isDefinedBy <https://w3id.org/bito> ;
+            rdfs:label "Is IUT Of"@en ;
+            bito:sourceOntology <https://w3id.org/bito> ;
+            bito:sourceTermPage bito:isIUTOf .
+
+
+###  https://w3id.org/bito#isInteractingActorSystemOf
+bito:isInteractingActorSystemOf rdf:type owl:ObjectProperty ;
+                               rdfs:domain prov:Agent ;
+                               rdfs:range bito:Scenario ;
+                               rdfs:comment "Specifies the scenario in which this agent acts as the interacting actor or system."@en ;
+                               rdfs:isDefinedBy <https://w3id.org/bito> ;
+                               rdfs:label "Is Interacting Actor System Of"@en ;
+                               bito:sourceOntology <https://w3id.org/bito> ;
+                               bito:sourceTermPage bito:isInteractingActorSystemOf .
+
+
+###  https://w3id.org/bito#isObservedEventOf
+bito:isObservedEventOf rdf:type owl:ObjectProperty ;
+                      rdfs:domain bito:ObservedEvent ;
+                      rdfs:range bito:ObservedExecution ;
+                      rdfs:comment "Specifies the observed execution in which this observed event was recorded."@en ;
+                      rdfs:isDefinedBy <https://w3id.org/bito> ;
+                      rdfs:label "Is Observed Event Of"@en ;
+                      bito:sourceOntology <https://w3id.org/bito> ;
+                      bito:sourceTermPage bito:isObservedEventOf .
+
+
+###  https://w3id.org/bito#isObservedExecutionOf
+bito:isObservedExecutionOf rdf:type owl:ObjectProperty ;
+                          rdfs:domain bito:ObservedExecution ;
+                          rdfs:range bito:Scenario ;
+                          rdfs:comment "Specifies the scenario for which this observed execution serves as evidence."@en ;
+                          rdfs:isDefinedBy <https://w3id.org/bito> ;
+                          rdfs:label "Is Observed Execution Of"@en ;
+                          bito:sourceOntology <https://w3id.org/bito> ;
+                          bito:sourceTermPage bito:isObservedExecutionOf .
+
+
+###  https://w3id.org/bito#isObservedFormerPreferredPowerSequenceOf
+bito:isObservedFormerPreferredPowerSequenceOf rdf:type owl:ObjectProperty ;
+                                             owl:inverseOf bito:observedFormerPreferredPowerSequence ;
+                                             rdfs:domain s4ener:PowerSequence ;
+                                             rdfs:range bito:TraceEvidence ;
+                                             rdfs:comment "Specifies the trace evidence in which this power sequence is the former preferred power sequence."@en ;
+                                             rdfs:isDefinedBy <https://w3id.org/bito> ;
+                                             rdfs:label "Is Observed Former Preferred Power Sequence Of"@en ;
+                                             bito:sourceOntology <https://w3id.org/bito> ;
+                                             bito:sourceTermPage bito:isObservedFormerPreferredPowerSequenceOf .
+
+
+###  https://w3id.org/bito#isObservedOptionalPowerSequenceOf
+bito:isObservedOptionalPowerSequenceOf rdf:type owl:ObjectProperty ;
+                                      owl:inverseOf bito:observedOptionalPowerSequence ;
+                                      rdfs:domain s4ener:PowerSequence ;
+                                      rdfs:range bito:TraceEvidence ;
+                                      rdfs:comment "Specifies the trace evidence in which this power sequence is the observed optional power sequence."@en ;
+                                      rdfs:isDefinedBy <https://w3id.org/bito> ;
+                                      rdfs:label "Is Observed Optional Power Sequence Of"@en ;
+                                      bito:sourceOntology <https://w3id.org/bito> ;
+                                      bito:sourceTermPage bito:isObservedOptionalPowerSequenceOf .
+
+
+###  https://w3id.org/bito#isObservedPreferredPowerSequenceOf
+bito:isObservedPreferredPowerSequenceOf rdf:type owl:ObjectProperty ;
+                                       owl:inverseOf bito:observedPreferredPowerSequence ;
+                                       rdfs:domain s4ener:PowerSequence ;
+                                       rdfs:range bito:TraceEvidence ;
+                                       rdfs:comment "Specifies the trace evidence in which this power sequence is the observed preferred power sequence."@en ;
+                                       rdfs:isDefinedBy <https://w3id.org/bito> ;
+                                       rdfs:label "Is Observed Preferred Power Sequence Of"@en ;
+                                       bito:sourceOntology <https://w3id.org/bito> ;
+                                       bito:sourceTermPage bito:isObservedPreferredPowerSequenceOf .
+
+
+###  https://w3id.org/bito#isObservedScheduledPowerSequenceOf
+bito:isObservedScheduledPowerSequenceOf rdf:type owl:ObjectProperty ;
+                                       owl:inverseOf bito:observedScheduledPowerSequence ;
+                                       rdfs:domain s4ener:PowerSequence ;
+                                       rdfs:range bito:TraceEvidence ;
+                                       rdfs:comment "Specifies the trace evidence in which this power sequence is the observed scheduled power sequence."@en ;
+                                       rdfs:isDefinedBy <https://w3id.org/bito> ;
+                                       rdfs:label "Is Observed Scheduled Power Sequence Of"@en ;
+                                       bito:sourceOntology <https://w3id.org/bito> ;
+                                       bito:sourceTermPage bito:isObservedScheduledPowerSequenceOf .
+
+
+###  https://w3id.org/bito#isObservedSelectedPowerSequenceOf
+bito:isObservedSelectedPowerSequenceOf rdf:type owl:ObjectProperty ;
+                                      owl:inverseOf bito:observedSelectedPowerSequence ;
+                                      rdfs:domain s4ener:PowerSequence ;
+                                      rdfs:range bito:TraceEvidence ;
+                                      rdfs:comment "Specifies the trace evidence in which this power sequence is the observed selected power sequence."@en ;
+                                      rdfs:isDefinedBy <https://w3id.org/bito> ;
+                                      rdfs:label "Is Observed Selected Power Sequence Of"@en ;
+                                      bito:sourceOntology <https://w3id.org/bito> ;
+                                      bito:sourceTermPage bito:isObservedSelectedPowerSequenceOf .
+
+
+###  https://w3id.org/bito#isObservedSourceStateOf
+bito:isObservedSourceStateOf rdf:type owl:ObjectProperty ;
+                            rdfs:domain saref:State ;
+                            rdfs:range bito:ObservedStateChange ;
+                            rdfs:comment "Specifies the observed state change for which this state serves as the observed source state."@en ;
+                            rdfs:isDefinedBy <https://w3id.org/bito> ;
+                            rdfs:label "Is Observed Source State Of"@en ;
+                            bito:sourceOntology <https://w3id.org/bito> ;
+                            bito:sourceTermPage bito:isObservedSourceStateOf .
+
+
+###  https://w3id.org/bito#isObservedStateChangeOf
+bito:isObservedStateChangeOf rdf:type owl:ObjectProperty ;
+                            rdfs:domain bito:ObservedStateChange ;
+                            rdfs:range bito:ObservedExecution ;
+                            rdfs:comment "Specifies the observed execution to which this observed state change belongs."@en ;
+                            rdfs:isDefinedBy <https://w3id.org/bito> ;
+                            rdfs:label "Is Observed State Change Of"@en ;
+                            bito:sourceOntology <https://w3id.org/bito> ;
+                            bito:sourceTermPage bito:isObservedStateChangeOf .
+
+
+###  https://w3id.org/bito#isObservedTargetStateOf
+bito:isObservedTargetStateOf rdf:type owl:ObjectProperty ;
+                            rdfs:domain saref:State ;
+                            rdfs:range bito:ObservedStateChange ;
+                            rdfs:comment "Specifies the observed state change for which this state serves as the observed target state."@en ;
+                            rdfs:isDefinedBy <https://w3id.org/bito> ;
+                            rdfs:label "Is Observed Target State Of"@en ;
+                            bito:sourceOntology <https://w3id.org/bito> ;
+                            bito:sourceTermPage bito:isObservedTargetStateOf .
+
+
+###  https://w3id.org/bito#isRelevantPowerSequenceOf
+bito:isRelevantPowerSequenceOf rdf:type owl:ObjectProperty ;
+                              rdfs:domain s4ener:PowerSequence ;
+                              rdfs:range bito:BehavioralElement ;
+                              rdfs:comment "Specifies the behavioral element for which this power sequence is relevant."@en ;
+                              rdfs:isDefinedBy <https://w3id.org/bito> ;
+                              rdfs:label "Is Relevant Power Sequence Of"@en ;
+                              bito:sourceOntology <https://w3id.org/bito> ;
+                              bito:sourceTermPage bito:isRelevantPowerSequenceOf .
+
+
+###  https://w3id.org/bito#isRequestedPowerSequenceOf
+bito:isRequestedPowerSequenceOf rdf:type owl:ObjectProperty ;
+                               owl:inverseOf bito:requestedPowerSequence ;
+                               rdfs:domain s4ener:PowerSequence ;
+                               rdfs:range bito:ObservedEvent ;
+                               rdfs:comment "Specifies the observed event that requested this power sequence."@en ;
+                               rdfs:isDefinedBy <https://w3id.org/bito> ;
+                               rdfs:label "Is Requested Power Sequence Of"@en ;
+                               bito:sourceOntology <https://w3id.org/bito> ;
+                               bito:sourceTermPage bito:isRequestedPowerSequenceOf .
+
+
+###  https://w3id.org/bito#isScenarioOf
+bito:isScenarioOf rdf:type owl:ObjectProperty ;
+                 rdfs:domain bito:Scenario ;
+                 rdfs:range bito:UseCase ;
+                 rdfs:comment "Links a scenario to the use case it belongs to."@en ;
+                 rdfs:isDefinedBy <https://w3id.org/bito> ;
+                 rdfs:label "is scenario of"@en ;
+                 bito:sourceOntology <https://w3id.org/bito> ;
+                 bito:sourceTermPage bito:isScenarioOf .
+
+
+###  https://w3id.org/bito#isSourceStateOf
+bito:isSourceStateOf rdf:type owl:ObjectProperty ;
+                    rdfs:domain saref:State ;
+                    rdfs:range bito:ExpectedStateTransition ;
+                    rdfs:comment "Specifies the expected state transition for which this state serves as the source state."@en ;
+                    rdfs:isDefinedBy <https://w3id.org/bito> ;
+                    rdfs:label "Is Source State Of"@en ;
+                    bito:sourceOntology <https://w3id.org/bito> ;
+                    bito:sourceTermPage bito:isSourceStateOf .
+
+
+###  https://w3id.org/bito#isStateOf
+bito:isStateOf rdf:type owl:ObjectProperty ;
+              rdfs:domain saref:State ;
+              rdfs:range bito:BehavioralElement ;
+              rdfs:comment "Specifies the behavioral element that has this state."@en ;
+              rdfs:isDefinedBy <https://w3id.org/bito> ;
+              rdfs:label "Is State Of"@en ;
+              bito:sourceOntology <https://w3id.org/bito> ;
+              bito:sourceTermPage bito:isStateOf .
+
+
+###  https://w3id.org/bito#isTargetStateOf
+bito:isTargetStateOf rdf:type owl:ObjectProperty ;
+                    rdfs:domain saref:State ;
+                    rdfs:range bito:ExpectedStateTransition ;
+                    rdfs:comment "Specifies the expected state transition for which this state serves as the target state."@en ;
+                    rdfs:isDefinedBy <https://w3id.org/bito> ;
+                    rdfs:label "Is Target State Of"@en ;
+                    bito:sourceOntology <https://w3id.org/bito> ;
+                    bito:sourceTermPage bito:isTargetStateOf .
+
+
+###  https://w3id.org/bito#isTraceEvidenceBasisOf
+bito:isTraceEvidenceBasisOf rdf:type owl:ObjectProperty ;
+                           rdfs:domain bito:TraceEvidence ;
+                           rdfs:range bito:ValidationResult ;
+                           rdfs:comment "Specifies the validation result that is based on this trace evidence."@en ;
+                           rdfs:isDefinedBy <https://w3id.org/bito> ;
+                           rdfs:label "Is Trace Evidence Basis Of"@en ;
+                           bito:sourceOntology <https://w3id.org/bito> ;
+                           bito:sourceTermPage bito:isTraceEvidenceBasisOf .
+
+
+###  https://w3id.org/bito#isTraceEvidenceOf
+bito:isTraceEvidenceOf rdf:type owl:ObjectProperty ;
+                      rdfs:domain bito:TraceEvidence ;
+                      rdfs:range bito:ObservedExecution ;
+                      rdfs:comment "Specifies the observed execution to which this trace evidence belongs."@en ;
+                      rdfs:isDefinedBy <https://w3id.org/bito> ;
+                      rdfs:label "Is Trace Evidence Of"@en ;
+                      bito:sourceOntology <https://w3id.org/bito> ;
+                      bito:sourceTermPage bito:isTraceEvidenceOf .
+
+
+###  https://w3id.org/bito#isTriggeringInteractionOf
+bito:isTriggeringInteractionOf rdf:type owl:ObjectProperty ;
+                              rdfs:domain bito:ObservedEvent ;
+                              rdfs:range bito:Scenario ;
+                              rdfs:comment "Specifies the scenario for which this observed event is the triggering interaction."@en ;
+                              rdfs:isDefinedBy <https://w3id.org/bito> ;
+                              rdfs:label "Is Triggering Interaction Of"@en ;
+                              bito:sourceOntology <https://w3id.org/bito> ;
+                              bito:sourceTermPage bito:isTriggeringInteractionOf .
+
+
+###  https://w3id.org/bito#isUnitOfMeasureFor
+bito:isUnitOfMeasureFor rdf:type owl:ObjectProperty ;
+                       rdfs:domain saref:UnitOfMeasure ;
+                       rdfs:range saref:PropertyValue ;
+                       rdfs:comment "Specifies the property value that is measured in this unit of measure."@en ;
+                       rdfs:isDefinedBy <https://w3id.org/bito> ;
+                       rdfs:label "Is Unit Of Measure For"@en ;
+                       bito:sourceOntology <https://w3id.org/bito> ;
+                       bito:sourceTermPage bito:isUnitOfMeasureFor .
+
+
+###  https://w3id.org/bito#isUseCaseFunctionForScenario
+bito:isUseCaseFunctionForScenario rdf:type owl:ObjectProperty ;
+                                 owl:inverseOf bito:realizedByUseCaseFunction ;
+                                 rdfs:domain bito:UseCaseFunction ;
+                                 rdfs:range bito:Scenario ;
+                                 rdfs:comment "Specifies the scenario that is realized by this use case function."@en ;
+                                 rdfs:isDefinedBy <https://w3id.org/bito> ;
+                                 rdfs:label "Is Use Case Function For Scenario"@en ;
+                                 bito:sourceOntology <https://w3id.org/bito> ;
+                                 bito:sourceTermPage bito:isUseCaseFunctionForScenario .
+
+
+###  https://w3id.org/bito#isValidatedBy
+bito:isValidatedBy rdf:type owl:ObjectProperty ;
+                  owl:inverseOf bito:validatesConstraint ;
+                  rdfs:domain bito:BehavioralConstraint ;
+                  rdfs:range bito:ValidationResult ;
+                  rdfs:comment "Specifies the validation result by which this behavioral constraint is evaluated."@en ;
+                  rdfs:isDefinedBy <https://w3id.org/bito> ;
+                  rdfs:label "Is Validated By"@en ;
+                  bito:sourceOntology <https://w3id.org/bito> ;
+                  bito:sourceTermPage bito:isValidatedBy .
+
+
+###  https://w3id.org/bito#isValidationResultOf
+bito:isValidationResultOf rdf:type owl:ObjectProperty ;
+                         rdfs:domain bito:ValidationResult ;
+                         rdfs:range bito:ObservedExecution ;
+                         rdfs:comment "Specifies the observed execution to which this validation result belongs."@en ;
+                         rdfs:isDefinedBy <https://w3id.org/bito> ;
+                         rdfs:label "Is Validation Result Of"@en ;
+                         bito:sourceOntology <https://w3id.org/bito> ;
+                         bito:sourceTermPage bito:isValidationResultOf .
+
+
+###  https://w3id.org/bito#isVerdictOf
+bito:isVerdictOf rdf:type owl:ObjectProperty ;
+                rdfs:domain bito:ValidationVerdict ;
+                rdfs:range bito:ValidationResult ;
+                rdfs:comment "Specifies the validation result to which this verdict belongs."@en ;
+                rdfs:isDefinedBy <https://w3id.org/bito> ;
+                rdfs:label "Is Verdict Of"@en ;
+                bito:sourceOntology <https://w3id.org/bito> ;
+                bito:sourceTermPage bito:isVerdictOf .
+
+
+###  https://w3id.org/bito#observedFormerPreferredPowerSequence
+bito:observedFormerPreferredPowerSequence rdf:type owl:ObjectProperty ;
+                                         rdfs:domain bito:TraceEvidence ;
+                                         rdfs:range s4ener:PowerSequence ;
+                                         rdfs:comment "Links trace evidence to the former preferred power sequence observed after a selection."@en ;
+                                         rdfs:isDefinedBy <https://w3id.org/bito> ;
+                                         rdfs:label "observed former preferred power sequence"@en ;
+                                         bito:sourceOntology <https://w3id.org/bito> ;
+                                         bito:sourceTermPage bito:observedFormerPreferredPowerSequence .
+
+
+###  https://w3id.org/bito#observedOptionalPowerSequence
+bito:observedOptionalPowerSequence rdf:type owl:ObjectProperty ;
+                                  rdfs:domain bito:TraceEvidence ;
+                                  rdfs:range s4ener:PowerSequence ;
+                                  rdfs:comment "Links trace evidence to the observed optional power sequence."@en ;
+                                  rdfs:isDefinedBy <https://w3id.org/bito> ;
+                                  rdfs:label "observed optional power sequence"@en ;
+                                  bito:sourceOntology <https://w3id.org/bito> ;
+                                  bito:sourceTermPage bito:observedOptionalPowerSequence .
+
+
+###  https://w3id.org/bito#observedPreferredPowerSequence
+bito:observedPreferredPowerSequence rdf:type owl:ObjectProperty ;
+                                   rdfs:domain bito:TraceEvidence ;
+                                   rdfs:range s4ener:PowerSequence ;
+                                   rdfs:comment "Links trace evidence to the observed preferred power sequence."@en ;
+                                   rdfs:isDefinedBy <https://w3id.org/bito> ;
+                                   rdfs:label "observed preferred power sequence"@en ;
+                                   bito:sourceOntology <https://w3id.org/bito> ;
+                                   bito:sourceTermPage bito:observedPreferredPowerSequence .
+
+
+###  https://w3id.org/bito#observedScheduledPowerSequence
+bito:observedScheduledPowerSequence rdf:type owl:ObjectProperty ;
+                                   rdfs:domain bito:TraceEvidence ;
+                                   rdfs:range s4ener:PowerSequence ;
+                                   rdfs:comment "Links trace evidence to the observed scheduled power sequence."@en ;
+                                   rdfs:isDefinedBy <https://w3id.org/bito> ;
+                                   rdfs:label "observed scheduled power sequence"@en ;
+                                   bito:sourceOntology <https://w3id.org/bito> ;
+                                   bito:sourceTermPage bito:observedScheduledPowerSequence .
+
+
+###  https://w3id.org/bito#observedSelectedPowerSequence
+bito:observedSelectedPowerSequence rdf:type owl:ObjectProperty ;
+                                  rdfs:domain bito:TraceEvidence ;
+                                  rdfs:range s4ener:PowerSequence ;
+                                  rdfs:comment "Links trace evidence to the observed selected power sequence."@en ;
+                                  rdfs:isDefinedBy <https://w3id.org/bito> ;
+                                  rdfs:label "observed selected power sequence"@en ;
+                                  bito:sourceOntology <https://w3id.org/bito> ;
+                                  bito:sourceTermPage bito:observedSelectedPowerSequence .
+
+
+###  https://w3id.org/bito#realizedByUseCaseFunction
+bito:realizedByUseCaseFunction rdf:type owl:ObjectProperty ;
+                              rdfs:domain bito:Scenario ;
+                              rdfs:range bito:UseCaseFunction ;
+                              rdfs:comment "Links a scenario to the use case function used for the scenario information exchange."@en ;
+                              rdfs:isDefinedBy <https://w3id.org/bito> ;
+                              rdfs:label "realized by use case function"@en ;
+                              bito:sourceOntology <https://w3id.org/bito> ;
+                              bito:sourceTermPage bito:realizedByUseCaseFunction .
+
+
+###  https://w3id.org/bito#requestedPowerSequence
+bito:requestedPowerSequence rdf:type owl:ObjectProperty ;
+                           rdfs:domain bito:ObservedEvent ;
+                           rdfs:range s4ener:PowerSequence ;
+                           rdfs:comment "Links a request event to the requested power sequence."@en ;
+                           rdfs:isDefinedBy <https://w3id.org/bito> ;
+                           rdfs:label "requested power sequence"@en ;
+                           bito:sourceOntology <https://w3id.org/bito> ;
+                           bito:sourceTermPage bito:requestedPowerSequence .
+
+
+###  https://w3id.org/bito#validatesConstraint
+bito:validatesConstraint rdf:type owl:ObjectProperty ;
+                        rdfs:domain bito:ValidationResult ;
+                        rdfs:range bito:BehavioralConstraint ;
+                        rdfs:comment "Links a validation result to the constraint being checked."@en ;
+                        rdfs:isDefinedBy <https://w3id.org/bito> ;
+                        rdfs:label "validates constraint"@en ;
+                        bito:sourceOntology <https://w3id.org/bito> ;
+                        bito:sourceTermPage bito:validatesConstraint .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.w3.org/ns/prov#endedAtTime
+prov:endedAtTime rdf:type owl:DatatypeProperty ;
+                 rdfs:domain prov:Activity ;
+                 rdfs:range xsd:dateTime ;
+                 rdfs:comment "Reused to represent the end time of an observed activity."@en ;
+                 rdfs:isDefinedBy prov: ;
+                 rdfs:label "ended at time"@en ;
+                 bito:sourceOntology prov: ;
+                 bito:sourceTermPage prov:endedAtTime .
+
+
+###  http://www.w3.org/ns/prov#startedAtTime
+prov:startedAtTime rdf:type owl:DatatypeProperty ;
+                   rdfs:domain prov:Activity ;
+                   rdfs:range xsd:dateTime ;
+                   rdfs:comment "Reused to represent the start time of an observed activity."@en ;
+                   rdfs:isDefinedBy prov: ;
+                   rdfs:label "started at time"@en ;
+                   bito:sourceOntology prov: ;
+                   bito:sourceTermPage prov:startedAtTime .
+
+
+###  https://saref.etsi.org/core/hasIdentifier
+saref:hasIdentifier rdf:type owl:DatatypeProperty ;
+                    rdfs:domain bito:BehavioralElement ;
+                    rdfs:range rdfs:Literal ;
+                    rdfs:comment "Reused to attach identifiers to devices, power sequences, alternatives groups, and slots."@en ;
+                    rdfs:isDefinedBy saref: ;
+                    rdfs:label "has identifier"@en ;
+                    bito:sourceOntology saref: ;
+                    bito:sourceTermPage saref:hasIdentifier .
+
+
+###  https://saref.etsi.org/core/hasValue
+saref:hasValue rdf:type owl:DatatypeProperty ;
+               rdfs:domain saref:PropertyValue ;
+               rdfs:range rdfs:Literal ;
+               rdfs:comment "Reused to attach a value to a property value individual."@en ;
+               rdfs:isDefinedBy saref: ;
+               rdfs:label "has value"@en ;
+               bito:sourceOntology saref: ;
+               bito:sourceTermPage saref:hasValue .
+
+
+###  https://saref.etsi.org/saref4ener/hasDefaultDuration
+s4ener:hasDefaultDuration rdf:type owl:DatatypeProperty ;
+                          rdfs:domain s4ener:Slot ;
+                          rdfs:range xsd:duration ;
+                          rdfs:comment "Reused to represent the default duration of a slot."@en ;
+                          rdfs:isDefinedBy s4ener: ;
+                          rdfs:label "has default duration"@en ;
+                          bito:sourceOntology s4ener: ;
+                          bito:sourceTermPage s4ener:hasDefaultDuration .
+
+
+###  https://saref.etsi.org/saref4ener/hasEarliestStartTime
+s4ener:hasEarliestStartTime rdf:type owl:DatatypeProperty ;
+                            rdfs:domain s4ener:PowerSequence ;
+                            rdfs:range xsd:dateTime ;
+                            rdfs:comment "Reused to represent the earliest allowed start time of a power sequence."@en ;
+                            rdfs:isDefinedBy s4ener: ;
+                            rdfs:label "has earliest start time"@en ;
+                            bito:sourceOntology s4ener: ;
+                            bito:sourceTermPage s4ener:hasEarliestStartTime .
+
+
+###  https://saref.etsi.org/saref4ener/hasEndTime
+s4ener:hasEndTime rdf:type owl:DatatypeProperty ;
+                  rdfs:domain s4ener:PowerSequence ;
+                  rdfs:range xsd:dateTime ;
+                  rdfs:comment "Reused to represent the end time of a power sequence."@en ;
+                  rdfs:isDefinedBy s4ener: ;
+                  rdfs:label "has end time"@en ;
+                  bito:sourceOntology s4ener: ;
+                  bito:sourceTermPage s4ener:hasEndTime .
+
+
+###  https://saref.etsi.org/saref4ener/hasLatestEndTime
+s4ener:hasLatestEndTime rdf:type owl:DatatypeProperty ;
+                        rdfs:domain s4ener:PowerSequence ;
+                        rdfs:range xsd:dateTime ;
+                        rdfs:comment "Reused to represent the latest allowed end time of a power sequence."@en ;
+                        rdfs:isDefinedBy s4ener: ;
+                        rdfs:label "has latest end time"@en ;
+                        bito:sourceOntology s4ener: ;
+                        bito:sourceTermPage s4ener:hasLatestEndTime .
+
+
+###  https://saref.etsi.org/saref4ener/hasStartTime
+s4ener:hasStartTime rdf:type owl:DatatypeProperty ;
+                    rdfs:domain s4ener:PowerSequence ;
+                    rdfs:range xsd:dateTime ;
+                    rdfs:comment "Reused to represent the start time of a power sequence."@en ;
+                    rdfs:isDefinedBy s4ener: ;
+                    rdfs:label "has start time"@en ;
+                    bito:sourceOntology s4ener: ;
+                    bito:sourceTermPage s4ener:hasStartTime .
+
+
+###  https://saref.etsi.org/saref4ener/isPausable
+s4ener:isPausable rdf:type owl:DatatypeProperty ;
+                  rdfs:domain s4ener:PowerSequence ;
+                  rdfs:range xsd:boolean ;
+                  rdfs:comment "Reused to represent whether a power sequence is pausable."@en ;
+                  rdfs:isDefinedBy s4ener: ;
+                  rdfs:label "is pausable"@en ;
+                  bito:sourceOntology s4ener: ;
+                  bito:sourceTermPage s4ener:isPausable .
+
+
+###  https://saref.etsi.org/saref4ener/isStoppable
+s4ener:isStoppable rdf:type owl:DatatypeProperty ;
+                   rdfs:domain s4ener:PowerSequence ;
+                   rdfs:range xsd:boolean ;
+                   rdfs:comment "Reused to represent whether a power sequence is stoppable."@en ;
+                   rdfs:isDefinedBy s4ener: ;
+                   rdfs:label "is stoppable"@en ;
+                   bito:sourceOntology s4ener: ;
+                   bito:sourceTermPage s4ener:isStoppable .
+
+
+###  https://saref.etsi.org/saref4ener/nodeRemoteControllable
+s4ener:nodeRemoteControllable rdf:type owl:DatatypeProperty ;
+                              rdfs:domain s4ener:PowerProfile ;
+                              rdfs:range xsd:boolean ;
+                              rdfs:comment "Reused to represent whether the power sequence node is remotely controllable."@en ;
+                              rdfs:isDefinedBy s4ener: ;
+                              rdfs:label "node remote controllable"@en ;
+                              bito:sourceOntology s4ener: ;
+                              bito:sourceTermPage s4ener:nodeRemoteControllable .
+
+
+###  https://saref.etsi.org/saref4ener/sequenceRemoteControllable
+s4ener:sequenceRemoteControllable rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain s4ener:PowerSequence ;
+                                  rdfs:range xsd:boolean ;
+                                  rdfs:comment "Reused to represent whether a power sequence is remotely controllable."@en ;
+                                  rdfs:isDefinedBy s4ener: ;
+                                  rdfs:label "sequence remote controllable"@en ;
+                                  bito:sourceOntology s4ener: ;
+                                  bito:sourceTermPage s4ener:sequenceRemoteControllable .
+
+
+###  https://saref.etsi.org/saref4ener/supportsReselection
+s4ener:supportsReselection rdf:type owl:DatatypeProperty ;
+                           rdfs:domain s4ener:PowerProfile ;
+                           rdfs:range xsd:boolean ;
+                           rdfs:comment "Reused to represent whether reselection of power sequences is supported."@en ;
+                           rdfs:isDefinedBy s4ener: ;
+                           rdfs:label "supports reselection"@en ;
+                           bito:sourceOntology s4ener: ;
+                           bito:sourceTermPage s4ener:supportsReselection .
+
+
+###  https://w3id.org/bito#acceptanceOutcome
+bito:acceptanceOutcome rdf:type owl:DatatypeProperty ;
+                      rdfs:domain bito:ObservedEvent ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "Observed acceptance outcome for a request."@en ;
+                      rdfs:isDefinedBy <https://w3id.org/bito> ;
+                      rdfs:label "acceptance outcome"@en ;
+                      bito:sourceOntology <https://w3id.org/bito> ;
+                      bito:sourceTermPage bito:acceptanceOutcome .
+
+
+###  https://w3id.org/bito#acceptedAt
+bito:acceptedAt rdf:type owl:DatatypeProperty ;
+               rdfs:domain bito:ObservedEvent ;
+               rdfs:range xsd:dateTime ;
+               rdfs:comment "Timestamp at which a request was accepted."@en ;
+               rdfs:isDefinedBy <https://w3id.org/bito> ;
+               rdfs:label "accepted at"@en ;
+               bito:sourceOntology <https://w3id.org/bito> ;
+               bito:sourceTermPage bito:acceptedAt .
+
+
+###  https://w3id.org/bito#achievesExpectedOutcome
+bito:achievesExpectedOutcome rdf:type owl:DatatypeProperty ;
+                            rdfs:domain bito:ValidationResult ;
+                            rdfs:range xsd:boolean ;
+                            rdfs:comment "Indicates whether the observed execution achieves the expected operational outcome."@en ;
+                            rdfs:isDefinedBy <https://w3id.org/bito> ;
+                            rdfs:label "achieves expected outcome"@en ;
+                            bito:sourceOntology <https://w3id.org/bito> ;
+                            bito:sourceTermPage bito:achievesExpectedOutcome .
+
+
+###  https://w3id.org/bito#entityId
+bito:entityId rdf:type owl:DatatypeProperty ;
+             rdfs:domain saref:Device ;
+             rdfs:range xsd:integer ;
+             rdfs:comment "Implementation-side entity identifier."@en ;
+             rdfs:isDefinedBy <https://w3id.org/bito> ;
+             rdfs:label "entity ID"@en ;
+             bito:sourceOntology <https://w3id.org/bito> ;
+             bito:sourceTermPage bito:entityId .
+
+
+###  https://w3id.org/bito#entityType
+bito:entityType rdf:type owl:DatatypeProperty ;
+               rdfs:domain saref:Device ;
+               rdfs:range xsd:string ;
+               rdfs:comment "Implementation-side entity type."@en ;
+               rdfs:isDefinedBy <https://w3id.org/bito> ;
+               rdfs:label "entity type"@en ;
+               bito:sourceOntology <https://w3id.org/bito> ;
+               bito:sourceTermPage bito:entityType .
+
+
+###  https://w3id.org/bito#eventOrderIndex
+bito:eventOrderIndex rdf:type owl:DatatypeProperty ;
+                    rdfs:domain bito:ObservedEvent ;
+                    rdfs:range xsd:integer ;
+                    rdfs:comment "Order of an observed event within a scenario execution."@en ;
+                    rdfs:isDefinedBy <https://w3id.org/bito> ;
+                    rdfs:label "event order index"@en ;
+                    bito:sourceOntology <https://w3id.org/bito> ;
+                    bito:sourceTermPage bito:eventOrderIndex .
+
+
+###  https://w3id.org/bito#evidenceMode
+bito:evidenceMode rdf:type owl:DatatypeProperty ;
+                 rdfs:domain bito:TraceEvidence ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Mode used to organize observed evidence sessions."@en ;
+                 rdfs:isDefinedBy <https://w3id.org/bito> ;
+                 rdfs:label "evidence mode"@en ;
+                 bito:sourceOntology <https://w3id.org/bito> ;
+                 bito:sourceTermPage bito:evidenceMode .
+
+
+###  https://w3id.org/bito#evidencePreservesInteractionContext
+bito:evidencePreservesInteractionContext rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain bito:TraceEvidence ;
+                                        rdfs:range xsd:boolean ;
+                                        rdfs:comment "Indicates whether trace evidence preserves the execution-side interaction context."@en ;
+                                        rdfs:isDefinedBy <https://w3id.org/bito> ;
+                                        rdfs:label "evidence preserves interaction context"@en ;
+                                        bito:sourceOntology <https://w3id.org/bito> ;
+                                        bito:sourceTermPage bito:evidencePreservesInteractionContext .
+
+
+###  https://w3id.org/bito#evidencePreservesObservedBehavior
+bito:evidencePreservesObservedBehavior rdf:type owl:DatatypeProperty ;
+                                      rdfs:domain bito:TraceEvidence ;
+                                      rdfs:range xsd:boolean ;
+                                      rdfs:comment "Indicates whether trace evidence preserves the observed behavior of the IUT."@en ;
+                                      rdfs:isDefinedBy <https://w3id.org/bito> ;
+                                      rdfs:label "evidence preserves observed behavior"@en ;
+                                      bito:sourceOntology <https://w3id.org/bito> ;
+                                      bito:sourceTermPage bito:evidencePreservesObservedBehavior .
+
+
+###  https://w3id.org/bito#interactionEndpoint
+bito:interactionEndpoint rdf:type owl:DatatypeProperty ;
+                        rdfs:domain bito:ObservedEvent ;
+                        rdfs:range xsd:string ;
+                        rdfs:comment "Endpoint or interface through which the interaction was observed."@en ;
+                        rdfs:isDefinedBy <https://w3id.org/bito> ;
+                        rdfs:label "interaction endpoint"@en ;
+                        bito:sourceOntology <https://w3id.org/bito> ;
+                        bito:sourceTermPage bito:interactionEndpoint .
+
+
+###  https://w3id.org/bito#observedAt
+bito:observedAt rdf:type owl:DatatypeProperty ;
+               rdfs:domain bito:BehavioralElement ;
+               rdfs:range xsd:dateTime ;
+               rdfs:comment "Timestamp at which evidence or an event was observed."@en ;
+               rdfs:isDefinedBy <https://w3id.org/bito> ;
+               rdfs:label "observed at"@en ;
+               bito:sourceOntology <https://w3id.org/bito> ;
+               bito:sourceTermPage bito:observedAt .
+
+
+###  https://w3id.org/bito#observedExecutionEnd
+bito:observedExecutionEnd rdf:type owl:DatatypeProperty ;
+                         rdfs:domain bito:BehavioralElement ;
+                         rdfs:range xsd:dateTime ;
+                         rdfs:comment "Observed end time of execution."@en ;
+                         rdfs:isDefinedBy <https://w3id.org/bito> ;
+                         rdfs:label "observed execution end"@en ;
+                         bito:sourceOntology <https://w3id.org/bito> ;
+                         bito:sourceTermPage bito:observedExecutionEnd .
+
+
+###  https://w3id.org/bito#observedExecutionStart
+bito:observedExecutionStart rdf:type owl:DatatypeProperty ;
+                           rdfs:domain bito:BehavioralElement ;
+                           rdfs:range xsd:dateTime ;
+                           rdfs:comment "Observed start time of execution."@en ;
+                           rdfs:isDefinedBy <https://w3id.org/bito> ;
+                           rdfs:label "observed execution start"@en ;
+                           bito:sourceOntology <https://w3id.org/bito> ;
+                           bito:sourceTermPage bito:observedExecutionStart .
+
+
+###  https://w3id.org/bito#observedInteractionKind
+bito:observedInteractionKind rdf:type owl:DatatypeProperty ;
+                            rdfs:domain bito:ObservedEvent ;
+                            rdfs:range xsd:string ;
+                            rdfs:comment "Observed interaction label used for validation scoping."@en ;
+                            rdfs:isDefinedBy <https://w3id.org/bito> ;
+                            rdfs:label "observed interaction kind"@en ;
+                            bito:sourceOntology <https://w3id.org/bito> ;
+                            bito:sourceTermPage bito:observedInteractionKind .
+
+
+###  https://w3id.org/bito#observedPlanStatus
+bito:observedPlanStatus rdf:type owl:DatatypeProperty ;
+                       rdfs:domain bito:TraceEvidence ;
+                       rdfs:range xsd:string ;
+                       rdfs:comment "Observed validation status of an announced plan."@en ;
+                       rdfs:isDefinedBy <https://w3id.org/bito> ;
+                       rdfs:label "observed plan status"@en ;
+                       bito:sourceOntology <https://w3id.org/bito> ;
+                       bito:sourceTermPage bito:observedPlanStatus .
+
+
+###  https://w3id.org/bito#observedPlanUpdatedAt
+bito:observedPlanUpdatedAt rdf:type owl:DatatypeProperty ;
+                          rdfs:domain bito:BehavioralElement ;
+                          rdfs:range xsd:dateTime ;
+                          rdfs:comment "Timestamp at which the plan update was observed."@en ;
+                          rdfs:isDefinedBy <https://w3id.org/bito> ;
+                          rdfs:label "observed plan updated at"@en ;
+                          bito:sourceOntology <https://w3id.org/bito> ;
+                          bito:sourceTermPage bito:observedPlanUpdatedAt .
+
+
+###  https://w3id.org/bito#observedRunStatus
+bito:observedRunStatus rdf:type owl:DatatypeProperty ;
+                      rdfs:domain bito:TraceEvidence ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "Observed run status after execution."@en ;
+                      rdfs:isDefinedBy <https://w3id.org/bito> ;
+                      rdfs:label "observed run status"@en ;
+                      bito:sourceOntology <https://w3id.org/bito> ;
+                      bito:sourceTermPage bito:observedRunStatus .
+
+
+###  https://w3id.org/bito#requestTimestamp
+bito:requestTimestamp rdf:type owl:DatatypeProperty ;
+                     rdfs:domain bito:ObservedEvent ;
+                     rdfs:range xsd:dateTime ;
+                     rdfs:comment "Timestamp of an observed request."@en ;
+                     rdfs:isDefinedBy <https://w3id.org/bito> ;
+                     rdfs:label "request timestamp"@en ;
+                     bito:sourceOntology <https://w3id.org/bito> ;
+                     bito:sourceTermPage bito:requestTimestamp .
+
+
+###  https://w3id.org/bito#requestedStartTime
+bito:requestedStartTime rdf:type owl:DatatypeProperty ;
+                       rdfs:domain bito:ObservedEvent ;
+                       rdfs:range xsd:dateTime ;
+                       rdfs:comment "Start time requested in an observed interaction."@en ;
+                       rdfs:isDefinedBy <https://w3id.org/bito> ;
+                       rdfs:label "requested start time"@en ;
+                       bito:sourceOntology <https://w3id.org/bito> ;
+                       bito:sourceTermPage bito:requestedStartTime .
+
+
+###  https://w3id.org/bito#satisfiesConstraint
+bito:satisfiesConstraint rdf:type owl:DatatypeProperty ;
+                        rdfs:domain bito:ValidationResult ;
+                        rdfs:range xsd:boolean ;
+                        rdfs:comment "Indicates whether the observed execution satisfies the validated constraints."@en ;
+                        rdfs:isDefinedBy <https://w3id.org/bito> ;
+                        rdfs:label "satisfies constraint"@en ;
+                        bito:sourceOntology <https://w3id.org/bito> ;
+                        bito:sourceTermPage bito:satisfiesConstraint .
+
+
+###  https://w3id.org/bito#scenarioName
+bito:scenarioName rdf:type owl:DatatypeProperty ;
+                 rdfs:domain bito:Scenario ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Name of a scenario."@en ;
+                 rdfs:isDefinedBy <https://w3id.org/bito> ;
+                 rdfs:label "scenario name"@en ;
+                 bito:sourceOntology <https://w3id.org/bito> ;
+                 bito:sourceTermPage bito:scenarioName .
+
+
+###  https://w3id.org/bito#scenarioNumber
+bito:scenarioNumber rdf:type owl:DatatypeProperty ;
+                   rdfs:domain bito:Scenario ;
+                   rdfs:range xsd:integer ;
+                   rdfs:comment "Number identifying a scenario within a use case."@en ;
+                   rdfs:isDefinedBy <https://w3id.org/bito> ;
+                   rdfs:label "scenario number"@en ;
+                   bito:sourceOntology <https://w3id.org/bito> ;
+                   bito:sourceTermPage bito:scenarioNumber .
+
+
+###  https://w3id.org/bito#ucfName
+bito:ucfName rdf:type owl:DatatypeProperty ;
+            rdfs:domain bito:UseCaseFunction ;
+            rdfs:range xsd:string ;
+            rdfs:comment "Name of a use case function."@en ;
+            rdfs:isDefinedBy <https://w3id.org/bito> ;
+            rdfs:label "UCF name"@en ;
+            bito:sourceOntology <https://w3id.org/bito> ;
+            bito:sourceTermPage bito:ucfName .
+
+
+###  https://w3id.org/bito#useCaseName
+bito:useCaseName rdf:type owl:DatatypeProperty ;
+                rdfs:domain bito:UseCase ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Name of a use case."@en ;
+                rdfs:isDefinedBy <https://w3id.org/bito> ;
+                rdfs:label "use case name"@en ;
+                bito:sourceOntology <https://w3id.org/bito> ;
+                bito:sourceTermPage bito:useCaseName .
+
+
+###  https://w3id.org/bito#useCaseVersion
+bito:useCaseVersion rdf:type owl:DatatypeProperty ;
+                   rdfs:domain bito:UseCase ;
+                   rdfs:range xsd:string ;
+                   rdfs:comment "Version of a use case."@en ;
+                   rdfs:isDefinedBy <https://w3id.org/bito> ;
+                   rdfs:label "use case version"@en ;
+                   bito:sourceOntology <https://w3id.org/bito> ;
+                   bito:sourceTermPage bito:useCaseVersion .
+
+
+###  https://w3id.org/bito#validationMessage
+bito:validationMessage rdf:type owl:DatatypeProperty ;
+                      rdfs:domain bito:ValidationResult ;
+                      rdfs:range xsd:string ;
+                      rdfs:comment "Human-readable message associated with a validation result."@en ;
+                      rdfs:isDefinedBy <https://w3id.org/bito> ;
+                      rdfs:label "validation message"@en ;
+                      bito:sourceOntology <https://w3id.org/bito> ;
+                      bito:sourceTermPage bito:validationMessage .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/2006/time#Instant
+time:Instant rdf:type owl:Class ;
+             rdfs:subClassOf bito:BehavioralElement ;
+             rdfs:comment "Reused to represent a temporal instant when explicit temporal modelling is required."@en ;
+             rdfs:isDefinedBy <http://www.w3.org/2006/time> ;
+             rdfs:label "Instant"@en ;
+             bito:sourceOntology <http://www.w3.org/2006/time> ;
+             bito:sourceTermPage time:Instant .
+
+
+###  http://www.w3.org/2006/time#Interval
+time:Interval rdf:type owl:Class ;
+              rdfs:subClassOf bito:BehavioralElement ;
+              rdfs:comment "Reused to represent a temporal interval when explicit temporal modelling is required."@en ;
+              rdfs:isDefinedBy <http://www.w3.org/2006/time> ;
+              rdfs:label "Interval"@en ;
+              bito:sourceOntology <http://www.w3.org/2006/time> ;
+              bito:sourceTermPage time:Interval .
+
+
+###  http://www.w3.org/ns/prov#Activity
+prov:Activity rdf:type owl:Class ;
+              rdfs:subClassOf bito:BehavioralElement ;
+              rdfs:comment "Reused to represent an observed activity, interaction, or execution."@en ;
+              rdfs:isDefinedBy prov: ;
+              rdfs:label "Activity"@en ;
+              bito:sourceOntology prov: ;
+              bito:sourceTermPage prov:Activity .
+
+
+###  http://www.w3.org/ns/prov#Agent
+prov:Agent rdf:type owl:Class ;
+           rdfs:subClassOf bito:BehavioralElement ;
+           rdfs:comment "Reused to represent an actor or system responsible for an interaction."@en ;
+           rdfs:isDefinedBy prov: ;
+           rdfs:label "Agent"@en ;
+           bito:sourceOntology prov: ;
+           bito:sourceTermPage prov:Agent .
+
+
+###  http://www.w3.org/ns/prov#Entity
+prov:Entity rdf:type owl:Class ;
+            rdfs:subClassOf bito:BehavioralElement ;
+            rdfs:comment "Reused to represent an information entity, including trace evidence."@en ;
+            rdfs:isDefinedBy prov: ;
+            rdfs:label "Entity"@en ;
+            bito:sourceOntology prov: ;
+            bito:sourceTermPage prov:Entity .
+
+
+###  https://saref.etsi.org/core/Appliance
+saref:Appliance rdf:type owl:Class ;
+                rdfs:subClassOf saref:Device ;
+                rdfs:comment "Reused to represent the appliance category of the implementation under test."@en ;
+                rdfs:isDefinedBy saref: ;
+                rdfs:label "Appliance"@en ;
+                bito:sourceOntology saref: ;
+                bito:sourceTermPage saref:Appliance .
+
+
+###  https://saref.etsi.org/core/Device
+saref:Device rdf:type owl:Class ;
+             rdfs:subClassOf bito:BehavioralElement ,
+                             bito:StructuralContainer ;
+             rdfs:comment "Reused to represent an implementation under test or controllable device."@en ;
+             rdfs:isDefinedBy saref: ;
+             rdfs:label "Device"@en ;
+             bito:sourceOntology saref: ;
+             bito:sourceTermPage saref:Device .
+
+
+###  https://saref.etsi.org/core/PowerUnit
+saref:PowerUnit rdf:type owl:Class ;
+                rdfs:subClassOf saref:UnitOfMeasure ;
+                rdfs:comment "Reused to represent a power-related unit."@en ;
+                rdfs:isDefinedBy saref: ;
+                rdfs:label "Power unit"@en ;
+                bito:sourceOntology saref: ;
+                bito:sourceTermPage saref:PowerUnit .
+
+
+###  https://saref.etsi.org/core/PropertyValue
+saref:PropertyValue rdf:type owl:Class ;
+                    rdfs:subClassOf bito:BehavioralElement ;
+                    rdfs:comment "Reused to represent a value associated with a measured or declared property."@en ;
+                    rdfs:isDefinedBy saref: ;
+                    rdfs:label "Property value"@en ;
+                    bito:sourceOntology saref: ;
+                    bito:sourceTermPage saref:PropertyValue .
+
+
+###  https://saref.etsi.org/core/State
+saref:State rdf:type owl:Class ;
+            rdfs:subClassOf bito:BehavioralElement ;
+            rdfs:comment "Reused to represent states used in expected and observed behavior."@en ;
+            rdfs:isDefinedBy saref: ;
+            rdfs:label "State"@en ;
+            bito:sourceOntology saref: ;
+            bito:sourceTermPage saref:State .
+
+
+###  https://saref.etsi.org/core/UnitOfMeasure
+saref:UnitOfMeasure rdf:type owl:Class ;
+                    rdfs:subClassOf bito:BehavioralElement ;
+                    rdfs:comment "Reused to represent units associated with values."@en ;
+                    rdfs:isDefinedBy saref: ;
+                    rdfs:label "Unit of measure"@en ;
+                    bito:sourceOntology saref: ;
+                    bito:sourceTermPage saref:UnitOfMeasure .
+
+
+###  https://saref.etsi.org/saref4ener/AlternativesGroup
+s4ener:AlternativesGroup rdf:type owl:Class ;
+                         rdfs:subClassOf bito:BehavioralElement ,
+                                         bito:StructuralContainer ,
+                                         bito:StructuralElement ;
+                         rdfs:comment "Reused to represent a group of alternative power sequences."@en ;
+                         rdfs:isDefinedBy s4ener: ;
+                         rdfs:label "Alternatives group"@en ;
+                         bito:sourceOntology s4ener: ;
+                         bito:sourceTermPage s4ener:AlternativesGroup .
+
+
+###  https://saref.etsi.org/saref4ener/PowerProfile
+s4ener:PowerProfile rdf:type owl:Class ;
+                    rdfs:subClassOf bito:BehavioralElement ,
+                                    bito:StructuralContainer ,
+                                    bito:StructuralElement ;
+                    rdfs:comment "Reused to represent a power scheduling structure containing alternative groups and power sequences."@en ;
+                    rdfs:isDefinedBy s4ener: ;
+                    rdfs:label "Power profile"@en ;
+                    bito:sourceOntology s4ener: ;
+                    bito:sourceTermPage s4ener:PowerProfile .
+
+
+###  https://saref.etsi.org/saref4ener/PowerSequence
+s4ener:PowerSequence rdf:type owl:Class ;
+                     rdfs:subClassOf bito:BehavioralElement ,
+                                     bito:StructuralContainer ,
+                                     bito:StructuralElement ;
+                     rdfs:comment "Reused to represent a selectable or scheduled power sequence."@en ;
+                     rdfs:isDefinedBy s4ener: ;
+                     rdfs:label "Power sequence"@en ;
+                     bito:sourceOntology s4ener: ;
+                     bito:sourceTermPage s4ener:PowerSequence .
+
+
+###  https://saref.etsi.org/saref4ener/PowerSequenceState
+s4ener:PowerSequenceState rdf:type owl:Class ;
+                          rdfs:subClassOf saref:State ;
+                          rdfs:comment "Reused to represent a state of a power sequence."@en ;
+                          rdfs:isDefinedBy s4ener: ;
+                          rdfs:label "Power sequence state"@en ;
+                          bito:sourceOntology s4ener: ;
+                          bito:sourceTermPage s4ener:PowerSequenceState .
+
+
+###  https://saref.etsi.org/saref4ener/Slot
+s4ener:Slot rdf:type owl:Class ;
+            rdfs:subClassOf bito:BehavioralElement ,
+                            bito:StructuralElement ;
+            rdfs:comment "Reused to represent a time slot within a power sequence."@en ;
+            rdfs:isDefinedBy s4ener: ;
+            rdfs:label "Slot"@en ;
+            bito:sourceOntology s4ener: ;
+            bito:sourceTermPage s4ener:Slot .
+
+
+###  https://w3id.org/bito#BehavioralConstraint
+bito:BehavioralConstraint rdf:type owl:Class ;
+                         rdfs:subClassOf bito:BehavioralElement ;
+                         rdfs:comment "Condition used to determine whether observed behavior is valid."@en ;
+                         rdfs:isDefinedBy <https://w3id.org/bito> ;
+                         rdfs:label "Behavioral constraint"@en ;
+                         bito:sourceOntology <https://w3id.org/bito> ;
+                         bito:sourceTermPage bito:BehavioralConstraint .
+
+
+###  https://w3id.org/bito#BehavioralElement
+bito:BehavioralElement rdf:type owl:Class ;
+                      rdfs:comment "Generic behavioral element used for linking constraints, transitions, triggers, evidence, and outcomes."@en ;
+                      rdfs:isDefinedBy <https://w3id.org/bito> ;
+                      rdfs:label "Behavioral element"@en ;
+                      bito:sourceOntology <https://w3id.org/bito> ;
+                      bito:sourceTermPage bito:BehavioralElement .
+
+
+###  https://w3id.org/bito#ExpectedOperationalOutcome
+bito:ExpectedOperationalOutcome rdf:type owl:Class ;
+                               rdfs:subClassOf bito:BehavioralElement ;
+                               rdfs:comment "Outcome expected after a scenario is executed under defined conditions."@en ;
+                               rdfs:isDefinedBy <https://w3id.org/bito> ;
+                               rdfs:label "Expected operational outcome"@en ;
+                               bito:sourceOntology <https://w3id.org/bito> ;
+                               bito:sourceTermPage bito:ExpectedOperationalOutcome .
+
+
+###  https://w3id.org/bito#ExpectedStateTransition
+bito:ExpectedStateTransition rdf:type owl:Class ;
+                            rdfs:subClassOf bito:BehavioralElement ;
+                            rdfs:comment "Expected transition from a source state to a target state."@en ;
+                            rdfs:isDefinedBy <https://w3id.org/bito> ;
+                            rdfs:label "Expected state transition"@en ;
+                            bito:sourceOntology <https://w3id.org/bito> ;
+                            bito:sourceTermPage bito:ExpectedStateTransition .
+
+
+###  https://w3id.org/bito#ObservedEvent
+bito:ObservedEvent rdf:type owl:Class ;
+                  rdfs:subClassOf prov:Activity ;
+                  rdfs:comment "Event, request, command, signal, or observation recorded during scenario execution."@en ;
+                  rdfs:isDefinedBy <https://w3id.org/bito> ;
+                  rdfs:label "Observed event"@en ;
+                  bito:sourceOntology <https://w3id.org/bito> ;
+                  bito:sourceTermPage bito:ObservedEvent .
+
+
+###  https://w3id.org/bito#ObservedExecution
+bito:ObservedExecution rdf:type owl:Class ;
+                      rdfs:subClassOf prov:Activity ;
+                      rdfs:comment "Observed execution of a scenario used for behavioral validation."@en ;
+                      rdfs:isDefinedBy <https://w3id.org/bito> ;
+                      rdfs:label "Observed execution"@en ;
+                      bito:sourceOntology <https://w3id.org/bito> ;
+                      bito:sourceTermPage bito:ObservedExecution .
+
+
+###  https://w3id.org/bito#ObservedStateChange
+bito:ObservedStateChange rdf:type owl:Class ;
+                        rdfs:subClassOf bito:BehavioralElement ;
+                        rdfs:comment "State change observed during execution."@en ;
+                        rdfs:isDefinedBy <https://w3id.org/bito> ;
+                        rdfs:label "Observed state change"@en ;
+                        bito:sourceOntology <https://w3id.org/bito> ;
+                        bito:sourceTermPage bito:ObservedStateChange .
+
+
+###  https://w3id.org/bito#OrderingConstraint
+bito:OrderingConstraint rdf:type owl:Class ;
+                       rdfs:subClassOf bito:BehavioralConstraint ;
+                       rdfs:comment "Behavioral constraint concerning the order of observed events."@en ;
+                       rdfs:isDefinedBy <https://w3id.org/bito> ;
+                       rdfs:label "Ordering constraint"@en ;
+                       bito:sourceOntology <https://w3id.org/bito> ;
+                       bito:sourceTermPage bito:OrderingConstraint .
+
+
+###  https://w3id.org/bito#OutcomeConstraint
+bito:OutcomeConstraint rdf:type owl:Class ;
+                      rdfs:subClassOf bito:BehavioralConstraint ;
+                      rdfs:comment "Behavioral constraint concerning the expected operational outcome."@en ;
+                      rdfs:isDefinedBy <https://w3id.org/bito> ;
+                      rdfs:label "Outcome constraint"@en ;
+                      bito:sourceOntology <https://w3id.org/bito> ;
+                      bito:sourceTermPage bito:OutcomeConstraint .
+
+
+###  https://w3id.org/bito#Scenario
+bito:Scenario rdf:type owl:Class ;
+             rdfs:comment "Scenario under validation within a use case."@en ;
+             rdfs:isDefinedBy <https://w3id.org/bito> ;
+             rdfs:label "Scenario"@en ;
+             bito:sourceOntology <https://w3id.org/bito> ;
+             bito:sourceTermPage bito:Scenario .
+
+
+###  https://w3id.org/bito#StateConstraint
+bito:StateConstraint rdf:type owl:Class ;
+                    rdfs:subClassOf bito:BehavioralConstraint ;
+                    rdfs:comment "Behavioral constraint concerning expected or observed states."@en ;
+                    rdfs:isDefinedBy <https://w3id.org/bito> ;
+                    rdfs:label "State constraint"@en ;
+                    bito:sourceOntology <https://w3id.org/bito> ;
+                    bito:sourceTermPage bito:StateConstraint .
+
+
+###  https://w3id.org/bito#StructuralContainer
+bito:StructuralContainer rdf:type owl:Class ;
+                        rdfs:subClassOf bito:BehavioralElement ;
+                        rdfs:comment "Element that directly contains one or more structural or behavioral elements."@en ;
+                        rdfs:isDefinedBy <https://w3id.org/bito> ;
+                        rdfs:label "Structural container"@en ;
+                        bito:sourceOntology <https://w3id.org/bito> ;
+                        bito:sourceTermPage bito:StructuralContainer .
+
+
+###  https://w3id.org/bito#StructuralElement
+bito:StructuralElement rdf:type owl:Class ;
+                      rdfs:subClassOf bito:BehavioralElement ;
+                      rdfs:comment "Element that can be directly contained by a structural container."@en ;
+                      rdfs:isDefinedBy <https://w3id.org/bito> ;
+                      rdfs:label "Structural element"@en ;
+                      bito:sourceOntology <https://w3id.org/bito> ;
+                      bito:sourceTermPage bito:StructuralElement .
+
+
+###  https://w3id.org/bito#TimingConstraint
+bito:TimingConstraint rdf:type owl:Class ;
+                     rdfs:subClassOf bito:BehavioralConstraint ;
+                     rdfs:comment "Behavioral constraint concerning timestamps or time intervals."@en ;
+                     rdfs:isDefinedBy <https://w3id.org/bito> ;
+                     rdfs:label "Timing constraint"@en ;
+                     bito:sourceOntology <https://w3id.org/bito> ;
+                     bito:sourceTermPage bito:TimingConstraint .
+
+
+###  https://w3id.org/bito#TraceEvidence
+bito:TraceEvidence rdf:type owl:Class ;
+                  rdfs:subClassOf prov:Entity ;
+                  rdfs:comment "Observed execution data used as evidence for behavioral validation."@en ;
+                  rdfs:isDefinedBy <https://w3id.org/bito> ;
+                  rdfs:label "Trace evidence"@en ;
+                  bito:sourceOntology <https://w3id.org/bito> ;
+                  bito:sourceTermPage bito:TraceEvidence .
+
+
+###  https://w3id.org/bito#TransitionConstraint
+bito:TransitionConstraint rdf:type owl:Class ;
+                         rdfs:subClassOf bito:BehavioralConstraint ;
+                         rdfs:comment "Behavioral constraint concerning valid state transitions."@en ;
+                         rdfs:isDefinedBy <https://w3id.org/bito> ;
+                         rdfs:label "Transition constraint"@en ;
+                         bito:sourceOntology <https://w3id.org/bito> ;
+                         bito:sourceTermPage bito:TransitionConstraint .
+
+
+###  https://w3id.org/bito#TriggerConstraint
+bito:TriggerConstraint rdf:type owl:Class ;
+                      rdfs:subClassOf bito:BehavioralConstraint ;
+                      rdfs:comment "Behavioral constraint concerning the event, request, command, signal, or condition that initiates or influences behavior."@en ;
+                      rdfs:isDefinedBy <https://w3id.org/bito> ;
+                      rdfs:label "Trigger constraint"@en ;
+                      bito:sourceOntology <https://w3id.org/bito> ;
+                      bito:sourceTermPage bito:TriggerConstraint .
+
+
+###  https://w3id.org/bito#UseCase
+bito:UseCase rdf:type owl:Class ;
+            rdfs:comment "Reusable functionality context grouping one or more scenarios."@en ;
+            rdfs:isDefinedBy <https://w3id.org/bito> ;
+            rdfs:label "Use case"@en ;
+            bito:sourceOntology <https://w3id.org/bito> ;
+            bito:sourceTermPage bito:UseCase .
+
+
+###  https://w3id.org/bito#UseCaseFunction
+bito:UseCaseFunction rdf:type owl:Class ;
+                    rdfs:comment "Function used to realize a scenario-level information exchange."@en ;
+                    rdfs:isDefinedBy <https://w3id.org/bito> ;
+                    rdfs:label "Use case function"@en ;
+                    bito:sourceOntology <https://w3id.org/bito> ;
+                    bito:sourceTermPage bito:UseCaseFunction .
+
+
+###  https://w3id.org/bito#ValidationResult
+bito:ValidationResult rdf:type owl:Class ;
+                     rdfs:comment "Result of assessing observed execution evidence against behavioral constraints."@en ;
+                     rdfs:isDefinedBy <https://w3id.org/bito> ;
+                     rdfs:label "Validation result"@en ;
+                     bito:sourceOntology <https://w3id.org/bito> ;
+                     bito:sourceTermPage bito:ValidationResult .
+
+
+###  https://w3id.org/bito#ValidationVerdict
+bito:ValidationVerdict rdf:type owl:Class ;
+                      rdfs:comment "Verdict derived from available trace evidence."@en ;
+                      rdfs:isDefinedBy <https://w3id.org/bito> ;
+                      rdfs:label "Validation verdict"@en ;
+                      bito:sourceOntology <https://w3id.org/bito> ;
+                      bito:sourceTermPage bito:ValidationVerdict .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://saref.etsi.org/core/Watt
+saref:Watt rdf:type owl:NamedIndividual ,
+                    saref:PowerUnit ;
+           rdfs:comment "Reused unit individual for power values expressed in watts."@en ;
+           rdfs:isDefinedBy saref: ;
+           rdfs:label "Watt"@en ;
+           bito:sourceOntology saref: ;
+           bito:sourceTermPage saref:Watt .
+
+
+###  https://saref.etsi.org/saref4ener/Completed
+s4ener:Completed rdf:type owl:NamedIndividual ,
+                          s4ener:PowerSequenceState ;
+                 rdfs:comment "Reused state for a completed power sequence."@en ;
+                 rdfs:isDefinedBy s4ener: ;
+                 rdfs:label "Completed"@en ;
+                 bito:sourceOntology s4ener: ;
+                 bito:sourceTermPage s4ener:Completed .
+
+
+###  https://saref.etsi.org/saref4ener/Inactive
+s4ener:Inactive rdf:type owl:NamedIndividual ,
+                         s4ener:PowerSequenceState ;
+                rdfs:comment "Reused state for an inactive power sequence."@en ;
+                rdfs:isDefinedBy s4ener: ;
+                rdfs:label "Inactive"@en ;
+                bito:sourceOntology s4ener: ;
+                bito:sourceTermPage s4ener:Inactive .
+
+
+###  https://saref.etsi.org/saref4ener/Scheduled
+s4ener:Scheduled rdf:type owl:NamedIndividual ,
+                          s4ener:PowerSequenceState ;
+                 rdfs:comment "Reused state for a scheduled power sequence."@en ;
+                 rdfs:isDefinedBy s4ener: ;
+                 rdfs:label "Scheduled"@en ;
+                 bito:sourceOntology s4ener: ;
+                 bito:sourceTermPage s4ener:Scheduled .
+
+
+###  https://w3id.org/bito#FAIL
+bito:FAIL rdf:type owl:NamedIndividual ,
+                  bito:ValidationVerdict ;
+         rdfs:comment "Verdict indicating that the available trace evidence violates at least one applicable validation condition."@en ;
+         rdfs:isDefinedBy <https://w3id.org/bito> ;
+         rdfs:label "FAIL"@en ;
+         bito:sourceOntology <https://w3id.org/bito> ;
+         bito:sourceTermPage bito:FAIL .
+
+
+###  https://w3id.org/bito#INCONCLUSIVE
+bito:INCONCLUSIVE rdf:type owl:NamedIndividual ,
+                          bito:ValidationVerdict ;
+                 rdfs:comment "Verdict indicating that the available trace evidence is insufficient or ambiguous."@en ;
+                 rdfs:isDefinedBy <https://w3id.org/bito> ;
+                 rdfs:label "INCONCLUSIVE"@en ;
+                 bito:sourceOntology <https://w3id.org/bito> ;
+                 bito:sourceTermPage bito:INCONCLUSIVE .
+
+
+###  https://w3id.org/bito#PASS
+bito:PASS rdf:type owl:NamedIndividual ,
+                  bito:ValidationVerdict ;
+         rdfs:comment "Verdict indicating that the available trace evidence satisfies the applicable validation conditions."@en ;
+         rdfs:isDefinedBy <https://w3id.org/bito> ;
+         rdfs:label "PASS"@en ;
+         bito:sourceOntology <https://w3id.org/bito> ;
+         bito:sourceTermPage bito:PASS .
+
+
+###  https://w3id.org/bito/example/flexible-start#AlternativesGroup_1
+ex:AlternativesGroup_1 rdf:type owl:NamedIndividual ,
+                                s4ener:AlternativesGroup ;
+                       saref:consistsOf ex:PowerSequence_44 ,
+                                        ex:PowerSequence_45 ;
+                       s4ener:belongsTo ex:PowerProfile_000000000001 ;
+                       saref:hasIdentifier 1 ;
+                       rdfs:label "Alternatives group 1"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#CCM
+ex:CCM rdf:type owl:NamedIndividual ,
+                prov:Agent ;
+       rdfs:comment "Customer Connectivity Manager used as interacting actor system in the Flexible Start validation instances."@en ;
+       rdfs:label "CCM"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Constraint_S1_PlanStatus
+ex:Constraint_S1_PlanStatus rdf:type owl:NamedIndividual ,
+                                     bito:BehavioralConstraint ,
+                                     bito:OutcomeConstraint ;
+                            bito:appliesTo ex:Outcome_S1_ValidPlan ;
+                            rdfs:comment "Scenario 1 observed plan status is valid."@en ;
+                            rdfs:label "S1 plan status constraint"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Constraint_S1_PlanStructure
+ex:Constraint_S1_PlanStructure rdf:type owl:NamedIndividual ,
+                                        bito:BehavioralConstraint ,
+                                        bito:StateConstraint ;
+                               bito:appliesTo ex:Transition_S1_PlanAvailable ;
+                               rdfs:comment "Scenario 1 plan contains the expected alternatives group and power sequences."@en ;
+                               rdfs:label "S1 plan structure constraint"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Constraint_S2_RequestAccepted
+ex:Constraint_S2_RequestAccepted rdf:type owl:NamedIndividual ,
+                                          bito:BehavioralConstraint ,
+                                          bito:TriggerConstraint ;
+                                 bito:appliesTo ex:Event_S2_ShiftRequest ;
+                                 rdfs:comment "Scenario 2 shift request is accepted."@en ;
+                                 rdfs:label "S2 request accepted constraint"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Constraint_S2_RunCompleted
+ex:Constraint_S2_RunCompleted rdf:type owl:NamedIndividual ,
+                                       bito:BehavioralConstraint ,
+                                       bito:OutcomeConstraint ;
+                              bito:appliesTo ex:Outcome_S2_PreferredSequenceShifted ;
+                              rdfs:comment "Scenario 2 observed run status is completed."@en ;
+                              rdfs:label "S2 run completed constraint"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Constraint_S2_StartTimeUpdated
+ex:Constraint_S2_StartTimeUpdated rdf:type owl:NamedIndividual ,
+                                           bito:BehavioralConstraint ,
+                                           bito:TimingConstraint ;
+                                  bito:appliesTo ex:Transition_S2_PreferredSequenceShifted ;
+                                  rdfs:comment "Scenario 2 preferred sequence start time is updated to the requested value."@en ;
+                                  rdfs:label "S2 start time updated constraint"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Constraint_S3_FormerPreferredInactive
+ex:Constraint_S3_FormerPreferredInactive rdf:type owl:NamedIndividual ,
+                                                  bito:BehavioralConstraint ,
+                                                  bito:TransitionConstraint ;
+                                         bito:appliesTo ex:Transition_S3_FormerPreferredInactive ;
+                                         rdfs:comment "Scenario 3 former preferred sequence becomes inactive."@en ;
+                                         rdfs:label "S3 former preferred inactive constraint"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Constraint_S3_RequestAccepted
+ex:Constraint_S3_RequestAccepted rdf:type owl:NamedIndividual ,
+                                          bito:BehavioralConstraint ,
+                                          bito:TriggerConstraint ;
+                                 bito:appliesTo ex:Event_S3_SelectRequest ;
+                                 rdfs:comment "Scenario 3 selection request is accepted."@en ;
+                                 rdfs:label "S3 request accepted constraint"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Constraint_S3_RunCompleted
+ex:Constraint_S3_RunCompleted rdf:type owl:NamedIndividual ,
+                                       bito:BehavioralConstraint ,
+                                       bito:OutcomeConstraint ;
+                              bito:appliesTo ex:Outcome_S3_AlternativeSequenceSelected ;
+                              rdfs:comment "Scenario 3 observed run status is completed."@en ;
+                              rdfs:label "S3 run completed constraint"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Constraint_S3_SelectedSequenceScheduled
+ex:Constraint_S3_SelectedSequenceScheduled rdf:type owl:NamedIndividual ,
+                                                    bito:BehavioralConstraint ,
+                                                    bito:TransitionConstraint ;
+                                           bito:appliesTo ex:Transition_S3_SelectedSequenceScheduled ;
+                                           rdfs:comment "Scenario 3 selected sequence becomes scheduled."@en ;
+                                           rdfs:label "S3 selected sequence scheduled constraint"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Dishwasher_000000000001
+ex:Dishwasher_000000000001 rdf:type owl:NamedIndividual ,
+                                    saref:Appliance ;
+                           saref:consistsOf ex:PowerProfile_000000000001 ;
+                           saref:hasIdentifier "000000000001" ;
+                           bito:entityId 0 ;
+                           bito:entityType "Dishwasher" ;
+                           rdfs:label "Dishwasher 000000000001"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Event_S1_PlanObservation
+ex:Event_S1_PlanObservation rdf:type owl:NamedIndividual ,
+                                     bito:ObservedEvent ;
+                            bito:eventOrderIndex 1 ;
+                            bito:interactionEndpoint "GET /v1/features/powerSequence" ;
+                            bito:observedAt "2025-07-15T09:00:00+00:00"^^xsd:dateTime ;
+                            bito:observedInteractionKind "plan observation" ;
+                            rdfs:label "Scenario 1 plan observation"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Event_S2_ShiftRequest
+ex:Event_S2_ShiftRequest rdf:type owl:NamedIndividual ,
+                                  bito:ObservedEvent ;
+                         bito:requestedPowerSequence ex:PowerSequence_44 ;
+                         bito:acceptanceOutcome "accepted" ;
+                         bito:acceptedAt "2025-07-15T09:30:02+00:00"^^xsd:dateTime ;
+                         bito:eventOrderIndex 1 ;
+                         bito:interactionEndpoint "POST /v1/usecaseInterfaces/flexibleStartForWhiteGoods/v1" ;
+                         bito:observedExecutionEnd "2025-07-15T13:29:40+00:00"^^xsd:dateTime ;
+                         bito:observedExecutionStart "2025-07-15T11:00:20+00:00"^^xsd:dateTime ;
+                         bito:observedInteractionKind "preferred sequence shift request" ;
+                         bito:observedPlanUpdatedAt "2025-07-15T09:30:03+00:00"^^xsd:dateTime ;
+                         bito:requestTimestamp "2025-07-15T09:30:00+00:00"^^xsd:dateTime ;
+                         bito:requestedStartTime "2025-07-15T11:00:00+00:00"^^xsd:dateTime ;
+                         rdfs:label "Scenario 2 shift request"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Event_S3_SelectRequest
+ex:Event_S3_SelectRequest rdf:type owl:NamedIndividual ,
+                                   bito:ObservedEvent ;
+                          bito:requestedPowerSequence ex:PowerSequence_45 ;
+                          bito:acceptanceOutcome "accepted" ;
+                          bito:acceptedAt "2025-07-15T10:45:02+00:00"^^xsd:dateTime ;
+                          bito:eventOrderIndex 1 ;
+                          bito:interactionEndpoint "POST /v1/usecaseInterfaces/flexibleStartForWhiteGoods/v1" ;
+                          bito:observedExecutionEnd "2025-07-15T13:29:40+00:00"^^xsd:dateTime ;
+                          bito:observedExecutionStart "2025-07-15T12:00:20+00:00"^^xsd:dateTime ;
+                          bito:observedInteractionKind "alternative sequence selection request" ;
+                          bito:observedPlanUpdatedAt "2025-07-15T10:45:04+00:00"^^xsd:dateTime ;
+                          bito:requestTimestamp "2025-07-15T10:45:00+00:00"^^xsd:dateTime ;
+                          bito:requestedStartTime "2025-07-15T12:00:00+00:00"^^xsd:dateTime ;
+                          rdfs:label "Scenario 3 select request"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Execution_S1
+ex:Execution_S1 rdf:type owl:NamedIndividual ,
+                         bito:ObservedExecution ;
+                bito:hasObservedEvent ex:Event_S1_PlanObservation ;
+                bito:hasTraceEvidence ex:TraceEvidence_S1 ;
+                bito:hasValidationResult ex:ValidationResult_S1 ;
+                rdfs:label "Scenario 1 observed execution"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Execution_S2
+ex:Execution_S2 rdf:type owl:NamedIndividual ,
+                         bito:ObservedExecution ;
+                bito:hasObservedEvent ex:Event_S2_ShiftRequest ;
+                bito:hasObservedStateChange ex:ObservedStateChange_S2_Sequence44Scheduled ;
+                bito:hasTraceEvidence ex:TraceEvidence_S2 ;
+                bito:hasValidationResult ex:ValidationResult_S2 ;
+                bito:observedExecutionEnd "2025-07-15T13:29:40+00:00"^^xsd:dateTime ;
+                bito:observedExecutionStart "2025-07-15T11:00:20+00:00"^^xsd:dateTime ;
+                rdfs:label "Scenario 2 observed execution"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Execution_S3
+ex:Execution_S3 rdf:type owl:NamedIndividual ,
+                         bito:ObservedExecution ;
+                bito:hasObservedEvent ex:Event_S3_SelectRequest ;
+                bito:hasObservedStateChange ex:ObservedStateChange_S3_Sequence44Inactive ,
+                                           ex:ObservedStateChange_S3_Sequence45Scheduled ;
+                bito:hasTraceEvidence ex:TraceEvidence_S3 ;
+                bito:hasValidationResult ex:ValidationResult_S3 ;
+                bito:observedExecutionEnd "2025-07-15T13:29:40+00:00"^^xsd:dateTime ;
+                bito:observedExecutionStart "2025-07-15T12:00:20+00:00"^^xsd:dateTime ;
+                rdfs:label "Scenario 3 observed execution"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#FlexibleStartUseCase
+ex:FlexibleStartUseCase rdf:type owl:NamedIndividual ,
+                                 bito:UseCase ;
+                        bito:hasScenario ex:Scenario1 ,
+                                        ex:Scenario2 ,
+                                        ex:Scenario3 ;
+                        bito:useCaseName "flexibleStartForWhiteGoods" ;
+                        bito:useCaseVersion "1.0.0" ;
+                        rdfs:comment "Example use case used for validating the behavioral ontology with Scenarios 1, 2, and 3."@en ;
+                        rdfs:label "Flexible Start use case"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#ObservedStateChange_S2_Sequence44Scheduled
+ex:ObservedStateChange_S2_Sequence44Scheduled rdf:type owl:NamedIndividual ,
+                                                       bito:ObservedStateChange ;
+                                              bito:hasObservedSourceState s4ener:Scheduled ;
+                                              bito:hasObservedTargetState s4ener:Scheduled ;
+                                              bito:hasRelevantPowerSequence ex:PowerSequence_44 ;
+                                              rdfs:label "Scenario 2 sequence 44 remains scheduled"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#ObservedStateChange_S3_Sequence44Inactive
+ex:ObservedStateChange_S3_Sequence44Inactive rdf:type owl:NamedIndividual ,
+                                                      bito:ObservedStateChange ;
+                                             bito:hasObservedSourceState s4ener:Scheduled ;
+                                             bito:hasObservedTargetState s4ener:Inactive ;
+                                             bito:hasRelevantPowerSequence ex:PowerSequence_44 ;
+                                             rdfs:label "Scenario 3 sequence 44 becomes inactive"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#ObservedStateChange_S3_Sequence45Scheduled
+ex:ObservedStateChange_S3_Sequence45Scheduled rdf:type owl:NamedIndividual ,
+                                                       bito:ObservedStateChange ;
+                                              bito:hasObservedSourceState s4ener:Inactive ;
+                                              bito:hasObservedTargetState s4ener:Scheduled ;
+                                              bito:hasRelevantPowerSequence ex:PowerSequence_45 ;
+                                              rdfs:label "Scenario 3 sequence 45 becomes scheduled"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Outcome_S1_ValidPlan
+ex:Outcome_S1_ValidPlan rdf:type owl:NamedIndividual ,
+                                 bito:ExpectedOperationalOutcome ;
+                        rdfs:label "Scenario 1 valid plan outcome"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Outcome_S2_PreferredSequenceShifted
+ex:Outcome_S2_PreferredSequenceShifted rdf:type owl:NamedIndividual ,
+                                                bito:ExpectedOperationalOutcome ;
+                                       rdfs:label "Scenario 2 preferred sequence shifted outcome"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Outcome_S3_AlternativeSequenceSelected
+ex:Outcome_S3_AlternativeSequenceSelected rdf:type owl:NamedIndividual ,
+                                                   bito:ExpectedOperationalOutcome ;
+                                          rdfs:label "Scenario 3 alternative sequence selected outcome"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#PowerProfile_000000000001
+ex:PowerProfile_000000000001 rdf:type owl:NamedIndividual ,
+                                      s4ener:PowerProfile ;
+                             saref:consistsOf ex:AlternativesGroup_1 ;
+                             s4ener:nodeRemoteControllable "true"^^xsd:boolean ;
+                             s4ener:supportsReselection "true"^^xsd:boolean ;
+                             rdfs:label "Power profile 000000000001"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#PowerSequence_44
+ex:PowerSequence_44 rdf:type owl:NamedIndividual ,
+                             s4ener:PowerSequence ;
+                    saref:consistsOf ex:Slot_44_0 ,
+                                     ex:Slot_44_1 ,
+                                     ex:Slot_44_2 ,
+                                     ex:Slot_44_3 ,
+                                     ex:Slot_44_4 ,
+                                     ex:Slot_44_5 ,
+                                     ex:Slot_44_6 ,
+                                     ex:Slot_44_7 ,
+                                     ex:Slot_44_8 ,
+                                     ex:Slot_44_9 ;
+                    s4ener:belongsTo ex:AlternativesGroup_1 ;
+                    saref:hasIdentifier 44 ;
+                    s4ener:hasEarliestStartTime "2025-07-15T08:00:00+00:00"^^xsd:dateTime ;
+                    s4ener:hasLatestEndTime "2025-07-15T14:30:00+00:00"^^xsd:dateTime ;
+                    s4ener:isPausable "false"^^xsd:boolean ;
+                    s4ener:isStoppable "false"^^xsd:boolean ;
+                    s4ener:sequenceRemoteControllable "true"^^xsd:boolean ;
+                    rdfs:label "Power sequence 44"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#PowerSequence_45
+ex:PowerSequence_45 rdf:type owl:NamedIndividual ,
+                             s4ener:PowerSequence ;
+                    saref:consistsOf ex:Slot_45_0 ,
+                                     ex:Slot_45_1 ,
+                                     ex:Slot_45_2 ;
+                    s4ener:belongsTo ex:AlternativesGroup_1 ;
+                    saref:hasIdentifier 45 ;
+                    s4ener:hasEarliestStartTime "2025-07-15T08:00:00+00:00"^^xsd:dateTime ;
+                    s4ener:hasLatestEndTime "2025-07-15T14:30:00+00:00"^^xsd:dateTime ;
+                    s4ener:isPausable "false"^^xsd:boolean ;
+                    s4ener:isStoppable "false"^^xsd:boolean ;
+                    s4ener:sequenceRemoteControllable "true"^^xsd:boolean ;
+                    rdfs:label "Power sequence 45"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Scenario1
+ex:Scenario1 rdf:type owl:NamedIndividual ,
+                      bito:Scenario ;
+             bito:hasBehavioralConstraint ex:Constraint_S1_PlanStatus ,
+                                         ex:Constraint_S1_PlanStructure ;
+             bito:hasExpectedOperationalOutcome ex:Outcome_S1_ValidPlan ;
+             bito:hasExpectedStateTransition ex:Transition_S1_PlanAvailable ;
+             bito:hasIUT ex:Dishwasher_000000000001 ;
+             bito:hasInteractingActorSystem ex:CCM ;
+             bito:hasObservedExecution ex:Execution_S1 ;
+             bito:hasTriggeringInteraction ex:Event_S1_PlanObservation ;
+             bito:isScenarioOf ex:FlexibleStartUseCase ;
+             bito:realizedByUseCaseFunction ex:UCF_Plan_With_Power_Sequences ;
+             bito:scenarioName "Announcement of plan" ;
+             bito:scenarioNumber 1 ;
+             rdfs:label "Scenario 1"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Scenario2
+ex:Scenario2 rdf:type owl:NamedIndividual ,
+                      bito:Scenario ;
+             bito:hasBehavioralConstraint ex:Constraint_S2_RequestAccepted ,
+                                         ex:Constraint_S2_RunCompleted ,
+                                         ex:Constraint_S2_StartTimeUpdated ;
+             bito:hasExpectedOperationalOutcome ex:Outcome_S2_PreferredSequenceShifted ;
+             bito:hasExpectedStateTransition ex:Transition_S2_PreferredSequenceShifted ;
+             bito:hasIUT ex:Dishwasher_000000000001 ;
+             bito:hasInteractingActorSystem ex:CCM ;
+             bito:hasObservedExecution ex:Execution_S2 ;
+             bito:hasTriggeringInteraction ex:Event_S2_ShiftRequest ;
+             bito:isScenarioOf ex:FlexibleStartUseCase ;
+             bito:realizedByUseCaseFunction ex:UCF_Shift_Preferred_Power_Sequence ;
+             bito:scenarioName "Shift preferred power sequence" ;
+             bito:scenarioNumber 2 ;
+             rdfs:label "Scenario 2"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Scenario3
+ex:Scenario3 rdf:type owl:NamedIndividual ,
+                      bito:Scenario ;
+             bito:hasBehavioralConstraint ex:Constraint_S3_FormerPreferredInactive ,
+                                         ex:Constraint_S3_RequestAccepted ,
+                                         ex:Constraint_S3_RunCompleted ,
+                                         ex:Constraint_S3_SelectedSequenceScheduled ;
+             bito:hasExpectedOperationalOutcome ex:Outcome_S3_AlternativeSequenceSelected ;
+             bito:hasExpectedStateTransition ex:Transition_S3_FormerPreferredInactive ,
+                                            ex:Transition_S3_SelectedSequenceScheduled ;
+             bito:hasIUT ex:Dishwasher_000000000001 ;
+             bito:hasInteractingActorSystem ex:CCM ;
+             bito:hasObservedExecution ex:Execution_S3 ;
+             bito:hasTriggeringInteraction ex:Event_S3_SelectRequest ;
+             bito:isScenarioOf ex:FlexibleStartUseCase ;
+             bito:realizedByUseCaseFunction ex:UCF_Select_Power_Sequence ;
+             bito:scenarioName "Select alternative power sequence" ;
+             bito:scenarioNumber 3 ;
+             rdfs:label "Scenario 3"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Slot_44_0
+ex:Slot_44_0 rdf:type owl:NamedIndividual ,
+                      s4ener:Slot ;
+             s4ener:belongsTo ex:PowerSequence_44 ;
+             saref:hasIdentifier 0 ;
+             s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+             rdfs:label "Slot 44 0"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Slot_44_1
+ex:Slot_44_1 rdf:type owl:NamedIndividual ,
+                      s4ener:Slot ;
+             s4ener:belongsTo ex:PowerSequence_44 ;
+             saref:hasIdentifier 1 ;
+             s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+             rdfs:label "Slot 44 1"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Slot_44_2
+ex:Slot_44_2 rdf:type owl:NamedIndividual ,
+                      s4ener:Slot ;
+             s4ener:belongsTo ex:PowerSequence_44 ;
+             saref:hasIdentifier 2 ;
+             s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+             rdfs:label "Slot 44 2"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Slot_44_3
+ex:Slot_44_3 rdf:type owl:NamedIndividual ,
+                      s4ener:Slot ;
+             s4ener:belongsTo ex:PowerSequence_44 ;
+             saref:hasIdentifier 3 ;
+             s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+             rdfs:label "Slot 44 3"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Slot_44_4
+ex:Slot_44_4 rdf:type owl:NamedIndividual ,
+                      s4ener:Slot ;
+             s4ener:belongsTo ex:PowerSequence_44 ;
+             saref:hasIdentifier 4 ;
+             s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+             rdfs:label "Slot 44 4"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Slot_44_5
+ex:Slot_44_5 rdf:type owl:NamedIndividual ,
+                      s4ener:Slot ;
+             s4ener:belongsTo ex:PowerSequence_44 ;
+             saref:hasIdentifier 5 ;
+             s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+             rdfs:label "Slot 44 5"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Slot_44_6
+ex:Slot_44_6 rdf:type owl:NamedIndividual ,
+                      s4ener:Slot ;
+             s4ener:belongsTo ex:PowerSequence_44 ;
+             saref:hasIdentifier 6 ;
+             s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+             rdfs:label "Slot 44 6"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Slot_44_7
+ex:Slot_44_7 rdf:type owl:NamedIndividual ,
+                      s4ener:Slot ;
+             s4ener:belongsTo ex:PowerSequence_44 ;
+             saref:hasIdentifier 7 ;
+             s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+             rdfs:label "Slot 44 7"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Slot_44_8
+ex:Slot_44_8 rdf:type owl:NamedIndividual ,
+                      s4ener:Slot ;
+             s4ener:belongsTo ex:PowerSequence_44 ;
+             saref:hasIdentifier 8 ;
+             s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+             rdfs:label "Slot 44 8"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Slot_44_9
+ex:Slot_44_9 rdf:type owl:NamedIndividual ,
+                      s4ener:Slot ;
+             s4ener:belongsTo ex:PowerSequence_44 ;
+             saref:hasIdentifier 9 ;
+             s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+             rdfs:label "Slot 44 9"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Slot_45_0
+ex:Slot_45_0 rdf:type owl:NamedIndividual ,
+                      s4ener:Slot ;
+             s4ener:belongsTo ex:PowerSequence_45 ;
+             saref:hasIdentifier 0 ;
+             s4ener:hasDefaultDuration "PT30M"^^xsd:duration ;
+             rdfs:label "Slot 45 0"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Slot_45_1
+ex:Slot_45_1 rdf:type owl:NamedIndividual ,
+                      s4ener:Slot ;
+             s4ener:belongsTo ex:PowerSequence_45 ;
+             saref:hasIdentifier 1 ;
+             s4ener:hasDefaultDuration "PT30M"^^xsd:duration ;
+             rdfs:label "Slot 45 1"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Slot_45_2
+ex:Slot_45_2 rdf:type owl:NamedIndividual ,
+                      s4ener:Slot ;
+             s4ener:belongsTo ex:PowerSequence_45 ;
+             saref:hasIdentifier 2 ;
+             s4ener:hasDefaultDuration "PT30M"^^xsd:duration ;
+             rdfs:label "Slot 45 2"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#TraceEvidence_S1
+ex:TraceEvidence_S1 rdf:type owl:NamedIndividual ,
+                             bito:TraceEvidence ;
+                    bito:observedOptionalPowerSequence ex:PowerSequence_45 ;
+                    bito:observedPreferredPowerSequence ex:PowerSequence_44 ;
+                    bito:evidenceMode "independentScenarioSessions" ;
+                    bito:evidencePreservesInteractionContext "true"^^xsd:boolean ;
+                    bito:evidencePreservesObservedBehavior "true"^^xsd:boolean ;
+                    bito:observedAt "2025-07-15T09:00:00+00:00"^^xsd:dateTime ;
+                    bito:observedPlanStatus "VALID" ;
+                    rdfs:label "Scenario 1 trace evidence"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#TraceEvidence_S2
+ex:TraceEvidence_S2 rdf:type owl:NamedIndividual ,
+                             bito:TraceEvidence ;
+                    bito:observedScheduledPowerSequence ex:PowerSequence_44 ;
+                    bito:evidenceMode "independentScenarioSessions" ;
+                    bito:evidencePreservesInteractionContext "true"^^xsd:boolean ;
+                    bito:evidencePreservesObservedBehavior "true"^^xsd:boolean ;
+                    bito:observedExecutionEnd "2025-07-15T13:29:40+00:00"^^xsd:dateTime ;
+                    bito:observedExecutionStart "2025-07-15T11:00:20+00:00"^^xsd:dateTime ;
+                    bito:observedPlanUpdatedAt "2025-07-15T09:30:03+00:00"^^xsd:dateTime ;
+                    bito:observedRunStatus "COMPLETED" ;
+                    rdfs:label "Scenario 2 trace evidence"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#TraceEvidence_S3
+ex:TraceEvidence_S3 rdf:type owl:NamedIndividual ,
+                             bito:TraceEvidence ;
+                    bito:observedFormerPreferredPowerSequence ex:PowerSequence_44 ;
+                    bito:observedSelectedPowerSequence ex:PowerSequence_45 ;
+                    bito:evidenceMode "independentScenarioSessions" ;
+                    bito:evidencePreservesInteractionContext "true"^^xsd:boolean ;
+                    bito:evidencePreservesObservedBehavior "true"^^xsd:boolean ;
+                    bito:observedExecutionEnd "2025-07-15T13:29:40+00:00"^^xsd:dateTime ;
+                    bito:observedExecutionStart "2025-07-15T12:00:20+00:00"^^xsd:dateTime ;
+                    bito:observedPlanUpdatedAt "2025-07-15T10:45:04+00:00"^^xsd:dateTime ;
+                    bito:observedRunStatus "COMPLETED" ;
+                    rdfs:label "Scenario 3 trace evidence"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Transition_S1_PlanAvailable
+ex:Transition_S1_PlanAvailable rdf:type owl:NamedIndividual ,
+                                        bito:ExpectedStateTransition ;
+                               bito:hasRelevantPowerSequence ex:PowerSequence_44 ,
+                                                            ex:PowerSequence_45 ;
+                               bito:hasSourceState s4ener:Inactive ;
+                               bito:hasTargetState s4ener:Scheduled ;
+                               rdfs:label "Plan available transition"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Transition_S2_PreferredSequenceShifted
+ex:Transition_S2_PreferredSequenceShifted rdf:type owl:NamedIndividual ,
+                                                   bito:ExpectedStateTransition ;
+                                          bito:hasRelevantPowerSequence ex:PowerSequence_44 ;
+                                          bito:hasSourceState s4ener:Scheduled ;
+                                          bito:hasTargetState s4ener:Scheduled ;
+                                          rdfs:label "Preferred sequence shifted transition"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Transition_S3_FormerPreferredInactive
+ex:Transition_S3_FormerPreferredInactive rdf:type owl:NamedIndividual ,
+                                                  bito:ExpectedStateTransition ;
+                                         bito:hasRelevantPowerSequence ex:PowerSequence_44 ;
+                                         bito:hasSourceState s4ener:Scheduled ;
+                                         bito:hasTargetState s4ener:Inactive ;
+                                         rdfs:label "Former preferred sequence inactive transition"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#Transition_S3_SelectedSequenceScheduled
+ex:Transition_S3_SelectedSequenceScheduled rdf:type owl:NamedIndividual ,
+                                                    bito:ExpectedStateTransition ;
+                                           bito:hasRelevantPowerSequence ex:PowerSequence_45 ;
+                                           bito:hasSourceState s4ener:Inactive ;
+                                           bito:hasTargetState s4ener:Scheduled ;
+                                           rdfs:label "Selected sequence scheduled transition"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#UCF_Plan_With_Power_Sequences
+ex:UCF_Plan_With_Power_Sequences rdf:type owl:NamedIndividual ,
+                                          bito:UseCaseFunction ;
+                                 bito:ucfName "UCF_Plan_With_Power_Sequences" ;
+                                 rdfs:label "UCF Plan With Power Sequences"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#UCF_Select_Power_Sequence
+ex:UCF_Select_Power_Sequence rdf:type owl:NamedIndividual ,
+                                      bito:UseCaseFunction ;
+                             bito:ucfName "UCF_Select_Power_Sequence" ;
+                             rdfs:label "UCF Select Power Sequence"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#UCF_Shift_Preferred_Power_Sequence
+ex:UCF_Shift_Preferred_Power_Sequence rdf:type owl:NamedIndividual ,
+                                               bito:UseCaseFunction ;
+                                      bito:ucfName "UCF_Shift_Preferred_Power_Sequence" ;
+                                      rdfs:label "UCF Shift Preferred Power Sequence"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#ValidationResult_S1
+ex:ValidationResult_S1 rdf:type owl:NamedIndividual ,
+                                bito:ValidationResult ;
+                       bito:basedOnTraceEvidence ex:TraceEvidence_S1 ;
+                       bito:hasVerdict bito:PASS ;
+                       bito:validatesConstraint ex:Constraint_S1_PlanStatus ,
+                                               ex:Constraint_S1_PlanStructure ;
+                       bito:achievesExpectedOutcome "true"^^xsd:boolean ;
+                       bito:satisfiesConstraint "true"^^xsd:boolean ;
+                       bito:validationMessage "Scenario 1 evidence represents a valid announced plan." ;
+                       rdfs:label "Scenario 1 validation result"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#ValidationResult_S2
+ex:ValidationResult_S2 rdf:type owl:NamedIndividual ,
+                                bito:ValidationResult ;
+                       bito:basedOnTraceEvidence ex:TraceEvidence_S2 ;
+                       bito:hasVerdict bito:PASS ;
+                       bito:validatesConstraint ex:Constraint_S2_RequestAccepted ,
+                                               ex:Constraint_S2_RunCompleted ,
+                                               ex:Constraint_S2_StartTimeUpdated ;
+                       bito:achievesExpectedOutcome "true"^^xsd:boolean ;
+                       bito:satisfiesConstraint "true"^^xsd:boolean ;
+                       bito:validationMessage "Scenario 2 evidence represents an accepted preferred-sequence shift and completed execution." ;
+                       rdfs:label "Scenario 2 validation result"@en .
+
+
+###  https://w3id.org/bito/example/flexible-start#ValidationResult_S3
+ex:ValidationResult_S3 rdf:type owl:NamedIndividual ,
+                                bito:ValidationResult ;
+                       bito:basedOnTraceEvidence ex:TraceEvidence_S3 ;
+                       bito:hasVerdict bito:PASS ;
+                       bito:validatesConstraint ex:Constraint_S3_FormerPreferredInactive ,
+                                               ex:Constraint_S3_RequestAccepted ,
+                                               ex:Constraint_S3_RunCompleted ,
+                                               ex:Constraint_S3_SelectedSequenceScheduled ;
+                       bito:achievesExpectedOutcome "true"^^xsd:boolean ;
+                       bito:satisfiesConstraint "true"^^xsd:boolean ;
+                       bito:validationMessage "Scenario 3 evidence represents an accepted alternative-sequence selection and completed execution." ;
+                       rdfs:label "Scenario 3 validation result"@en .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( bito:BehavioralConstraint
+                bito:ExpectedOperationalOutcome
+                bito:ExpectedStateTransition
+                bito:ObservedEvent
+                bito:ObservedExecution
+                bito:ObservedStateChange
+                bito:Scenario
+                bito:TraceEvidence
+                bito:UseCase
+                bito:UseCaseFunction
+                bito:ValidationResult
+                bito:ValidationVerdict
+              )
+] .
+
+
+

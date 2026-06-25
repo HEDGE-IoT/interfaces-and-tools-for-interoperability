@@ -1,0 +1,4 @@
+
+# Ignore generated OOPS evaluation output with long Windows paths
+ontology/Behavioral Interoperability Testing Ontology (BITO)/docs/OOPSevaluation/evaluation/
+Thumbs.db

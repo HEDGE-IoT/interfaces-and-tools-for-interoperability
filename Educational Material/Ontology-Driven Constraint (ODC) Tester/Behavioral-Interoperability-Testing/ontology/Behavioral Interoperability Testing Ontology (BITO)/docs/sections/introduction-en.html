@@ -1,0 +1,14 @@
+<h2 id="intro" class="list">Introduction <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+Interoperability testing often focuses on whether exchanged data is syntactically and semantically correct. However, many interoperable systems also need to be assessed according to their behavior during execution. A system may exchange data using the correct structure and vocabulary, but still fail to respect the expected order of interactions, timing conditions, state transitions, or operational outcomes. Behavioral validation therefore requires a representation that connects scenario expectations with observed execution evidence.
+
+The Behavioral Interoperability Testing Ontology (BITO) addresses this need by providing a formal semantic basis for ontology-driven behavioral testing. It represents the main elements required to describe behavior in a considered use case or scenario: the implementation under test, the interacting actor or system, the triggering interaction, the expected state progression, the applicable constraints, the observed execution evidence, and the resulting validation verdict.
+
+The ontology is guided by a set of behavioral modelling requirement principles. The behavior under test must be associated with an identified use case or scenario. The implementation under test and interacting entities must be identified. The behavior must be represented through states and transitions. The event, request, command, signal, or condition that initiates or influences the behavior must be represented. The constraints that determine whether the behavior is valid must also be explicit, including state, transition, ordering, timing, trigger/interaction, and outcome constraints.
+
+bito also supports observed execution assessment. Observed events, state changes, timestamps, ordering information, trace evidence, and outcomes can be represented and connected to the expected scenario behavior. This allows the available evidence to be checked against the applicable behavioral constraints and the expected operational outcome. The resulting assessment can be expressed through verdicts such as PASS, FAIL, or INCONCLUSIVE.
+
+The ontology is designed to be reusable and extensible. It reuses external ontologies only where their semantics are aligned with the intended modelling purpose, and it introduces bito-specific concepts only where necessary for behavioral validation. This makes the ontology suitable as a stable core layer that can be applied to different scenarios and later extended to additional use cases without changing the core behavioral concepts.
+
+In the current documentation, Flexible Start scenarios are used as representative examples. They demonstrate how expected behavior, observed execution evidence, trace evidence, competency-question queries, and validation results can be represented in a single semantic structure.
+</span>

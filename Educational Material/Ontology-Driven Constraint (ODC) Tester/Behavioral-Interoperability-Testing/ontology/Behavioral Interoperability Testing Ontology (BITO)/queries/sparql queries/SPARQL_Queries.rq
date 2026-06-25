@@ -1,0 +1,360 @@
+
+# CQ1: What is the considered use case and scenario?
+PREFIX bito: <https://w3id.org/bito#>
+PREFIX ex: <https://w3id.org/bito/example/flexible-start#>
+
+SELECT ?useCase ?useCaseNameText ?scenario ?scenarioNumberText ?scenarioNameText ?ucf
+WHERE {
+  ?useCase a bito:UseCase ;
+           bito:useCaseName ?useCaseName ;
+           bito:hasScenario ?scenario .
+
+  ?scenario bito:scenarioNumber ?scenarioNumber ;
+            bito:scenarioName ?scenarioName ;
+            bito:realizedByUseCaseFunction ?ucf .
+
+  BIND(STR(?useCaseName) AS ?useCaseNameText)
+  BIND(STR(?scenarioNumber) AS ?scenarioNumberText)
+  BIND(STR(?scenarioName) AS ?scenarioNameText)
+}
+ORDER BY ?scenarioNumber
+
+
+# CQ2: What is the IUT in the considered scenario?
+PREFIX bito: <https://w3id.org/bito#>
+PREFIX saref: <https://saref.etsi.org/core/>
+PREFIX ex: <https://w3id.org/bito/example/flexible-start#>
+
+SELECT ?scenarioNumberText ?scenario ?iut ?deviceIdText ?entityTypeText
+WHERE {
+  ?scenario a bito:Scenario ;
+            bito:scenarioNumber ?scenarioNumber ;
+            bito:hasIUT ?iut .
+
+  ?iut saref:hasIdentifier ?deviceId ;
+       bito:entityType ?entityType .
+
+  BIND(STR(?scenarioNumber) AS ?scenarioNumberText)
+  BIND(STR(?deviceId) AS ?deviceIdText)
+  BIND(STR(?entityType) AS ?entityTypeText)
+}
+ORDER BY ?scenarioNumber
+
+
+# CQ3: Which external actor or system interacts with the IUT in the scenario?
+PREFIX bito: <https://w3id.org/bito#>
+PREFIX ex: <https://w3id.org/bito/example/flexible-start#>
+
+SELECT ?scenarioNumberText ?scenario ?actor
+WHERE {
+  ?scenario a bito:Scenario ;
+            bito:scenarioNumber ?scenarioNumber ;
+            bito:hasInteractingActorSystem ?actor .
+
+  BIND(STR(?scenarioNumber) AS ?scenarioNumberText)
+}
+ORDER BY ?scenarioNumber
+
+
+# CQ4: Which states and transitions define the behavior of the IUT in the scenario?
+PREFIX bito: <https://w3id.org/bito#>
+PREFIX ex: <https://w3id.org/bito/example/flexible-start#>
+PREFIX s4ener: <https://saref.etsi.org/saref4ener/>
+
+SELECT ?scenarioNumberText ?transition ?sequence ?sourceState ?targetState
+WHERE {
+  ?scenario bito:scenarioNumber ?scenarioNumber ;
+            bito:hasExpectedStateTransition ?transition .
+
+  ?transition bito:hasRelevantPowerSequence ?sequence ;
+              bito:hasSourceState ?sourceState ;
+              bito:hasTargetState ?targetState .
+
+  BIND(STR(?scenarioNumber) AS ?scenarioNumberText)
+}
+ORDER BY ?scenarioNumber ?transition
+
+
+# CQ5: Which trigger or interaction initiates or influences the behavior?
+PREFIX bito: <https://w3id.org/bito#>
+PREFIX ex: <https://w3id.org/bito/example/flexible-start#>
+
+SELECT ?scenarioNumberText ?event ?kindText ?endpointText ?requestedSequence ?requestedStartTimeText
+WHERE {
+  ?scenario bito:scenarioNumber ?scenarioNumber ;
+            bito:hasTriggeringInteraction ?event .
+
+  OPTIONAL {
+    ?event bito:observedInteractionKind ?kind .
+    BIND(STR(?kind) AS ?kindText)
+  }
+
+  OPTIONAL {
+    ?event bito:interactionEndpoint ?endpoint .
+    BIND(STR(?endpoint) AS ?endpointText)
+  }
+
+  OPTIONAL {
+    ?event bito:requestedPowerSequence ?requestedSequence .
+  }
+
+  OPTIONAL {
+    ?event bito:requestedStartTime ?requestedStartTime .
+    BIND(STR(?requestedStartTime) AS ?requestedStartTimeText)
+  }
+
+  BIND(STR(?scenarioNumber) AS ?scenarioNumberText)
+}
+ORDER BY ?scenarioNumber
+
+
+# CQ6: Which behavioral constraints apply to the scenario behavior?
+PREFIX bito: <https://w3id.org/bito#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ex: <https://w3id.org/bito/example/flexible-start#>
+
+SELECT ?scenarioNumberText ?constraint ?constraintLabelText
+WHERE {
+  ?scenario bito:scenarioNumber ?scenarioNumber ;
+            bito:hasBehavioralConstraint ?constraint .
+
+  OPTIONAL {
+    ?constraint rdfs:label ?constraintLabel .
+    BIND(STR(?constraintLabel) AS ?constraintLabelText)
+  }
+
+  BIND(STR(?scenarioNumber) AS ?scenarioNumberText)
+}
+ORDER BY ?scenarioNumber ?constraint
+
+
+# CQ7: What is the expected operational outcome of the scenario?
+PREFIX bito: <https://w3id.org/bito#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ex: <https://w3id.org/bito/example/flexible-start#>
+
+SELECT ?scenarioNumberText ?outcome ?outcomeLabelText
+WHERE {
+  ?scenario bito:scenarioNumber ?scenarioNumber ;
+            bito:hasExpectedOperationalOutcome ?outcome .
+
+  OPTIONAL {
+    ?outcome rdfs:label ?outcomeLabel .
+    BIND(STR(?outcomeLabel) AS ?outcomeLabelText)
+  }
+
+  BIND(STR(?scenarioNumber) AS ?scenarioNumberText)
+}
+ORDER BY ?scenarioNumber
+
+
+# CQ8: Which events were observed during execution of the scenario?
+PREFIX bito: <https://w3id.org/bito#>
+PREFIX ex: <https://w3id.org/bito/example/flexible-start#>
+
+SELECT ?scenarioNumberText ?execution ?event ?kindText
+WHERE {
+  ?scenario bito:scenarioNumber ?scenarioNumber ;
+            bito:hasObservedExecution ?execution .
+
+  ?execution bito:hasObservedEvent ?event .
+
+  OPTIONAL {
+    ?event bito:observedInteractionKind ?kind .
+    BIND(STR(?kind) AS ?kindText)
+  }
+
+  BIND(STR(?scenarioNumber) AS ?scenarioNumberText)
+}
+ORDER BY ?scenarioNumber ?event
+
+
+# CQ9: In what order did the observed events occur?
+PREFIX bito: <https://w3id.org/bito#>
+PREFIX ex: <https://w3id.org/bito/example/flexible-start#>
+
+SELECT ?scenarioNumberText ?event ?orderText
+WHERE {
+  ?scenario bito:scenarioNumber ?scenarioNumber ;
+            bito:hasObservedExecution ?execution .
+
+  ?execution bito:hasObservedEvent ?event .
+  ?event bito:eventOrderIndex ?order .
+
+  BIND(STR(?scenarioNumber) AS ?scenarioNumberText)
+  BIND(STR(?order) AS ?orderText)
+}
+ORDER BY ?scenarioNumber ?order
+
+
+# CQ10: Which timestamps are associated with the observed events or state changes?
+PREFIX bito: <https://w3id.org/bito#>
+PREFIX ex: <https://w3id.org/bito/example/flexible-start#>
+
+SELECT ?scenarioNumberText ?event ?requestTimestampText ?acceptedAtText ?observedAtText ?planUpdatedAtText ?executionStartText ?executionEndText
+WHERE {
+  ?scenario bito:scenarioNumber ?scenarioNumber ;
+            bito:hasObservedExecution ?execution .
+
+  ?execution bito:hasObservedEvent ?event .
+
+  OPTIONAL {
+    ?event bito:requestTimestamp ?requestTimestamp .
+    BIND(STR(?requestTimestamp) AS ?requestTimestampText)
+  }
+
+  OPTIONAL {
+    ?event bito:acceptedAt ?acceptedAt .
+    BIND(STR(?acceptedAt) AS ?acceptedAtText)
+  }
+
+  OPTIONAL {
+    ?event bito:observedAt ?observedAt .
+    BIND(STR(?observedAt) AS ?observedAtText)
+  }
+
+  OPTIONAL {
+    ?event bito:observedPlanUpdatedAt ?planUpdatedAt .
+    BIND(STR(?planUpdatedAt) AS ?planUpdatedAtText)
+  }
+
+  OPTIONAL {
+    ?event bito:observedExecutionStart ?executionStart .
+    BIND(STR(?executionStart) AS ?executionStartText)
+  }
+
+  OPTIONAL {
+    ?event bito:observedExecutionEnd ?executionEnd .
+    BIND(STR(?executionEnd) AS ?executionEndText)
+  }
+
+  BIND(STR(?scenarioNumber) AS ?scenarioNumberText)
+}
+ORDER BY ?scenarioNumber ?event
+
+
+# CQ11: Which state changes were observed during execution?
+PREFIX bito: <https://w3id.org/bito#>
+PREFIX ex: <https://w3id.org/bito/example/flexible-start#>
+PREFIX s4ener: <https://saref.etsi.org/saref4ener/>
+
+SELECT ?scenarioNumberText ?stateChange ?sequence ?sourceState ?targetState
+WHERE {
+  ?scenario bito:scenarioNumber ?scenarioNumber ;
+            bito:hasObservedExecution ?execution .
+
+  ?execution bito:hasObservedStateChange ?stateChange .
+
+  ?stateChange bito:hasRelevantPowerSequence ?sequence ;
+               bito:hasObservedSourceState ?sourceState ;
+               bito:hasObservedTargetState ?targetState .
+
+  BIND(STR(?scenarioNumber) AS ?scenarioNumberText)
+}
+ORDER BY ?scenarioNumber ?stateChange
+
+
+# CQ12: Which observed execution data is available as trace evidence?
+PREFIX bito: <https://w3id.org/bito#>
+PREFIX ex: <https://w3id.org/bito/example/flexible-start#>
+
+SELECT ?scenarioNumberText ?traceEvidence ?planStatusText ?runStatusText
+WHERE {
+  ?scenario bito:scenarioNumber ?scenarioNumber ;
+            bito:hasObservedExecution ?execution .
+
+  ?execution bito:hasTraceEvidence ?traceEvidence .
+
+  OPTIONAL {
+    ?traceEvidence bito:observedPlanStatus ?planStatus .
+    BIND(STR(?planStatus) AS ?planStatusText)
+  }
+
+  OPTIONAL {
+    ?traceEvidence bito:observedRunStatus ?runStatus .
+    BIND(STR(?runStatus) AS ?runStatusText)
+  }
+
+  BIND(STR(?scenarioNumber) AS ?scenarioNumberText)
+}
+ORDER BY ?scenarioNumber
+
+
+# CQ12a: Does the available observed execution data preserve both interaction context and observed behavior?
+PREFIX bito: <https://w3id.org/bito#>
+PREFIX ex: <https://w3id.org/bito/example/flexible-start#>
+
+SELECT ?scenarioNumberText ?traceEvidence ?preservesInteractionContextText ?preservesObservedBehaviorText
+WHERE {
+  ?scenario bito:scenarioNumber ?scenarioNumber ;
+            bito:hasObservedExecution ?execution .
+
+  ?execution bito:hasTraceEvidence ?traceEvidence .
+
+  ?traceEvidence bito:evidencePreservesInteractionContext ?preservesInteractionContext ;
+                 bito:evidencePreservesObservedBehavior ?preservesObservedBehavior .
+
+  BIND(STR(?scenarioNumber) AS ?scenarioNumberText)
+  BIND(STR(?preservesInteractionContext) AS ?preservesInteractionContextText)
+  BIND(STR(?preservesObservedBehavior) AS ?preservesObservedBehaviorText)
+}
+ORDER BY ?scenarioNumber
+
+
+# CQ13: Does the observed execution satisfy the defined behavioral constraints?
+PREFIX bito: <https://w3id.org/bito#>
+PREFIX ex: <https://w3id.org/bito/example/flexible-start#>
+
+SELECT ?scenarioNumberText ?result ?constraint ?satisfiesConstraintText
+WHERE {
+  ?scenario bito:scenarioNumber ?scenarioNumber ;
+            bito:hasObservedExecution ?execution .
+
+  ?execution bito:hasValidationResult ?result .
+
+  ?result bito:validatesConstraint ?constraint ;
+          bito:satisfiesConstraint ?satisfiesConstraint .
+
+  BIND(STR(?scenarioNumber) AS ?scenarioNumberText)
+  BIND(STR(?satisfiesConstraint) AS ?satisfiesConstraintText)
+}
+ORDER BY ?scenarioNumber ?constraint
+
+
+# CQ14: Does the observed execution achieve the expected operational outcome?
+PREFIX bito: <https://w3id.org/bito#>
+PREFIX ex: <https://w3id.org/bito/example/flexible-start#>
+
+SELECT ?scenarioNumberText ?result ?achievesExpectedOutcomeText
+WHERE {
+  ?scenario bito:scenarioNumber ?scenarioNumber ;
+            bito:hasObservedExecution ?execution .
+
+  ?execution bito:hasValidationResult ?result .
+
+  ?result bito:achievesExpectedOutcome ?achievesExpectedOutcome .
+
+  BIND(STR(?scenarioNumber) AS ?scenarioNumberText)
+  BIND(STR(?achievesExpectedOutcome) AS ?achievesExpectedOutcomeText)
+}
+ORDER BY ?scenarioNumber
+
+
+# CQ15: What verdict is derived from the available trace evidence?
+PREFIX bito: <https://w3id.org/bito#>
+PREFIX ex: <https://w3id.org/bito/example/flexible-start#>
+
+SELECT ?scenarioNumberText ?result ?verdict ?messageText
+WHERE {
+  ?scenario bito:scenarioNumber ?scenarioNumber ;
+            bito:hasObservedExecution ?execution .
+
+  ?execution bito:hasValidationResult ?result .
+
+  ?result bito:hasVerdict ?verdict ;
+          bito:validationMessage ?message .
+
+  BIND(STR(?scenarioNumber) AS ?scenarioNumberText)
+  BIND(STR(?message) AS ?messageText)
+}
+ORDER BY ?scenarioNumber

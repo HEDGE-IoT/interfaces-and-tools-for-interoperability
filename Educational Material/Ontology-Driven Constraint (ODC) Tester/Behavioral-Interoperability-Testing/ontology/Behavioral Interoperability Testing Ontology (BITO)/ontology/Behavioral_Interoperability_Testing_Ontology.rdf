@@ -1,0 +1,3056 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/bito#"
+     xml:base="https://w3id.org/bito"
+     xmlns:ex="https://w3id.org/bito/example/flexible-start#"
+     xmlns:bito="https://w3id.org/bito#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:prov="http://www.w3.org/ns/prov#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:time="http://www.w3.org/2006/time#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:saref="https://saref.etsi.org/core/"
+     xmlns:s4ener="https://saref.etsi.org/saref4ener/"
+     xmlns:dcterms="http://purl.org/dc/terms/">
+    <owl:Ontology rdf:about="https://w3id.org/bito">
+        <owl:versionIRI rdf:resource="https://w3id.org/bito/1.0.0"/>
+        <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-05-20</dcterms:created>
+        <dcterms:creator xml:lang="en">Cornelis Bouter (TNO)</dcterms:creator>
+        <dcterms:creator xml:lang="en">Laura Daniele (TNO)</dcterms:creator>
+        <dcterms:creator xml:lang="en">Tareq Md Rabiul Hossain Chy (Trialog)</dcterms:creator>
+        <dcterms:description xml:lang="en">Ontology for representing use cases, scenarios, expected behavior, observed execution evidence, constraints, validation results, and verdicts for ontology-driven behavioral validation.</dcterms:description>
+        <dcterms:license rdf:resource="https://creativecommons.org/licenses/by/4.0/"/>
+        <dcterms:modified>2026-05-29</dcterms:modified>
+        <dcterms:title xml:lang="en">Behavioral Core Ontology</dcterms:title>
+        <vann:preferredNamespacePrefix xml:lang="en">bito</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri>https://w3id.org/bito#</vann:preferredNamespaceUri>
+        <rdfs:comment xml:lang="en">It contains the behavioral vocabulary, selected reused ontology terms, and instances.</rdfs:comment>
+        <owl:versionInfo xml:lang="en">1.0.0</owl:versionInfo>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
+    
+
+
+    <!-- https://w3id.org/bito#sourceOntology -->
+
+    <owl:AnnotationProperty rdf:about="https://w3id.org/bito#sourceOntology">
+        <rdfs:comment xml:lang="en">Ontology or vocabulary from which the term is reused or in which the term is defined.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">source ontology</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#sourceOntology"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- https://w3id.org/bito#sourceTermPage -->
+
+    <owl:AnnotationProperty rdf:about="https://w3id.org/bito#sourceTermPage">
+        <rdfs:comment xml:lang="en">Term IRI or reference page for the class, property, or individual.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">source term page</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#sourceTermPage"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#duration -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#duration"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://saref.etsi.org/core/consistsOf -->
+
+    <owl:ObjectProperty rdf:about="https://saref.etsi.org/core/consistsOf">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isComponentOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#StructuralContainer"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#StructuralElement"/>
+        <rdfs:comment xml:lang="en">Reused to connect power profiles to alternatives groups, alternatives groups to power sequences, and power sequences to slots.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/core/"/>
+        <rdfs:label xml:lang="en">consists of</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/core/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/core/consistsOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://saref.etsi.org/core/hasState -->
+
+    <owl:ObjectProperty rdf:about="https://saref.etsi.org/core/hasState">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isStateOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/State"/>
+        <rdfs:comment xml:lang="en">Reused to connect an entity to a state.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/core/"/>
+        <rdfs:label xml:lang="en">has state</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/core/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/core/hasState"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://saref.etsi.org/core/isMeasuredIn -->
+
+    <owl:ObjectProperty rdf:about="https://saref.etsi.org/core/isMeasuredIn">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isUnitOfMeasureFor"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/PropertyValue"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/UnitOfMeasure"/>
+        <rdfs:comment xml:lang="en">Reused to connect a value to its unit of measure.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/core/"/>
+        <rdfs:label xml:lang="en">is measured in</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/core/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/core/isMeasuredIn"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/belongsTo -->
+
+    <owl:ObjectProperty rdf:about="https://saref.etsi.org/saref4ener/belongsTo">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#hasBelongingElement"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#StructuralElement"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#StructuralContainer"/>
+        <rdfs:comment xml:lang="en">Reused to connect slots, power sequences, alternatives groups, and power profiles to their containing element.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">belongs to</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/belongsTo"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#appliesTo -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#appliesTo">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isAppliedBy"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:comment xml:lang="en">Links a behavioral constraint to the behavioral element it constrains.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">applies to</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#appliesTo"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#basedOnTraceEvidence -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#basedOnTraceEvidence">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isTraceEvidenceBasisOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ValidationResult"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:comment xml:lang="en">Links a validation result to the trace evidence used to derive it.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">based on trace evidence</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#basedOnTraceEvidence"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasBehavioralConstraint -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasBehavioralConstraint">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isBehavioralConstraintOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdfs:comment xml:lang="en">Links a scenario to an applicable behavioral constraint.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has behavioral constraint</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasBehavioralConstraint"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasBelongingElement -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasBelongingElement">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#StructuralContainer"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#StructuralElement"/>
+        <rdfs:comment xml:lang="en">Links a structural container to a structural element it directly contains, such as a power sequence to its slots.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Has Belonging Element</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasBelongingElement"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasExpectedOperationalOutcome -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasExpectedOperationalOutcome">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isExpectedOperationalOutcomeOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ExpectedOperationalOutcome"/>
+        <rdfs:comment xml:lang="en">Links a scenario to the outcome expected from valid execution.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has expected operational outcome</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasExpectedOperationalOutcome"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasExpectedStateTransition -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasExpectedStateTransition">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isExpectedStateTransitionOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ExpectedStateTransition"/>
+        <rdfs:comment xml:lang="en">Links a scenario to an expected state transition.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has expected state transition</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasExpectedStateTransition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasIUT -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasIUT">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isIUTOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/Device"/>
+        <rdfs:comment xml:lang="en">Links a scenario to the implementation under test.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has IUT</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasIUT"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasInteractingActorSystem -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasInteractingActorSystem">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isInteractingActorSystemOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/prov#Agent"/>
+        <rdfs:comment xml:lang="en">Links a scenario to the external actor or system interacting with the IUT.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has interacting actor system</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasInteractingActorSystem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasObservedEvent -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasObservedEvent">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isObservedEventOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedExecution"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ObservedEvent"/>
+        <rdfs:comment xml:lang="en">Links an observed execution to an observed event.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has observed event</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasObservedEvent"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasObservedExecution -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasObservedExecution">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isObservedExecutionOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ObservedExecution"/>
+        <rdfs:comment xml:lang="en">Links a scenario to its observed execution evidence context.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has observed execution</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasObservedExecution"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasObservedSourceState -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasObservedSourceState">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isObservedSourceStateOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedStateChange"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/State"/>
+        <rdfs:comment xml:lang="en">Links an observed state change to its observed source state.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has observed source state</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasObservedSourceState"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasObservedStateChange -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasObservedStateChange">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isObservedStateChangeOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedExecution"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ObservedStateChange"/>
+        <rdfs:comment xml:lang="en">Links an observed execution to an observed state change.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has observed state change</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasObservedStateChange"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasObservedTargetState -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasObservedTargetState">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isObservedTargetStateOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedStateChange"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/State"/>
+        <rdfs:comment xml:lang="en">Links an observed state change to its observed target state.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has observed target state</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasObservedTargetState"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasRelevantPowerSequence -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasRelevantPowerSequence">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isRelevantPowerSequenceOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:comment xml:lang="en">Links a behavioral element to the power sequence relevant for it.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has relevant power sequence</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasRelevantPowerSequence"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasScenario -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasScenario">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isScenarioOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#UseCase"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:comment xml:lang="en">Links a use case to a scenario that belongs to it.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has scenario</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasScenario"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasSourceState -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasSourceState">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isSourceStateOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ExpectedStateTransition"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/State"/>
+        <rdfs:comment xml:lang="en">Links an expected transition to its source state.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has source state</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasSourceState"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasTargetState -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasTargetState">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isTargetStateOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ExpectedStateTransition"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/State"/>
+        <rdfs:comment xml:lang="en">Links an expected transition to its target state.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has target state</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasTargetState"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasTraceEvidence -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasTraceEvidence">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isTraceEvidenceOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedExecution"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:comment xml:lang="en">Links an observed execution to the trace evidence used for validation.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has trace evidence</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasTraceEvidence"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasTriggeringInteraction -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasTriggeringInteraction">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isTriggeringInteractionOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ObservedEvent"/>
+        <rdfs:comment xml:lang="en">Links a scenario to the event, request, command, signal, or condition that initiates or influences behavior.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has triggering interaction</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasTriggeringInteraction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasValidationResult -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasValidationResult">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isValidationResultOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedExecution"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ValidationResult"/>
+        <rdfs:comment xml:lang="en">Links an observed execution to its validation result.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has validation result</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasValidationResult"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#hasVerdict -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#hasVerdict">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#isVerdictOf"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ValidationResult"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ValidationVerdict"/>
+        <rdfs:comment xml:lang="en">Links a validation result to its verdict.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">has verdict</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#hasVerdict"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isAppliedBy -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isAppliedBy">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdfs:comment xml:lang="en">Specifies the behavioral constraint that applies to this behavioral element.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Applied By</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isAppliedBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isBehavioralConstraintOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isBehavioralConstraintOf">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:comment xml:lang="en">Specifies the scenario to which this behavioral constraint belongs.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Behavioral Constraint Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isBehavioralConstraintOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isComponentOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isComponentOf">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#StructuralElement"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#StructuralContainer"/>
+        <rdfs:comment xml:lang="en">Links a structural element to the structural container it is part of, such as a slot to its power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Component Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isComponentOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isExpectedOperationalOutcomeOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isExpectedOperationalOutcomeOf">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ExpectedOperationalOutcome"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:comment xml:lang="en">Specifies the scenario of which this expected operational outcome is a part.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Expected Operational Outcome Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isExpectedOperationalOutcomeOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isExpectedStateTransitionOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isExpectedStateTransitionOf">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ExpectedStateTransition"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:comment xml:lang="en">Specifies the scenario of which this expected state transition is a part.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Expected State Transition Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isExpectedStateTransitionOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isIUTOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isIUTOf">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/Device"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:comment xml:lang="en">Specifies the scenario in which this device serves as the implementation under test.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is IUT Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isIUTOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isInteractingActorSystemOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isInteractingActorSystemOf">
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Agent"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:comment xml:lang="en">Specifies the scenario in which this agent acts as the interacting actor or system.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Interacting Actor System Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isInteractingActorSystemOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isObservedEventOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isObservedEventOf">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedEvent"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ObservedExecution"/>
+        <rdfs:comment xml:lang="en">Specifies the observed execution in which this observed event was recorded.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Observed Event Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isObservedEventOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isObservedExecutionOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isObservedExecutionOf">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedExecution"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:comment xml:lang="en">Specifies the scenario for which this observed execution serves as evidence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Observed Execution Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isObservedExecutionOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isObservedFormerPreferredPowerSequenceOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isObservedFormerPreferredPowerSequenceOf">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#observedFormerPreferredPowerSequence"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:comment xml:lang="en">Specifies the trace evidence in which this power sequence is the former preferred power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Observed Former Preferred Power Sequence Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isObservedFormerPreferredPowerSequenceOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isObservedOptionalPowerSequenceOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isObservedOptionalPowerSequenceOf">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#observedOptionalPowerSequence"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:comment xml:lang="en">Specifies the trace evidence in which this power sequence is the observed optional power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Observed Optional Power Sequence Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isObservedOptionalPowerSequenceOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isObservedPreferredPowerSequenceOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isObservedPreferredPowerSequenceOf">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#observedPreferredPowerSequence"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:comment xml:lang="en">Specifies the trace evidence in which this power sequence is the observed preferred power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Observed Preferred Power Sequence Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isObservedPreferredPowerSequenceOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isObservedScheduledPowerSequenceOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isObservedScheduledPowerSequenceOf">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#observedScheduledPowerSequence"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:comment xml:lang="en">Specifies the trace evidence in which this power sequence is the observed scheduled power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Observed Scheduled Power Sequence Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isObservedScheduledPowerSequenceOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isObservedSelectedPowerSequenceOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isObservedSelectedPowerSequenceOf">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#observedSelectedPowerSequence"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:comment xml:lang="en">Specifies the trace evidence in which this power sequence is the observed selected power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Observed Selected Power Sequence Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isObservedSelectedPowerSequenceOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isObservedSourceStateOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isObservedSourceStateOf">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/State"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ObservedStateChange"/>
+        <rdfs:comment xml:lang="en">Specifies the observed state change for which this state serves as the observed source state.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Observed Source State Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isObservedSourceStateOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isObservedStateChangeOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isObservedStateChangeOf">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedStateChange"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ObservedExecution"/>
+        <rdfs:comment xml:lang="en">Specifies the observed execution to which this observed state change belongs.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Observed State Change Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isObservedStateChangeOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isObservedTargetStateOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isObservedTargetStateOf">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/State"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ObservedStateChange"/>
+        <rdfs:comment xml:lang="en">Specifies the observed state change for which this state serves as the observed target state.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Observed Target State Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isObservedTargetStateOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isRelevantPowerSequenceOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isRelevantPowerSequenceOf">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:comment xml:lang="en">Specifies the behavioral element for which this power sequence is relevant.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Relevant Power Sequence Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isRelevantPowerSequenceOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isRequestedPowerSequenceOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isRequestedPowerSequenceOf">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#requestedPowerSequence"/>
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ObservedEvent"/>
+        <rdfs:comment xml:lang="en">Specifies the observed event that requested this power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Requested Power Sequence Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isRequestedPowerSequenceOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isScenarioOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isScenarioOf">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#UseCase"/>
+        <rdfs:comment xml:lang="en">Links a scenario to the use case it belongs to.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">is scenario of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isScenarioOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isSourceStateOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isSourceStateOf">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/State"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ExpectedStateTransition"/>
+        <rdfs:comment xml:lang="en">Specifies the expected state transition for which this state serves as the source state.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Source State Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isSourceStateOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isStateOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isStateOf">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/State"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:comment xml:lang="en">Specifies the behavioral element that has this state.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is State Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isStateOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isTargetStateOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isTargetStateOf">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/State"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ExpectedStateTransition"/>
+        <rdfs:comment xml:lang="en">Specifies the expected state transition for which this state serves as the target state.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Target State Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isTargetStateOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isTraceEvidenceBasisOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isTraceEvidenceBasisOf">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ValidationResult"/>
+        <rdfs:comment xml:lang="en">Specifies the validation result that is based on this trace evidence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Trace Evidence Basis Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isTraceEvidenceBasisOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isTraceEvidenceOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isTraceEvidenceOf">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ObservedExecution"/>
+        <rdfs:comment xml:lang="en">Specifies the observed execution to which this trace evidence belongs.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Trace Evidence Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isTraceEvidenceOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isTriggeringInteractionOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isTriggeringInteractionOf">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedEvent"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:comment xml:lang="en">Specifies the scenario for which this observed event is the triggering interaction.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Triggering Interaction Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isTriggeringInteractionOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isUnitOfMeasureFor -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isUnitOfMeasureFor">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/UnitOfMeasure"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/core/PropertyValue"/>
+        <rdfs:comment xml:lang="en">Specifies the property value that is measured in this unit of measure.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Unit Of Measure For</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isUnitOfMeasureFor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isUseCaseFunctionForScenario -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isUseCaseFunctionForScenario">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#realizedByUseCaseFunction"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#UseCaseFunction"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:comment xml:lang="en">Specifies the scenario that is realized by this use case function.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Use Case Function For Scenario</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isUseCaseFunctionForScenario"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isValidatedBy -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isValidatedBy">
+        <owl:inverseOf rdf:resource="https://w3id.org/bito#validatesConstraint"/>
+        <rdfs:domain rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ValidationResult"/>
+        <rdfs:comment xml:lang="en">Specifies the validation result by which this behavioral constraint is evaluated.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Validated By</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isValidatedBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isValidationResultOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isValidationResultOf">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ValidationResult"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ObservedExecution"/>
+        <rdfs:comment xml:lang="en">Specifies the observed execution to which this validation result belongs.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Validation Result Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isValidationResultOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#isVerdictOf -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#isVerdictOf">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ValidationVerdict"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#ValidationResult"/>
+        <rdfs:comment xml:lang="en">Specifies the validation result to which this verdict belongs.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Is Verdict Of</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#isVerdictOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#observedFormerPreferredPowerSequence -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#observedFormerPreferredPowerSequence">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:comment xml:lang="en">Links trace evidence to the former preferred power sequence observed after a selection.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">observed former preferred power sequence</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#observedFormerPreferredPowerSequence"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#observedOptionalPowerSequence -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#observedOptionalPowerSequence">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:comment xml:lang="en">Links trace evidence to the observed optional power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">observed optional power sequence</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#observedOptionalPowerSequence"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#observedPreferredPowerSequence -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#observedPreferredPowerSequence">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:comment xml:lang="en">Links trace evidence to the observed preferred power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">observed preferred power sequence</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#observedPreferredPowerSequence"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#observedScheduledPowerSequence -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#observedScheduledPowerSequence">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:comment xml:lang="en">Links trace evidence to the observed scheduled power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">observed scheduled power sequence</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#observedScheduledPowerSequence"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#observedSelectedPowerSequence -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#observedSelectedPowerSequence">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:comment xml:lang="en">Links trace evidence to the observed selected power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">observed selected power sequence</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#observedSelectedPowerSequence"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#realizedByUseCaseFunction -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#realizedByUseCaseFunction">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#UseCaseFunction"/>
+        <rdfs:comment xml:lang="en">Links a scenario to the use case function used for the scenario information exchange.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">realized by use case function</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#realizedByUseCaseFunction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#requestedPowerSequence -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#requestedPowerSequence">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedEvent"/>
+        <rdfs:range rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:comment xml:lang="en">Links a request event to the requested power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">requested power sequence</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#requestedPowerSequence"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://w3id.org/bito#validatesConstraint -->
+
+    <owl:ObjectProperty rdf:about="https://w3id.org/bito#validatesConstraint">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ValidationResult"/>
+        <rdfs:range rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdfs:comment xml:lang="en">Links a validation result to the constraint being checked.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">validates constraint</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#validatesConstraint"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/ns/prov#endedAtTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/prov#endedAtTime">
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Reused to represent the end time of an observed activity.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov#"/>
+        <rdfs:label xml:lang="en">ended at time</rdfs:label>
+        <sourceOntology rdf:resource="http://www.w3.org/ns/prov#"/>
+        <sourceTermPage rdf:resource="http://www.w3.org/ns/prov#endedAtTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#startedAtTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/ns/prov#startedAtTime">
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Reused to represent the start time of an observed activity.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov#"/>
+        <rdfs:label xml:lang="en">started at time</rdfs:label>
+        <sourceOntology rdf:resource="http://www.w3.org/ns/prov#"/>
+        <sourceTermPage rdf:resource="http://www.w3.org/ns/prov#startedAtTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://saref.etsi.org/core/hasIdentifier -->
+
+    <owl:DatatypeProperty rdf:about="https://saref.etsi.org/core/hasIdentifier">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:comment xml:lang="en">Reused to attach identifiers to devices, power sequences, alternatives groups, and slots.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/core/"/>
+        <rdfs:label xml:lang="en">has identifier</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/core/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/core/hasIdentifier"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://saref.etsi.org/core/hasValue -->
+
+    <owl:DatatypeProperty rdf:about="https://saref.etsi.org/core/hasValue">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/PropertyValue"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <rdfs:comment xml:lang="en">Reused to attach a value to a property value individual.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/core/"/>
+        <rdfs:label xml:lang="en">has value</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/core/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/core/hasValue"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/hasDefaultDuration -->
+
+    <owl:DatatypeProperty rdf:about="https://saref.etsi.org/saref4ener/hasDefaultDuration">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4ener/Slot"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#duration"/>
+        <rdfs:comment xml:lang="en">Reused to represent the default duration of a slot.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">has default duration</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/hasDefaultDuration"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/hasEarliestStartTime -->
+
+    <owl:DatatypeProperty rdf:about="https://saref.etsi.org/saref4ener/hasEarliestStartTime">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Reused to represent the earliest allowed start time of a power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">has earliest start time</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/hasEarliestStartTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/hasEndTime -->
+
+    <owl:DatatypeProperty rdf:about="https://saref.etsi.org/saref4ener/hasEndTime">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Reused to represent the end time of a power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">has end time</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/hasEndTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/hasLatestEndTime -->
+
+    <owl:DatatypeProperty rdf:about="https://saref.etsi.org/saref4ener/hasLatestEndTime">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Reused to represent the latest allowed end time of a power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">has latest end time</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/hasLatestEndTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/hasStartTime -->
+
+    <owl:DatatypeProperty rdf:about="https://saref.etsi.org/saref4ener/hasStartTime">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Reused to represent the start time of a power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">has start time</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/hasStartTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/isPausable -->
+
+    <owl:DatatypeProperty rdf:about="https://saref.etsi.org/saref4ener/isPausable">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">Reused to represent whether a power sequence is pausable.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">is pausable</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/isPausable"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/isStoppable -->
+
+    <owl:DatatypeProperty rdf:about="https://saref.etsi.org/saref4ener/isStoppable">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">Reused to represent whether a power sequence is stoppable.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">is stoppable</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/isStoppable"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/nodeRemoteControllable -->
+
+    <owl:DatatypeProperty rdf:about="https://saref.etsi.org/saref4ener/nodeRemoteControllable">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4ener/PowerProfile"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">Reused to represent whether the power sequence node is remotely controllable.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">node remote controllable</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/nodeRemoteControllable"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/sequenceRemoteControllable -->
+
+    <owl:DatatypeProperty rdf:about="https://saref.etsi.org/saref4ener/sequenceRemoteControllable">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">Reused to represent whether a power sequence is remotely controllable.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">sequence remote controllable</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/sequenceRemoteControllable"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/supportsReselection -->
+
+    <owl:DatatypeProperty rdf:about="https://saref.etsi.org/saref4ener/supportsReselection">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/saref4ener/PowerProfile"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">Reused to represent whether reselection of power sequences is supported.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">supports reselection</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/supportsReselection"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#acceptanceOutcome -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#acceptanceOutcome">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Observed acceptance outcome for a request.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">acceptance outcome</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#acceptanceOutcome"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#acceptedAt -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#acceptedAt">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Timestamp at which a request was accepted.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">accepted at</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#acceptedAt"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#achievesExpectedOutcome -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#achievesExpectedOutcome">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ValidationResult"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">Indicates whether the observed execution achieves the expected operational outcome.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">achieves expected outcome</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#achievesExpectedOutcome"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#entityId -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#entityId">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/Device"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Implementation-side entity identifier.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">entity ID</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#entityId"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#entityType -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#entityType">
+        <rdfs:domain rdf:resource="https://saref.etsi.org/core/Device"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Implementation-side entity type.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">entity type</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#entityType"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#eventOrderIndex -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#eventOrderIndex">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Order of an observed event within a scenario execution.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">event order index</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#eventOrderIndex"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#evidenceMode -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#evidenceMode">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Mode used to organize observed evidence sessions.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">evidence mode</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#evidenceMode"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#evidencePreservesInteractionContext -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#evidencePreservesInteractionContext">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">Indicates whether trace evidence preserves the execution-side interaction context.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">evidence preserves interaction context</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#evidencePreservesInteractionContext"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#evidencePreservesObservedBehavior -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#evidencePreservesObservedBehavior">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">Indicates whether trace evidence preserves the observed behavior of the IUT.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">evidence preserves observed behavior</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#evidencePreservesObservedBehavior"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#interactionEndpoint -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#interactionEndpoint">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Endpoint or interface through which the interaction was observed.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">interaction endpoint</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#interactionEndpoint"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#observedAt -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#observedAt">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Timestamp at which evidence or an event was observed.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">observed at</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#observedAt"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#observedExecutionEnd -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#observedExecutionEnd">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Observed end time of execution.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">observed execution end</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#observedExecutionEnd"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#observedExecutionStart -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#observedExecutionStart">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Observed start time of execution.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">observed execution start</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#observedExecutionStart"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#observedInteractionKind -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#observedInteractionKind">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Observed interaction label used for validation scoping.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">observed interaction kind</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#observedInteractionKind"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#observedPlanStatus -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#observedPlanStatus">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Observed validation status of an announced plan.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">observed plan status</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#observedPlanStatus"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#observedPlanUpdatedAt -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#observedPlanUpdatedAt">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Timestamp at which the plan update was observed.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">observed plan updated at</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#observedPlanUpdatedAt"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#observedRunStatus -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#observedRunStatus">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Observed run status after execution.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">observed run status</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#observedRunStatus"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#requestTimestamp -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#requestTimestamp">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Timestamp of an observed request.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">request timestamp</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#requestTimestamp"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#requestedStartTime -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#requestedStartTime">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ObservedEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+        <rdfs:comment xml:lang="en">Start time requested in an observed interaction.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">requested start time</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#requestedStartTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#satisfiesConstraint -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#satisfiesConstraint">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ValidationResult"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">Indicates whether the observed execution satisfies the validated constraints.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">satisfies constraint</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#satisfiesConstraint"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#scenarioName -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#scenarioName">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Name of a scenario.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">scenario name</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#scenarioName"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#scenarioNumber -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#scenarioNumber">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#Scenario"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Number identifying a scenario within a use case.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">scenario number</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#scenarioNumber"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#ucfName -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#ucfName">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#UseCaseFunction"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Name of a use case function.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">UCF name</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#ucfName"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#useCaseName -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#useCaseName">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#UseCase"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Name of a use case.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">use case name</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#useCaseName"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#useCaseVersion -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#useCaseVersion">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#UseCase"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Version of a use case.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">use case version</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#useCaseVersion"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://w3id.org/bito#validationMessage -->
+
+    <owl:DatatypeProperty rdf:about="https://w3id.org/bito#validationMessage">
+        <rdfs:domain rdf:resource="https://w3id.org/bito#ValidationResult"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Human-readable message associated with a validation result.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">validation message</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#validationMessage"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2006/time#Instant -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#Instant">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:comment xml:lang="en">Reused to represent a temporal instant when explicit temporal modelling is required.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2006/time"/>
+        <rdfs:label xml:lang="en">Instant</rdfs:label>
+        <sourceOntology rdf:resource="http://www.w3.org/2006/time"/>
+        <sourceTermPage rdf:resource="http://www.w3.org/2006/time#Instant"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2006/time#Interval -->
+
+    <owl:Class rdf:about="http://www.w3.org/2006/time#Interval">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:comment xml:lang="en">Reused to represent a temporal interval when explicit temporal modelling is required.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/2006/time"/>
+        <rdfs:label xml:lang="en">Interval</rdfs:label>
+        <sourceOntology rdf:resource="http://www.w3.org/2006/time"/>
+        <sourceTermPage rdf:resource="http://www.w3.org/2006/time#Interval"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Activity -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Activity">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:comment xml:lang="en">Reused to represent an observed activity, interaction, or execution.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov#"/>
+        <rdfs:label xml:lang="en">Activity</rdfs:label>
+        <sourceOntology rdf:resource="http://www.w3.org/ns/prov#"/>
+        <sourceTermPage rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Agent -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Agent">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:comment xml:lang="en">Reused to represent an actor or system responsible for an interaction.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov#"/>
+        <rdfs:label xml:lang="en">Agent</rdfs:label>
+        <sourceOntology rdf:resource="http://www.w3.org/ns/prov#"/>
+        <sourceTermPage rdf:resource="http://www.w3.org/ns/prov#Agent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/ns/prov#Entity -->
+
+    <owl:Class rdf:about="http://www.w3.org/ns/prov#Entity">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:comment xml:lang="en">Reused to represent an information entity, including trace evidence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.w3.org/ns/prov#"/>
+        <rdfs:label xml:lang="en">Entity</rdfs:label>
+        <sourceOntology rdf:resource="http://www.w3.org/ns/prov#"/>
+        <sourceTermPage rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+    </owl:Class>
+    
+
+
+    <!-- https://saref.etsi.org/core/Appliance -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/core/Appliance">
+        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/core/Device"/>
+        <rdfs:comment xml:lang="en">Reused to represent the appliance category of the implementation under test.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/core/"/>
+        <rdfs:label xml:lang="en">Appliance</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/core/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/core/Appliance"/>
+    </owl:Class>
+    
+
+
+    <!-- https://saref.etsi.org/core/Device -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/core/Device">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#StructuralContainer"/>
+        <rdfs:comment xml:lang="en">Reused to represent an implementation under test or controllable device.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/core/"/>
+        <rdfs:label xml:lang="en">Device</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/core/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/core/Device"/>
+    </owl:Class>
+    
+
+
+    <!-- https://saref.etsi.org/core/PowerUnit -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/core/PowerUnit">
+        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/core/UnitOfMeasure"/>
+        <rdfs:comment xml:lang="en">Reused to represent a power-related unit.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/core/"/>
+        <rdfs:label xml:lang="en">Power unit</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/core/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/core/PowerUnit"/>
+    </owl:Class>
+    
+
+
+    <!-- https://saref.etsi.org/core/PropertyValue -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/core/PropertyValue">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:comment xml:lang="en">Reused to represent a value associated with a measured or declared property.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/core/"/>
+        <rdfs:label xml:lang="en">Property value</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/core/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/core/PropertyValue"/>
+    </owl:Class>
+    
+
+
+    <!-- https://saref.etsi.org/core/State -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/core/State">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:comment xml:lang="en">Reused to represent states used in expected and observed behavior.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/core/"/>
+        <rdfs:label xml:lang="en">State</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/core/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/core/State"/>
+    </owl:Class>
+    
+
+
+    <!-- https://saref.etsi.org/core/UnitOfMeasure -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/core/UnitOfMeasure">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:comment xml:lang="en">Reused to represent units associated with values.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/core/"/>
+        <rdfs:label xml:lang="en">Unit of measure</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/core/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/core/UnitOfMeasure"/>
+    </owl:Class>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/AlternativesGroup -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/saref4ener/AlternativesGroup">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#StructuralContainer"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#StructuralElement"/>
+        <rdfs:comment xml:lang="en">Reused to represent a group of alternative power sequences.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">Alternatives group</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/AlternativesGroup"/>
+    </owl:Class>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/PowerProfile -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/saref4ener/PowerProfile">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#StructuralContainer"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#StructuralElement"/>
+        <rdfs:comment xml:lang="en">Reused to represent a power scheduling structure containing alternative groups and power sequences.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">Power profile</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/PowerProfile"/>
+    </owl:Class>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/PowerSequence -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/saref4ener/PowerSequence">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#StructuralContainer"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#StructuralElement"/>
+        <rdfs:comment xml:lang="en">Reused to represent a selectable or scheduled power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">Power sequence</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+    </owl:Class>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/PowerSequenceState -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/saref4ener/PowerSequenceState">
+        <rdfs:subClassOf rdf:resource="https://saref.etsi.org/core/State"/>
+        <rdfs:comment xml:lang="en">Reused to represent a state of a power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">Power sequence state</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/PowerSequenceState"/>
+    </owl:Class>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/Slot -->
+
+    <owl:Class rdf:about="https://saref.etsi.org/saref4ener/Slot">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#StructuralElement"/>
+        <rdfs:comment xml:lang="en">Reused to represent a time slot within a power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">Slot</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/Slot"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#BehavioralConstraint -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#BehavioralConstraint">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:comment xml:lang="en">Condition used to determine whether observed behavior is valid.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Behavioral constraint</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#BehavioralElement -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#BehavioralElement">
+        <rdfs:comment xml:lang="en">Generic behavioral element used for linking constraints, transitions, triggers, evidence, and outcomes.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Behavioral element</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#ExpectedOperationalOutcome -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#ExpectedOperationalOutcome">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:comment xml:lang="en">Outcome expected after a scenario is executed under defined conditions.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Expected operational outcome</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#ExpectedOperationalOutcome"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#ExpectedStateTransition -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#ExpectedStateTransition">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:comment xml:lang="en">Expected transition from a source state to a target state.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Expected state transition</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#ExpectedStateTransition"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#ObservedEvent -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#ObservedEvent">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+        <rdfs:comment xml:lang="en">Event, request, command, signal, or observation recorded during scenario execution.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Observed event</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#ObservedEvent"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#ObservedExecution -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#ObservedExecution">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+        <rdfs:comment xml:lang="en">Observed execution of a scenario used for behavioral validation.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Observed execution</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#ObservedExecution"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#ObservedStateChange -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#ObservedStateChange">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:comment xml:lang="en">State change observed during execution.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Observed state change</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#ObservedStateChange"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#OrderingConstraint -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#OrderingConstraint">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdfs:comment xml:lang="en">Behavioral constraint concerning the order of observed events.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Ordering constraint</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#OrderingConstraint"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#OutcomeConstraint -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#OutcomeConstraint">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdfs:comment xml:lang="en">Behavioral constraint concerning the expected operational outcome.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Outcome constraint</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#OutcomeConstraint"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#Scenario -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#Scenario">
+        <rdfs:comment xml:lang="en">Scenario under validation within a use case.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Scenario</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#Scenario"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#StateConstraint -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#StateConstraint">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdfs:comment xml:lang="en">Behavioral constraint concerning expected or observed states.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">State constraint</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#StateConstraint"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#StructuralContainer -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#StructuralContainer">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:comment xml:lang="en">Element that directly contains one or more structural or behavioral elements.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Structural container</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#StructuralContainer"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#StructuralElement -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#StructuralElement">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralElement"/>
+        <rdfs:comment xml:lang="en">Element that can be directly contained by a structural container.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Structural element</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#StructuralElement"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#TimingConstraint -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#TimingConstraint">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdfs:comment xml:lang="en">Behavioral constraint concerning timestamps or time intervals.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Timing constraint</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#TimingConstraint"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#TraceEvidence -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#TraceEvidence">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <rdfs:comment xml:lang="en">Observed execution data used as evidence for behavioral validation.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Trace evidence</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#TransitionConstraint -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#TransitionConstraint">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdfs:comment xml:lang="en">Behavioral constraint concerning valid state transitions.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Transition constraint</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#TransitionConstraint"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#TriggerConstraint -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#TriggerConstraint">
+        <rdfs:subClassOf rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdfs:comment xml:lang="en">Behavioral constraint concerning the event, request, command, signal, or condition that initiates or influences behavior.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Trigger constraint</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#TriggerConstraint"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#UseCase -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#UseCase">
+        <rdfs:comment xml:lang="en">Reusable functionality context grouping one or more scenarios.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Use case</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#UseCase"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#UseCaseFunction -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#UseCaseFunction">
+        <rdfs:comment xml:lang="en">Function used to realize a scenario-level information exchange.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Use case function</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#UseCaseFunction"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#ValidationResult -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#ValidationResult">
+        <rdfs:comment xml:lang="en">Result of assessing observed execution evidence against behavioral constraints.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Validation result</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#ValidationResult"/>
+    </owl:Class>
+    
+
+
+    <!-- https://w3id.org/bito#ValidationVerdict -->
+
+    <owl:Class rdf:about="https://w3id.org/bito#ValidationVerdict">
+        <rdfs:comment xml:lang="en">Verdict derived from available trace evidence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">Validation verdict</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#ValidationVerdict"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://saref.etsi.org/core/Watt -->
+
+    <owl:NamedIndividual rdf:about="https://saref.etsi.org/core/Watt">
+        <rdf:type rdf:resource="https://saref.etsi.org/core/PowerUnit"/>
+        <rdfs:comment xml:lang="en">Reused unit individual for power values expressed in watts.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/core/"/>
+        <rdfs:label xml:lang="en">Watt</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/core/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/core/Watt"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/Completed -->
+
+    <owl:NamedIndividual rdf:about="https://saref.etsi.org/saref4ener/Completed">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/PowerSequenceState"/>
+        <rdfs:comment xml:lang="en">Reused state for a completed power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">Completed</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/Completed"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/Inactive -->
+
+    <owl:NamedIndividual rdf:about="https://saref.etsi.org/saref4ener/Inactive">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/PowerSequenceState"/>
+        <rdfs:comment xml:lang="en">Reused state for an inactive power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">Inactive</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/Inactive"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://saref.etsi.org/saref4ener/Scheduled -->
+
+    <owl:NamedIndividual rdf:about="https://saref.etsi.org/saref4ener/Scheduled">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/PowerSequenceState"/>
+        <rdfs:comment xml:lang="en">Reused state for a scheduled power sequence.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <rdfs:label xml:lang="en">Scheduled</rdfs:label>
+        <sourceOntology rdf:resource="https://saref.etsi.org/saref4ener/"/>
+        <sourceTermPage rdf:resource="https://saref.etsi.org/saref4ener/Scheduled"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito#FAIL -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito#FAIL">
+        <rdf:type rdf:resource="https://w3id.org/bito#ValidationVerdict"/>
+        <rdfs:comment xml:lang="en">Verdict indicating that the available trace evidence violates at least one applicable validation condition.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">FAIL</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#FAIL"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito#INCONCLUSIVE -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito#INCONCLUSIVE">
+        <rdf:type rdf:resource="https://w3id.org/bito#ValidationVerdict"/>
+        <rdfs:comment xml:lang="en">Verdict indicating that the available trace evidence is insufficient or ambiguous.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">INCONCLUSIVE</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#INCONCLUSIVE"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito#PASS -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito#PASS">
+        <rdf:type rdf:resource="https://w3id.org/bito#ValidationVerdict"/>
+        <rdfs:comment xml:lang="en">Verdict indicating that the available trace evidence satisfies the applicable validation conditions.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://w3id.org/bito"/>
+        <rdfs:label xml:lang="en">PASS</rdfs:label>
+        <sourceOntology rdf:resource="https://w3id.org/bito"/>
+        <sourceTermPage rdf:resource="https://w3id.org/bito#PASS"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#AlternativesGroup_1 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#AlternativesGroup_1">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/AlternativesGroup"/>
+        <saref:consistsOf rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <saref:consistsOf rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_45"/>
+        <s4ener:belongsTo rdf:resource="https://w3id.org/bito/example/flexible-start#PowerProfile_000000000001"/>
+        <saref:hasIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</saref:hasIdentifier>
+        <rdfs:label xml:lang="en">Alternatives group 1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#CCM -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#CCM">
+        <rdf:type rdf:resource="http://www.w3.org/ns/prov#Agent"/>
+        <rdfs:comment xml:lang="en">Customer Connectivity Manager used as interacting actor system in the Flexible Start validation instances.</rdfs:comment>
+        <rdfs:label xml:lang="en">CCM</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Constraint_S1_PlanStatus -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Constraint_S1_PlanStatus">
+        <rdf:type rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdf:type rdf:resource="https://w3id.org/bito#OutcomeConstraint"/>
+        <appliesTo rdf:resource="https://w3id.org/bito/example/flexible-start#Outcome_S1_ValidPlan"/>
+        <rdfs:comment xml:lang="en">Scenario 1 observed plan status is valid.</rdfs:comment>
+        <rdfs:label xml:lang="en">S1 plan status constraint</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Constraint_S1_PlanStructure -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Constraint_S1_PlanStructure">
+        <rdf:type rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdf:type rdf:resource="https://w3id.org/bito#StateConstraint"/>
+        <appliesTo rdf:resource="https://w3id.org/bito/example/flexible-start#Transition_S1_PlanAvailable"/>
+        <rdfs:comment xml:lang="en">Scenario 1 plan contains the expected alternatives group and power sequences.</rdfs:comment>
+        <rdfs:label xml:lang="en">S1 plan structure constraint</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Constraint_S2_RequestAccepted -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Constraint_S2_RequestAccepted">
+        <rdf:type rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdf:type rdf:resource="https://w3id.org/bito#TriggerConstraint"/>
+        <appliesTo rdf:resource="https://w3id.org/bito/example/flexible-start#Event_S2_ShiftRequest"/>
+        <rdfs:comment xml:lang="en">Scenario 2 shift request is accepted.</rdfs:comment>
+        <rdfs:label xml:lang="en">S2 request accepted constraint</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Constraint_S2_RunCompleted -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Constraint_S2_RunCompleted">
+        <rdf:type rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdf:type rdf:resource="https://w3id.org/bito#OutcomeConstraint"/>
+        <appliesTo rdf:resource="https://w3id.org/bito/example/flexible-start#Outcome_S2_PreferredSequenceShifted"/>
+        <rdfs:comment xml:lang="en">Scenario 2 observed run status is completed.</rdfs:comment>
+        <rdfs:label xml:lang="en">S2 run completed constraint</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Constraint_S2_StartTimeUpdated -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Constraint_S2_StartTimeUpdated">
+        <rdf:type rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdf:type rdf:resource="https://w3id.org/bito#TimingConstraint"/>
+        <appliesTo rdf:resource="https://w3id.org/bito/example/flexible-start#Transition_S2_PreferredSequenceShifted"/>
+        <rdfs:comment xml:lang="en">Scenario 2 preferred sequence start time is updated to the requested value.</rdfs:comment>
+        <rdfs:label xml:lang="en">S2 start time updated constraint</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Constraint_S3_FormerPreferredInactive -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Constraint_S3_FormerPreferredInactive">
+        <rdf:type rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdf:type rdf:resource="https://w3id.org/bito#TransitionConstraint"/>
+        <appliesTo rdf:resource="https://w3id.org/bito/example/flexible-start#Transition_S3_FormerPreferredInactive"/>
+        <rdfs:comment xml:lang="en">Scenario 3 former preferred sequence becomes inactive.</rdfs:comment>
+        <rdfs:label xml:lang="en">S3 former preferred inactive constraint</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Constraint_S3_RequestAccepted -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Constraint_S3_RequestAccepted">
+        <rdf:type rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdf:type rdf:resource="https://w3id.org/bito#TriggerConstraint"/>
+        <appliesTo rdf:resource="https://w3id.org/bito/example/flexible-start#Event_S3_SelectRequest"/>
+        <rdfs:comment xml:lang="en">Scenario 3 selection request is accepted.</rdfs:comment>
+        <rdfs:label xml:lang="en">S3 request accepted constraint</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Constraint_S3_RunCompleted -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Constraint_S3_RunCompleted">
+        <rdf:type rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdf:type rdf:resource="https://w3id.org/bito#OutcomeConstraint"/>
+        <appliesTo rdf:resource="https://w3id.org/bito/example/flexible-start#Outcome_S3_AlternativeSequenceSelected"/>
+        <rdfs:comment xml:lang="en">Scenario 3 observed run status is completed.</rdfs:comment>
+        <rdfs:label xml:lang="en">S3 run completed constraint</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Constraint_S3_SelectedSequenceScheduled -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Constraint_S3_SelectedSequenceScheduled">
+        <rdf:type rdf:resource="https://w3id.org/bito#BehavioralConstraint"/>
+        <rdf:type rdf:resource="https://w3id.org/bito#TransitionConstraint"/>
+        <appliesTo rdf:resource="https://w3id.org/bito/example/flexible-start#Transition_S3_SelectedSequenceScheduled"/>
+        <rdfs:comment xml:lang="en">Scenario 3 selected sequence becomes scheduled.</rdfs:comment>
+        <rdfs:label xml:lang="en">S3 selected sequence scheduled constraint</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Dishwasher_000000000001 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Dishwasher_000000000001">
+        <rdf:type rdf:resource="https://saref.etsi.org/core/Appliance"/>
+        <saref:consistsOf rdf:resource="https://w3id.org/bito/example/flexible-start#PowerProfile_000000000001"/>
+        <saref:hasIdentifier>000000000001</saref:hasIdentifier>
+        <entityId rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</entityId>
+        <entityType>Dishwasher</entityType>
+        <rdfs:label xml:lang="en">Dishwasher 000000000001</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Event_S1_PlanObservation -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Event_S1_PlanObservation">
+        <rdf:type rdf:resource="https://w3id.org/bito#ObservedEvent"/>
+        <eventOrderIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</eventOrderIndex>
+        <interactionEndpoint>GET /v1/features/powerSequence</interactionEndpoint>
+        <observedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T09:00:00+00:00</observedAt>
+        <observedInteractionKind>plan observation</observedInteractionKind>
+        <rdfs:label xml:lang="en">Scenario 1 plan observation</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Event_S2_ShiftRequest -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Event_S2_ShiftRequest">
+        <rdf:type rdf:resource="https://w3id.org/bito#ObservedEvent"/>
+        <requestedPowerSequence rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <acceptanceOutcome>accepted</acceptanceOutcome>
+        <acceptedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T09:30:02+00:00</acceptedAt>
+        <eventOrderIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</eventOrderIndex>
+        <interactionEndpoint>POST /v1/usecaseInterfaces/flexibleStartForWhiteGoods/v1</interactionEndpoint>
+        <observedExecutionEnd rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T13:29:40+00:00</observedExecutionEnd>
+        <observedExecutionStart rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T11:00:20+00:00</observedExecutionStart>
+        <observedInteractionKind>preferred sequence shift request</observedInteractionKind>
+        <observedPlanUpdatedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T09:30:03+00:00</observedPlanUpdatedAt>
+        <requestTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T09:30:00+00:00</requestTimestamp>
+        <requestedStartTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T11:00:00+00:00</requestedStartTime>
+        <rdfs:label xml:lang="en">Scenario 2 shift request</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Event_S3_SelectRequest -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Event_S3_SelectRequest">
+        <rdf:type rdf:resource="https://w3id.org/bito#ObservedEvent"/>
+        <requestedPowerSequence rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_45"/>
+        <acceptanceOutcome>accepted</acceptanceOutcome>
+        <acceptedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T10:45:02+00:00</acceptedAt>
+        <eventOrderIndex rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</eventOrderIndex>
+        <interactionEndpoint>POST /v1/usecaseInterfaces/flexibleStartForWhiteGoods/v1</interactionEndpoint>
+        <observedExecutionEnd rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T13:29:40+00:00</observedExecutionEnd>
+        <observedExecutionStart rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T12:00:20+00:00</observedExecutionStart>
+        <observedInteractionKind>alternative sequence selection request</observedInteractionKind>
+        <observedPlanUpdatedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T10:45:04+00:00</observedPlanUpdatedAt>
+        <requestTimestamp rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T10:45:00+00:00</requestTimestamp>
+        <requestedStartTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T12:00:00+00:00</requestedStartTime>
+        <rdfs:label xml:lang="en">Scenario 3 select request</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Execution_S1 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Execution_S1">
+        <rdf:type rdf:resource="https://w3id.org/bito#ObservedExecution"/>
+        <hasObservedEvent rdf:resource="https://w3id.org/bito/example/flexible-start#Event_S1_PlanObservation"/>
+        <hasTraceEvidence rdf:resource="https://w3id.org/bito/example/flexible-start#TraceEvidence_S1"/>
+        <hasValidationResult rdf:resource="https://w3id.org/bito/example/flexible-start#ValidationResult_S1"/>
+        <rdfs:label xml:lang="en">Scenario 1 observed execution</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Execution_S2 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Execution_S2">
+        <rdf:type rdf:resource="https://w3id.org/bito#ObservedExecution"/>
+        <hasObservedEvent rdf:resource="https://w3id.org/bito/example/flexible-start#Event_S2_ShiftRequest"/>
+        <hasObservedStateChange rdf:resource="https://w3id.org/bito/example/flexible-start#ObservedStateChange_S2_Sequence44Scheduled"/>
+        <hasTraceEvidence rdf:resource="https://w3id.org/bito/example/flexible-start#TraceEvidence_S2"/>
+        <hasValidationResult rdf:resource="https://w3id.org/bito/example/flexible-start#ValidationResult_S2"/>
+        <observedExecutionEnd rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T13:29:40+00:00</observedExecutionEnd>
+        <observedExecutionStart rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T11:00:20+00:00</observedExecutionStart>
+        <rdfs:label xml:lang="en">Scenario 2 observed execution</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Execution_S3 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Execution_S3">
+        <rdf:type rdf:resource="https://w3id.org/bito#ObservedExecution"/>
+        <hasObservedEvent rdf:resource="https://w3id.org/bito/example/flexible-start#Event_S3_SelectRequest"/>
+        <hasObservedStateChange rdf:resource="https://w3id.org/bito/example/flexible-start#ObservedStateChange_S3_Sequence44Inactive"/>
+        <hasObservedStateChange rdf:resource="https://w3id.org/bito/example/flexible-start#ObservedStateChange_S3_Sequence45Scheduled"/>
+        <hasTraceEvidence rdf:resource="https://w3id.org/bito/example/flexible-start#TraceEvidence_S3"/>
+        <hasValidationResult rdf:resource="https://w3id.org/bito/example/flexible-start#ValidationResult_S3"/>
+        <observedExecutionEnd rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T13:29:40+00:00</observedExecutionEnd>
+        <observedExecutionStart rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T12:00:20+00:00</observedExecutionStart>
+        <rdfs:label xml:lang="en">Scenario 3 observed execution</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#FlexibleStartUseCase -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#FlexibleStartUseCase">
+        <rdf:type rdf:resource="https://w3id.org/bito#UseCase"/>
+        <hasScenario rdf:resource="https://w3id.org/bito/example/flexible-start#Scenario1"/>
+        <hasScenario rdf:resource="https://w3id.org/bito/example/flexible-start#Scenario2"/>
+        <hasScenario rdf:resource="https://w3id.org/bito/example/flexible-start#Scenario3"/>
+        <useCaseName>flexibleStartForWhiteGoods</useCaseName>
+        <useCaseVersion>1.0.0</useCaseVersion>
+        <rdfs:comment xml:lang="en">Example use case used for validating the behavioral ontology with Scenarios 1, 2, and 3.</rdfs:comment>
+        <rdfs:label xml:lang="en">Flexible Start use case</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#ObservedStateChange_S2_Sequence44Scheduled -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#ObservedStateChange_S2_Sequence44Scheduled">
+        <rdf:type rdf:resource="https://w3id.org/bito#ObservedStateChange"/>
+        <hasObservedSourceState rdf:resource="https://saref.etsi.org/saref4ener/Scheduled"/>
+        <hasObservedTargetState rdf:resource="https://saref.etsi.org/saref4ener/Scheduled"/>
+        <hasRelevantPowerSequence rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <rdfs:label xml:lang="en">Scenario 2 sequence 44 remains scheduled</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#ObservedStateChange_S3_Sequence44Inactive -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#ObservedStateChange_S3_Sequence44Inactive">
+        <rdf:type rdf:resource="https://w3id.org/bito#ObservedStateChange"/>
+        <hasObservedSourceState rdf:resource="https://saref.etsi.org/saref4ener/Scheduled"/>
+        <hasObservedTargetState rdf:resource="https://saref.etsi.org/saref4ener/Inactive"/>
+        <hasRelevantPowerSequence rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <rdfs:label xml:lang="en">Scenario 3 sequence 44 becomes inactive</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#ObservedStateChange_S3_Sequence45Scheduled -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#ObservedStateChange_S3_Sequence45Scheduled">
+        <rdf:type rdf:resource="https://w3id.org/bito#ObservedStateChange"/>
+        <hasObservedSourceState rdf:resource="https://saref.etsi.org/saref4ener/Inactive"/>
+        <hasObservedTargetState rdf:resource="https://saref.etsi.org/saref4ener/Scheduled"/>
+        <hasRelevantPowerSequence rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_45"/>
+        <rdfs:label xml:lang="en">Scenario 3 sequence 45 becomes scheduled</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Outcome_S1_ValidPlan -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Outcome_S1_ValidPlan">
+        <rdf:type rdf:resource="https://w3id.org/bito#ExpectedOperationalOutcome"/>
+        <rdfs:label xml:lang="en">Scenario 1 valid plan outcome</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Outcome_S2_PreferredSequenceShifted -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Outcome_S2_PreferredSequenceShifted">
+        <rdf:type rdf:resource="https://w3id.org/bito#ExpectedOperationalOutcome"/>
+        <rdfs:label xml:lang="en">Scenario 2 preferred sequence shifted outcome</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Outcome_S3_AlternativeSequenceSelected -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Outcome_S3_AlternativeSequenceSelected">
+        <rdf:type rdf:resource="https://w3id.org/bito#ExpectedOperationalOutcome"/>
+        <rdfs:label xml:lang="en">Scenario 3 alternative sequence selected outcome</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#PowerProfile_000000000001 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#PowerProfile_000000000001">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/PowerProfile"/>
+        <saref:consistsOf rdf:resource="https://w3id.org/bito/example/flexible-start#AlternativesGroup_1"/>
+        <s4ener:nodeRemoteControllable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</s4ener:nodeRemoteControllable>
+        <s4ener:supportsReselection rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</s4ener:supportsReselection>
+        <rdfs:label xml:lang="en">Power profile 000000000001</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#PowerSequence_44 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#PowerSequence_44">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <saref:consistsOf rdf:resource="https://w3id.org/bito/example/flexible-start#Slot_44_0"/>
+        <saref:consistsOf rdf:resource="https://w3id.org/bito/example/flexible-start#Slot_44_1"/>
+        <saref:consistsOf rdf:resource="https://w3id.org/bito/example/flexible-start#Slot_44_2"/>
+        <saref:consistsOf rdf:resource="https://w3id.org/bito/example/flexible-start#Slot_44_3"/>
+        <saref:consistsOf rdf:resource="https://w3id.org/bito/example/flexible-start#Slot_44_4"/>
+        <saref:consistsOf rdf:resource="https://w3id.org/bito/example/flexible-start#Slot_44_5"/>
+        <saref:consistsOf rdf:resource="https://w3id.org/bito/example/flexible-start#Slot_44_6"/>
+        <saref:consistsOf rdf:resource="https://w3id.org/bito/example/flexible-start#Slot_44_7"/>
+        <saref:consistsOf rdf:resource="https://w3id.org/bito/example/flexible-start#Slot_44_8"/>
+        <saref:consistsOf rdf:resource="https://w3id.org/bito/example/flexible-start#Slot_44_9"/>
+        <s4ener:belongsTo rdf:resource="https://w3id.org/bito/example/flexible-start#AlternativesGroup_1"/>
+        <saref:hasIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">44</saref:hasIdentifier>
+        <s4ener:hasEarliestStartTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T08:00:00+00:00</s4ener:hasEarliestStartTime>
+        <s4ener:hasLatestEndTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T14:30:00+00:00</s4ener:hasLatestEndTime>
+        <s4ener:isPausable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</s4ener:isPausable>
+        <s4ener:isStoppable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</s4ener:isStoppable>
+        <s4ener:sequenceRemoteControllable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</s4ener:sequenceRemoteControllable>
+        <rdfs:label xml:lang="en">Power sequence 44</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#PowerSequence_45 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#PowerSequence_45">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/PowerSequence"/>
+        <saref:consistsOf rdf:resource="https://w3id.org/bito/example/flexible-start#Slot_45_0"/>
+        <saref:consistsOf rdf:resource="https://w3id.org/bito/example/flexible-start#Slot_45_1"/>
+        <saref:consistsOf rdf:resource="https://w3id.org/bito/example/flexible-start#Slot_45_2"/>
+        <s4ener:belongsTo rdf:resource="https://w3id.org/bito/example/flexible-start#AlternativesGroup_1"/>
+        <saref:hasIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">45</saref:hasIdentifier>
+        <s4ener:hasEarliestStartTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T08:00:00+00:00</s4ener:hasEarliestStartTime>
+        <s4ener:hasLatestEndTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T14:30:00+00:00</s4ener:hasLatestEndTime>
+        <s4ener:isPausable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</s4ener:isPausable>
+        <s4ener:isStoppable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</s4ener:isStoppable>
+        <s4ener:sequenceRemoteControllable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</s4ener:sequenceRemoteControllable>
+        <rdfs:label xml:lang="en">Power sequence 45</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Scenario1 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Scenario1">
+        <rdf:type rdf:resource="https://w3id.org/bito#Scenario"/>
+        <hasBehavioralConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S1_PlanStatus"/>
+        <hasBehavioralConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S1_PlanStructure"/>
+        <hasExpectedOperationalOutcome rdf:resource="https://w3id.org/bito/example/flexible-start#Outcome_S1_ValidPlan"/>
+        <hasExpectedStateTransition rdf:resource="https://w3id.org/bito/example/flexible-start#Transition_S1_PlanAvailable"/>
+        <hasIUT rdf:resource="https://w3id.org/bito/example/flexible-start#Dishwasher_000000000001"/>
+        <hasInteractingActorSystem rdf:resource="https://w3id.org/bito/example/flexible-start#CCM"/>
+        <hasObservedExecution rdf:resource="https://w3id.org/bito/example/flexible-start#Execution_S1"/>
+        <hasTriggeringInteraction rdf:resource="https://w3id.org/bito/example/flexible-start#Event_S1_PlanObservation"/>
+        <isScenarioOf rdf:resource="https://w3id.org/bito/example/flexible-start#FlexibleStartUseCase"/>
+        <realizedByUseCaseFunction rdf:resource="https://w3id.org/bito/example/flexible-start#UCF_Plan_With_Power_Sequences"/>
+        <scenarioName>Announcement of plan</scenarioName>
+        <scenarioNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</scenarioNumber>
+        <rdfs:label xml:lang="en">Scenario 1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Scenario2 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Scenario2">
+        <rdf:type rdf:resource="https://w3id.org/bito#Scenario"/>
+        <hasBehavioralConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S2_RequestAccepted"/>
+        <hasBehavioralConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S2_RunCompleted"/>
+        <hasBehavioralConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S2_StartTimeUpdated"/>
+        <hasExpectedOperationalOutcome rdf:resource="https://w3id.org/bito/example/flexible-start#Outcome_S2_PreferredSequenceShifted"/>
+        <hasExpectedStateTransition rdf:resource="https://w3id.org/bito/example/flexible-start#Transition_S2_PreferredSequenceShifted"/>
+        <hasIUT rdf:resource="https://w3id.org/bito/example/flexible-start#Dishwasher_000000000001"/>
+        <hasInteractingActorSystem rdf:resource="https://w3id.org/bito/example/flexible-start#CCM"/>
+        <hasObservedExecution rdf:resource="https://w3id.org/bito/example/flexible-start#Execution_S2"/>
+        <hasTriggeringInteraction rdf:resource="https://w3id.org/bito/example/flexible-start#Event_S2_ShiftRequest"/>
+        <isScenarioOf rdf:resource="https://w3id.org/bito/example/flexible-start#FlexibleStartUseCase"/>
+        <realizedByUseCaseFunction rdf:resource="https://w3id.org/bito/example/flexible-start#UCF_Shift_Preferred_Power_Sequence"/>
+        <scenarioName>Shift preferred power sequence</scenarioName>
+        <scenarioNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</scenarioNumber>
+        <rdfs:label xml:lang="en">Scenario 2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Scenario3 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Scenario3">
+        <rdf:type rdf:resource="https://w3id.org/bito#Scenario"/>
+        <hasBehavioralConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S3_FormerPreferredInactive"/>
+        <hasBehavioralConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S3_RequestAccepted"/>
+        <hasBehavioralConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S3_RunCompleted"/>
+        <hasBehavioralConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S3_SelectedSequenceScheduled"/>
+        <hasExpectedOperationalOutcome rdf:resource="https://w3id.org/bito/example/flexible-start#Outcome_S3_AlternativeSequenceSelected"/>
+        <hasExpectedStateTransition rdf:resource="https://w3id.org/bito/example/flexible-start#Transition_S3_FormerPreferredInactive"/>
+        <hasExpectedStateTransition rdf:resource="https://w3id.org/bito/example/flexible-start#Transition_S3_SelectedSequenceScheduled"/>
+        <hasIUT rdf:resource="https://w3id.org/bito/example/flexible-start#Dishwasher_000000000001"/>
+        <hasInteractingActorSystem rdf:resource="https://w3id.org/bito/example/flexible-start#CCM"/>
+        <hasObservedExecution rdf:resource="https://w3id.org/bito/example/flexible-start#Execution_S3"/>
+        <hasTriggeringInteraction rdf:resource="https://w3id.org/bito/example/flexible-start#Event_S3_SelectRequest"/>
+        <isScenarioOf rdf:resource="https://w3id.org/bito/example/flexible-start#FlexibleStartUseCase"/>
+        <realizedByUseCaseFunction rdf:resource="https://w3id.org/bito/example/flexible-start#UCF_Select_Power_Sequence"/>
+        <scenarioName>Select alternative power sequence</scenarioName>
+        <scenarioNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</scenarioNumber>
+        <rdfs:label xml:lang="en">Scenario 3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Slot_44_0 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Slot_44_0">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/Slot"/>
+        <s4ener:belongsTo rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <saref:hasIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</saref:hasIdentifier>
+        <s4ener:hasDefaultDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">PT15M</s4ener:hasDefaultDuration>
+        <rdfs:label xml:lang="en">Slot 44 0</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Slot_44_1 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Slot_44_1">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/Slot"/>
+        <s4ener:belongsTo rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <saref:hasIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</saref:hasIdentifier>
+        <s4ener:hasDefaultDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">PT15M</s4ener:hasDefaultDuration>
+        <rdfs:label xml:lang="en">Slot 44 1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Slot_44_2 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Slot_44_2">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/Slot"/>
+        <s4ener:belongsTo rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <saref:hasIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</saref:hasIdentifier>
+        <s4ener:hasDefaultDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">PT15M</s4ener:hasDefaultDuration>
+        <rdfs:label xml:lang="en">Slot 44 2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Slot_44_3 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Slot_44_3">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/Slot"/>
+        <s4ener:belongsTo rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <saref:hasIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</saref:hasIdentifier>
+        <s4ener:hasDefaultDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">PT15M</s4ener:hasDefaultDuration>
+        <rdfs:label xml:lang="en">Slot 44 3</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Slot_44_4 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Slot_44_4">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/Slot"/>
+        <s4ener:belongsTo rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <saref:hasIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</saref:hasIdentifier>
+        <s4ener:hasDefaultDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">PT15M</s4ener:hasDefaultDuration>
+        <rdfs:label xml:lang="en">Slot 44 4</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Slot_44_5 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Slot_44_5">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/Slot"/>
+        <s4ener:belongsTo rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <saref:hasIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</saref:hasIdentifier>
+        <s4ener:hasDefaultDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">PT15M</s4ener:hasDefaultDuration>
+        <rdfs:label xml:lang="en">Slot 44 5</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Slot_44_6 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Slot_44_6">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/Slot"/>
+        <s4ener:belongsTo rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <saref:hasIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</saref:hasIdentifier>
+        <s4ener:hasDefaultDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">PT15M</s4ener:hasDefaultDuration>
+        <rdfs:label xml:lang="en">Slot 44 6</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Slot_44_7 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Slot_44_7">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/Slot"/>
+        <s4ener:belongsTo rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <saref:hasIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">7</saref:hasIdentifier>
+        <s4ener:hasDefaultDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">PT15M</s4ener:hasDefaultDuration>
+        <rdfs:label xml:lang="en">Slot 44 7</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Slot_44_8 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Slot_44_8">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/Slot"/>
+        <s4ener:belongsTo rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <saref:hasIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</saref:hasIdentifier>
+        <s4ener:hasDefaultDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">PT15M</s4ener:hasDefaultDuration>
+        <rdfs:label xml:lang="en">Slot 44 8</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Slot_44_9 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Slot_44_9">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/Slot"/>
+        <s4ener:belongsTo rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <saref:hasIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9</saref:hasIdentifier>
+        <s4ener:hasDefaultDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">PT15M</s4ener:hasDefaultDuration>
+        <rdfs:label xml:lang="en">Slot 44 9</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Slot_45_0 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Slot_45_0">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/Slot"/>
+        <s4ener:belongsTo rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_45"/>
+        <saref:hasIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</saref:hasIdentifier>
+        <s4ener:hasDefaultDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">PT30M</s4ener:hasDefaultDuration>
+        <rdfs:label xml:lang="en">Slot 45 0</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Slot_45_1 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Slot_45_1">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/Slot"/>
+        <s4ener:belongsTo rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_45"/>
+        <saref:hasIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</saref:hasIdentifier>
+        <s4ener:hasDefaultDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">PT30M</s4ener:hasDefaultDuration>
+        <rdfs:label xml:lang="en">Slot 45 1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Slot_45_2 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Slot_45_2">
+        <rdf:type rdf:resource="https://saref.etsi.org/saref4ener/Slot"/>
+        <s4ener:belongsTo rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_45"/>
+        <saref:hasIdentifier rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</saref:hasIdentifier>
+        <s4ener:hasDefaultDuration rdf:datatype="http://www.w3.org/2001/XMLSchema#duration">PT30M</s4ener:hasDefaultDuration>
+        <rdfs:label xml:lang="en">Slot 45 2</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#TraceEvidence_S1 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#TraceEvidence_S1">
+        <rdf:type rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <observedOptionalPowerSequence rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_45"/>
+        <observedPreferredPowerSequence rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <evidenceMode>independentScenarioSessions</evidenceMode>
+        <evidencePreservesInteractionContext rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</evidencePreservesInteractionContext>
+        <evidencePreservesObservedBehavior rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</evidencePreservesObservedBehavior>
+        <observedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T09:00:00+00:00</observedAt>
+        <observedPlanStatus>VALID</observedPlanStatus>
+        <rdfs:label xml:lang="en">Scenario 1 trace evidence</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#TraceEvidence_S2 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#TraceEvidence_S2">
+        <rdf:type rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <observedScheduledPowerSequence rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <evidenceMode>independentScenarioSessions</evidenceMode>
+        <evidencePreservesInteractionContext rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</evidencePreservesInteractionContext>
+        <evidencePreservesObservedBehavior rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</evidencePreservesObservedBehavior>
+        <observedExecutionEnd rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T13:29:40+00:00</observedExecutionEnd>
+        <observedExecutionStart rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T11:00:20+00:00</observedExecutionStart>
+        <observedPlanUpdatedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T09:30:03+00:00</observedPlanUpdatedAt>
+        <observedRunStatus>COMPLETED</observedRunStatus>
+        <rdfs:label xml:lang="en">Scenario 2 trace evidence</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#TraceEvidence_S3 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#TraceEvidence_S3">
+        <rdf:type rdf:resource="https://w3id.org/bito#TraceEvidence"/>
+        <observedFormerPreferredPowerSequence rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <observedSelectedPowerSequence rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_45"/>
+        <evidenceMode>independentScenarioSessions</evidenceMode>
+        <evidencePreservesInteractionContext rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</evidencePreservesInteractionContext>
+        <evidencePreservesObservedBehavior rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</evidencePreservesObservedBehavior>
+        <observedExecutionEnd rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T13:29:40+00:00</observedExecutionEnd>
+        <observedExecutionStart rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T12:00:20+00:00</observedExecutionStart>
+        <observedPlanUpdatedAt rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2025-07-15T10:45:04+00:00</observedPlanUpdatedAt>
+        <observedRunStatus>COMPLETED</observedRunStatus>
+        <rdfs:label xml:lang="en">Scenario 3 trace evidence</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Transition_S1_PlanAvailable -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Transition_S1_PlanAvailable">
+        <rdf:type rdf:resource="https://w3id.org/bito#ExpectedStateTransition"/>
+        <hasRelevantPowerSequence rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <hasRelevantPowerSequence rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_45"/>
+        <hasSourceState rdf:resource="https://saref.etsi.org/saref4ener/Inactive"/>
+        <hasTargetState rdf:resource="https://saref.etsi.org/saref4ener/Scheduled"/>
+        <rdfs:label xml:lang="en">Plan available transition</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Transition_S2_PreferredSequenceShifted -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Transition_S2_PreferredSequenceShifted">
+        <rdf:type rdf:resource="https://w3id.org/bito#ExpectedStateTransition"/>
+        <hasRelevantPowerSequence rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <hasSourceState rdf:resource="https://saref.etsi.org/saref4ener/Scheduled"/>
+        <hasTargetState rdf:resource="https://saref.etsi.org/saref4ener/Scheduled"/>
+        <rdfs:label xml:lang="en">Preferred sequence shifted transition</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Transition_S3_FormerPreferredInactive -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Transition_S3_FormerPreferredInactive">
+        <rdf:type rdf:resource="https://w3id.org/bito#ExpectedStateTransition"/>
+        <hasRelevantPowerSequence rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_44"/>
+        <hasSourceState rdf:resource="https://saref.etsi.org/saref4ener/Scheduled"/>
+        <hasTargetState rdf:resource="https://saref.etsi.org/saref4ener/Inactive"/>
+        <rdfs:label xml:lang="en">Former preferred sequence inactive transition</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#Transition_S3_SelectedSequenceScheduled -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#Transition_S3_SelectedSequenceScheduled">
+        <rdf:type rdf:resource="https://w3id.org/bito#ExpectedStateTransition"/>
+        <hasRelevantPowerSequence rdf:resource="https://w3id.org/bito/example/flexible-start#PowerSequence_45"/>
+        <hasSourceState rdf:resource="https://saref.etsi.org/saref4ener/Inactive"/>
+        <hasTargetState rdf:resource="https://saref.etsi.org/saref4ener/Scheduled"/>
+        <rdfs:label xml:lang="en">Selected sequence scheduled transition</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#UCF_Plan_With_Power_Sequences -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#UCF_Plan_With_Power_Sequences">
+        <rdf:type rdf:resource="https://w3id.org/bito#UseCaseFunction"/>
+        <ucfName>UCF_Plan_With_Power_Sequences</ucfName>
+        <rdfs:label xml:lang="en">UCF Plan With Power Sequences</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#UCF_Select_Power_Sequence -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#UCF_Select_Power_Sequence">
+        <rdf:type rdf:resource="https://w3id.org/bito#UseCaseFunction"/>
+        <ucfName>UCF_Select_Power_Sequence</ucfName>
+        <rdfs:label xml:lang="en">UCF Select Power Sequence</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#UCF_Shift_Preferred_Power_Sequence -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#UCF_Shift_Preferred_Power_Sequence">
+        <rdf:type rdf:resource="https://w3id.org/bito#UseCaseFunction"/>
+        <ucfName>UCF_Shift_Preferred_Power_Sequence</ucfName>
+        <rdfs:label xml:lang="en">UCF Shift Preferred Power Sequence</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#ValidationResult_S1 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#ValidationResult_S1">
+        <rdf:type rdf:resource="https://w3id.org/bito#ValidationResult"/>
+        <basedOnTraceEvidence rdf:resource="https://w3id.org/bito/example/flexible-start#TraceEvidence_S1"/>
+        <hasVerdict rdf:resource="https://w3id.org/bito#PASS"/>
+        <validatesConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S1_PlanStatus"/>
+        <validatesConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S1_PlanStructure"/>
+        <achievesExpectedOutcome rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</achievesExpectedOutcome>
+        <satisfiesConstraint rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</satisfiesConstraint>
+        <validationMessage>Scenario 1 evidence represents a valid announced plan.</validationMessage>
+        <rdfs:label xml:lang="en">Scenario 1 validation result</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#ValidationResult_S2 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#ValidationResult_S2">
+        <rdf:type rdf:resource="https://w3id.org/bito#ValidationResult"/>
+        <basedOnTraceEvidence rdf:resource="https://w3id.org/bito/example/flexible-start#TraceEvidence_S2"/>
+        <hasVerdict rdf:resource="https://w3id.org/bito#PASS"/>
+        <validatesConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S2_RequestAccepted"/>
+        <validatesConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S2_RunCompleted"/>
+        <validatesConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S2_StartTimeUpdated"/>
+        <achievesExpectedOutcome rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</achievesExpectedOutcome>
+        <satisfiesConstraint rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</satisfiesConstraint>
+        <validationMessage>Scenario 2 evidence represents an accepted preferred-sequence shift and completed execution.</validationMessage>
+        <rdfs:label xml:lang="en">Scenario 2 validation result</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://w3id.org/bito/example/flexible-start#ValidationResult_S3 -->
+
+    <owl:NamedIndividual rdf:about="https://w3id.org/bito/example/flexible-start#ValidationResult_S3">
+        <rdf:type rdf:resource="https://w3id.org/bito#ValidationResult"/>
+        <basedOnTraceEvidence rdf:resource="https://w3id.org/bito/example/flexible-start#TraceEvidence_S3"/>
+        <hasVerdict rdf:resource="https://w3id.org/bito#PASS"/>
+        <validatesConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S3_FormerPreferredInactive"/>
+        <validatesConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S3_RequestAccepted"/>
+        <validatesConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S3_RunCompleted"/>
+        <validatesConstraint rdf:resource="https://w3id.org/bito/example/flexible-start#Constraint_S3_SelectedSequenceScheduled"/>
+        <achievesExpectedOutcome rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</achievesExpectedOutcome>
+        <satisfiesConstraint rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</satisfiesConstraint>
+        <validationMessage>Scenario 3 evidence represents an accepted alternative-sequence selection and completed execution.</validationMessage>
+        <rdfs:label xml:lang="en">Scenario 3 validation result</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://w3id.org/bito#BehavioralConstraint"/>
+            <rdf:Description rdf:about="https://w3id.org/bito#ExpectedOperationalOutcome"/>
+            <rdf:Description rdf:about="https://w3id.org/bito#ExpectedStateTransition"/>
+            <rdf:Description rdf:about="https://w3id.org/bito#ObservedEvent"/>
+            <rdf:Description rdf:about="https://w3id.org/bito#ObservedExecution"/>
+            <rdf:Description rdf:about="https://w3id.org/bito#ObservedStateChange"/>
+            <rdf:Description rdf:about="https://w3id.org/bito#Scenario"/>
+            <rdf:Description rdf:about="https://w3id.org/bito#TraceEvidence"/>
+            <rdf:Description rdf:about="https://w3id.org/bito#UseCase"/>
+            <rdf:Description rdf:about="https://w3id.org/bito#UseCaseFunction"/>
+            <rdf:Description rdf:about="https://w3id.org/bito#ValidationResult"/>
+            <rdf:Description rdf:about="https://w3id.org/bito#ValidationVerdict"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

@@ -1,0 +1,78 @@
+DL Query checks for Behavioral Interoperability Testing Ontology (BITO)
+
+Open Behavioral_Interoperability_Testing_Ontology.ttl in Protégé.
+Start HermiT.
+Open the DL Query tab.
+Tick Instances only.
+Run the following queries one by one.
+
+
+CQ1
+'Use case'
+Scenario
+
+CQ2
+Device
+Appliance
+
+CQ3
+Agent
+
+CQ4
+'Expected state transition'
+
+CQ5
+'Observed event'
+
+CQ6
+'Behavioral constraint'
+'State constraint'
+'Timing constraint'
+'Outcome constraint'
+'Transition constraint'
+'Trigger constraint'
+'Ordering constraint'
+
+CQ7
+'Expected operational outcome'
+
+CQ8
+'Observed execution'
+'Observed execution' and 'has observed event' some 'Observed event'
+
+CQ9
+'Observed event' and 'event order index' some <http://www.w3.org/2001/XMLSchema#integer>
+
+CQ10
+'Observed event' and 'request timestamp' some <http://www.w3.org/2001/XMLSchema#dateTime>
+'Observed event' and 'accepted at' some <http://www.w3.org/2001/XMLSchema#dateTime>
+'Observed event' and 'observed at' some <http://www.w3.org/2001/XMLSchema#dateTime>
+'Observed event' and 'observed plan updated at' some <http://www.w3.org/2001/XMLSchema#dateTime>
+'Observed event' and 'observed execution start' some <http://www.w3.org/2001/XMLSchema#dateTime>
+'Observed event' and 'observed execution end' some <http://www.w3.org/2001/XMLSchema#dateTime>
+
+CQ11
+'Observed state change'
+'Observed state change' and 'has observed source state' some State
+'Observed state change' and 'has observed target state' some State
+
+'Observed state change' //Checks that observed state changes are represented.
+
+CQ12
+'Trace evidence'
+'Observed execution' and 'has trace evidence' some 'Trace evidence'
+
+CQ12a
+'Trace evidence' and 'evidence preserves interaction context' some <http://www.w3.org/2001/XMLSchema#boolean>
+'Trace evidence' and 'evidence preserves observed behavior' some <http://www.w3.org/2001/XMLSchema#boolean>
+
+CQ13
+'Validation result'
+'Validation result' and 'satisfies constraint' some <http://www.w3.org/2001/XMLSchema#boolean>
+
+CQ14
+'Validation result' and 'achieves expected outcome' some <http://www.w3.org/2001/XMLSchema#boolean>
+
+CQ15
+'Validation verdict'
+'Validation result' and 'has verdict' some 'Validation verdict'
