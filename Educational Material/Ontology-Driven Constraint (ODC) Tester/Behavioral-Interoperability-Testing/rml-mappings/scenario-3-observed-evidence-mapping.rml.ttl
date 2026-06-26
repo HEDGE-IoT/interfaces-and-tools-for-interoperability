@@ -1,0 +1,328 @@
+@prefix rr:      <http://www.w3.org/ns/r2rml#> .
+@prefix rml:     <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:      <http://semweb.mmlab.be/ns/ql#> .
+
+@prefix ex:      <https://w3id.org/bito/example/flexible-start/> .
+@prefix bito:     <https://w3id.org/bito#> .
+@prefix saref:   <https://saref.etsi.org/core/> .
+@prefix s4ener:  <https://saref.etsi.org/saref4ener/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@base <https://w3id.org/bito/example/flexible-start/mapping/> .
+
+#################################################################
+# 1. Observed execution
+#################################################################
+
+<#ObservedExecutionMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "input/simulated_observed_evidence_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$"
+    ] ;
+    rr:subjectMap [
+        rr:constant ex:ObservedExecution_Scenario_3 ;
+        rr:class bito:ObservedExecution
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:evidenceMode ;
+        rr:objectMap [ rml:reference "evidenceMode" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:hasIUT ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/device/{deviceId}/entity/{entityId}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:hasObservedEvent ;
+        rr:objectMap [ rr:constant ex:ObservedEvent_Scenario3_SelectPowerSequence ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:hasObservedStateChange ;
+        rr:objectMap [ rr:constant ex:ObservedStateChange_Scenario3_SelectedSequence ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:hasObservedStateChange ;
+        rr:objectMap [ rr:constant ex:ObservedStateChange_Scenario3_FormerPreferredSequence ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:hasTraceEvidence ;
+        rr:objectMap [ rr:constant ex:TraceEvidence_Scenario_3 ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:observedExecutionStart ;
+        rr:objectMap [ rml:reference "evidence.observedExecutionStart" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:observedExecutionEnd ;
+        rr:objectMap [ rml:reference "evidence.observedExecutionEnd" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:observedRunStatus ;
+        rr:objectMap [ rml:reference "evidence.observedRunStatus" ]
+    ] .
+
+#################################################################
+# 2. Scenario links
+#################################################################
+
+<#ScenarioObservedExecutionLinkMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_observed_evidence_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$"
+    ] ;
+    rr:subjectMap [
+        rr:constant ex:Scenario_3 ;
+        rr:class bito:Scenario
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:hasObservedExecution ;
+        rr:objectMap [ rr:constant ex:ObservedExecution_Scenario_3 ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:hasInteractingActorSystem ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/actor/{evidence.interactingActorSystem}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:hasTriggeringInteraction ;
+        rr:objectMap [ rr:constant ex:ObservedEvent_Scenario3_SelectPowerSequence ]
+    ] .
+
+#################################################################
+# 3. Interacting actor system
+#################################################################
+
+<#InteractingActorSystemMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "input/simulated_observed_evidence_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/bito/example/flexible-start/actor/{evidence.interactingActorSystem}" ;
+        rr:class prov:Agent
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [ rml:reference "evidence.interactingActorSystem" ]
+    ] .
+
+#################################################################
+# 4. Observed request event
+#################################################################
+
+<#ObservedRequestEventMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "input/simulated_observed_evidence_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$"
+    ] ;
+    rr:subjectMap [
+        rr:constant ex:ObservedEvent_Scenario3_SelectPowerSequence ;
+        rr:class bito:ObservedEvent ;
+        rr:class prov:Activity
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:observedInteractionKind ;
+        rr:objectMap [ rml:reference "evidence.observedInteractionKind" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:interactionEndpoint ;
+        rr:objectMap [ rml:reference "evidence.interactionEndpoint" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:requestTimestamp ;
+        rr:objectMap [ rml:reference "evidence.requestTimestamp" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:requestedPowerSequence ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/power-sequence/{evidence.requestedSequenceId}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:requestedStartTime ;
+        rr:objectMap [ rml:reference "evidence.requestedStartTime" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:acceptanceOutcome ;
+        rr:objectMap [ rml:reference "evidence.acceptanceOutcome" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:acceptedAt ;
+        rr:objectMap [ rml:reference "evidence.acceptedAt" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prov:wasAssociatedWith ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/actor/{evidence.interactingActorSystem}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:hasIUT ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/device/{deviceId}/entity/{entityId}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:hasTraceEvidence ;
+        rr:objectMap [ rr:constant ex:TraceEvidence_Scenario_3 ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:hasObservedExecution ;
+        rr:objectMap [ rr:constant ex:ObservedExecution_Scenario_3 ]
+    ] .
+
+#################################################################
+# 5. Selected sequence observed state change
+#################################################################
+
+<#SelectedSequenceObservedStateChangeMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "input/simulated_observed_evidence_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$"
+    ] ;
+    rr:subjectMap [
+        rr:constant ex:ObservedStateChange_Scenario3_SelectedSequence ;
+        rr:class bito:ObservedStateChange
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prov:specializationOf ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/power-sequence/{evidence.observedSelectedSequenceId}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate saref:hasState ;
+        rr:objectMap [ rr:constant s4ener:Scheduled ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:observedPlanUpdatedAt ;
+        rr:objectMap [ rml:reference "evidence.observedPlanUpdatedAt" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:hasStartTime ;
+        rr:objectMap [ rml:reference "evidence.observedUpdatedStartTime" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:hasEndTime ;
+        rr:objectMap [ rml:reference "evidence.observedUpdatedEndTime" ; rr:datatype xsd:dateTime ]
+    ] .
+
+#################################################################
+# 6. Former preferred sequence observed state change
+#################################################################
+
+<#FormerPreferredSequenceObservedStateChangeMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "input/simulated_observed_evidence_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$"
+    ] ;
+    rr:subjectMap [
+        rr:constant ex:ObservedStateChange_Scenario3_FormerPreferredSequence ;
+        rr:class bito:ObservedStateChange
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prov:specializationOf ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/power-sequence/{evidence.observedFormerPreferredSequenceId}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate saref:hasState ;
+        rr:objectMap [ rr:constant s4ener:Inactive ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:observedPlanUpdatedAt ;
+        rr:objectMap [ rml:reference "evidence.observedPlanUpdatedAt" ; rr:datatype xsd:dateTime ]
+    ] .
+
+#################################################################
+# 7. Trace evidence
+#################################################################
+
+<#TraceEvidenceMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "input/simulated_observed_evidence_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$"
+    ] ;
+    rr:subjectMap [
+        rr:constant ex:TraceEvidence_Scenario_3 ;
+        rr:class bito:TraceEvidence ;
+        rr:class prov:Entity
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dcterms:identifier ;
+        rr:objectMap [ rr:constant "TraceEvidence_Scenario_3" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:evidenceMode ;
+        rr:objectMap [ rml:reference "evidenceMode" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:observedSelectedPowerSequence ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/power-sequence/{evidence.observedSelectedSequenceId}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:observedFormerPreferredPowerSequence ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/power-sequence/{evidence.observedFormerPreferredSequenceId}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:observedPlanUpdatedAt ;
+        rr:objectMap [ rml:reference "evidence.observedPlanUpdatedAt" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:observedExecutionStart ;
+        rr:objectMap [ rml:reference "evidence.observedExecutionStart" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:observedExecutionEnd ;
+        rr:objectMap [ rml:reference "evidence.observedExecutionEnd" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:observedRunStatus ;
+        rr:objectMap [ rml:reference "evidence.observedRunStatus" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:evidencePreservesInteractionContext ;
+        rr:objectMap [
+            rr:constant "true" ;
+            rr:datatype xsd:boolean
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:evidencePreservesObservedBehavior ;
+        rr:objectMap [
+            rr:constant "true" ;
+            rr:datatype xsd:boolean
+        ]
+    ] .

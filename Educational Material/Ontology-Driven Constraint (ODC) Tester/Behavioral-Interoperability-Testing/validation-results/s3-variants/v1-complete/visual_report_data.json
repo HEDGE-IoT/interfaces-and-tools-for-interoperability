@@ -1,0 +1,249 @@
+{
+  "scenario": "Scenario_3",
+  "scenario_label": "Scenario 3 - Select Alternative Power Sequence",
+  "validation_type": "Flow Manager-style behavioral validation",
+  "final_verdict": "PASS",
+  "rule_counts": {
+    "PASS": 9,
+    "FAIL": 0,
+    "INCONCLUSIVE": 0,
+    "SKIPPED": 0
+  },
+  "step_summary": [
+    {
+      "step_number": "1",
+      "step_title": "Initial State and Preconditions",
+      "status": "PASS",
+      "total_checks": "4",
+      "pass_count": "4",
+      "fail_count": "0",
+      "inconclusive_count": "0",
+      "skipped_count": "0"
+    },
+    {
+      "step_number": "2",
+      "step_title": "Accepted State Transition",
+      "status": "PASS",
+      "total_checks": "3",
+      "pass_count": "3",
+      "fail_count": "0",
+      "inconclusive_count": "0",
+      "skipped_count": "0"
+    },
+    {
+      "step_number": "3",
+      "step_title": "Execution Timing and Final Outcome",
+      "status": "PASS",
+      "total_checks": "2",
+      "pass_count": "2",
+      "fail_count": "0",
+      "inconclusive_count": "0",
+      "skipped_count": "0"
+    }
+  ],
+  "timeline_events": [
+    {
+      "event_order": "1",
+      "event_label": "Selection request observed",
+      "event_type": "trigger",
+      "timestamp": "2025-07-15T10:45:00+00:00",
+      "related_resource": "https://w3id.org/bito/example/flexible-start/ObservedEvent_Scenario3_SelectPowerSequence",
+      "status": "PASS"
+    },
+    {
+      "event_order": "2",
+      "event_label": "Request acceptance recorded",
+      "event_type": "acceptance",
+      "timestamp": "2025-07-15T10:45:02+00:00",
+      "related_resource": "https://w3id.org/bito/example/flexible-start/ObservedEvent_Scenario3_SelectPowerSequence",
+      "status": "accepted"
+    },
+    {
+      "event_order": "3",
+      "event_label": "Requested start time",
+      "event_type": "request-parameter",
+      "timestamp": "2025-07-15T12:00:00+00:00",
+      "related_resource": "https://w3id.org/bito/example/flexible-start/ObservedEvent_Scenario3_SelectPowerSequence",
+      "status": "PASS"
+    },
+    {
+      "event_order": "4",
+      "event_label": "Updated planned start",
+      "event_type": "plan",
+      "timestamp": "2025-07-15T12:00:00+00:00",
+      "related_resource": "https://w3id.org/bito/example/flexible-start/power-sequence/45",
+      "status": "PASS"
+    },
+    {
+      "event_order": "5",
+      "event_label": "Updated planned end",
+      "event_type": "plan",
+      "timestamp": "2025-07-15T13:30:00+00:00",
+      "related_resource": "https://w3id.org/bito/example/flexible-start/power-sequence/45",
+      "status": "PASS"
+    },
+    {
+      "event_order": "6",
+      "event_label": "Observed execution start",
+      "event_type": "execution",
+      "timestamp": "2025-07-15T12:00:20+00:00",
+      "related_resource": "https://w3id.org/bito/example/flexible-start/ObservedExecution_Scenario_3",
+      "status": "PASS"
+    },
+    {
+      "event_order": "7",
+      "event_label": "Observed execution end",
+      "event_type": "execution",
+      "timestamp": "2025-07-15T13:29:40+00:00",
+      "related_resource": "https://w3id.org/bito/example/flexible-start/ObservedExecution_Scenario_3",
+      "status": "PASS"
+    },
+    {
+      "event_order": "8",
+      "event_label": "Observed run status",
+      "event_type": "outcome",
+      "timestamp": "2025-07-15T13:29:40+00:00",
+      "related_resource": "https://w3id.org/bito/example/flexible-start/ObservedExecution_Scenario_3",
+      "status": "COMPLETED"
+    }
+  ],
+  "steps": [
+    {
+      "step_number": 1,
+      "step_key": "Step1-InitialStateAndPreconditions",
+      "step_title": "Initial State and Preconditions",
+      "status": "PASS",
+      "checks": [
+        {
+          "check_id": "S3-R1",
+          "label": "selected sequence 45 is initially inactive",
+          "status": "PASS",
+          "target_node": "ex:ObservedEvent_Scenario3_SelectPowerSequence",
+          "source_shape": "val:Shape_S3_R1_SelectedSequenceInitiallyInactive",
+          "result_path": "",
+          "source_constraint_component": "",
+          "messages": [
+            "PASS: S3-R1 satisfied. pySHACL returned no violation."
+          ]
+        },
+        {
+          "check_id": "S3-R2",
+          "label": "requested start time is inside the allowed window",
+          "status": "PASS",
+          "target_node": "ex:ObservedEvent_Scenario3_SelectPowerSequence",
+          "source_shape": "val:Shape_S3_R2_RequestedStartTimeWithinAllowedWindow",
+          "result_path": "",
+          "source_constraint_component": "",
+          "messages": [
+            "PASS: S3-R2 satisfied. pySHACL returned no violation."
+          ]
+        },
+        {
+          "check_id": "S3-R3",
+          "label": "remote-control preconditions are satisfied",
+          "status": "PASS",
+          "target_node": "ex:ObservedEvent_Scenario3_SelectPowerSequence",
+          "source_shape": "val:Shape_S3_R3_RemoteControlPreconditions",
+          "result_path": "",
+          "source_constraint_component": "",
+          "messages": [
+            "PASS: S3-R3 satisfied. pySHACL returned no violation."
+          ]
+        },
+        {
+          "check_id": "S3-R4",
+          "label": "reselection policy is respected",
+          "status": "PASS",
+          "target_node": "ex:ObservedEvent_Scenario3_SelectPowerSequence",
+          "source_shape": "val:Shape_S3_R4_ReselectionPolicy",
+          "result_path": "",
+          "source_constraint_component": "",
+          "messages": [
+            "PASS: S3-R4 satisfied. pySHACL returned no violation."
+          ]
+        }
+      ]
+    },
+    {
+      "step_number": 2,
+      "step_key": "Step2-AcceptedStateTransition",
+      "step_title": "Accepted State Transition",
+      "status": "PASS",
+      "checks": [
+        {
+          "check_id": "S3-G1",
+          "label": "Acceptance gate: request acceptance outcome is accepted",
+          "status": "PASS",
+          "target_node": "ex:ObservedEvent_Scenario3_SelectPowerSequence",
+          "source_shape": "val:Shape_S3_G1_AcceptanceGate",
+          "result_path": "",
+          "source_constraint_component": "",
+          "messages": [
+            "PASS: S3-G1 satisfied. pySHACL returned no violation."
+          ]
+        },
+        {
+          "check_id": "S3-R5",
+          "label": "selected sequence 45 became scheduled",
+          "status": "PASS",
+          "target_node": "ex:ObservedEvent_Scenario3_SelectPowerSequence",
+          "source_shape": "val:Shape_S3_R5_SelectedSequenceBecomesScheduled",
+          "result_path": "",
+          "source_constraint_component": "",
+          "messages": [
+            "PASS: S3-R5 satisfied. pySHACL returned no violation."
+          ]
+        },
+        {
+          "check_id": "S3-R6",
+          "label": "former preferred sequence 44 became inactive",
+          "status": "PASS",
+          "target_node": "ex:ObservedEvent_Scenario3_SelectPowerSequence",
+          "source_shape": "val:Shape_S3_R6_FormerPreferredSequenceBecomesInactive",
+          "result_path": "",
+          "source_constraint_component": "",
+          "messages": [
+            "PASS: S3-R6 satisfied. pySHACL returned no violation."
+          ]
+        }
+      ]
+    },
+    {
+      "step_number": 3,
+      "step_key": "Step3-ExecutionTimingAndOutcome",
+      "step_title": "Execution Timing and Final Outcome",
+      "status": "PASS",
+      "checks": [
+        {
+          "check_id": "S3-R7",
+          "label": "execution started after the updated planned start time",
+          "status": "PASS",
+          "target_node": "ex:ObservedEvent_Scenario3_SelectPowerSequence",
+          "source_shape": "val:Shape_S3_R7_ExecutionStartNotBeforeUpdatedPlan",
+          "result_path": "",
+          "source_constraint_component": "",
+          "messages": [
+            "PASS: S3-R7 satisfied. pySHACL returned no violation."
+          ]
+        },
+        {
+          "check_id": "S3-R8",
+          "label": "run status is COMPLETED",
+          "status": "PASS",
+          "target_node": "ex:ObservedExecution_Scenario_3",
+          "source_shape": "val:Shape_S3_R8_RunStatusCompleted",
+          "result_path": "",
+          "source_constraint_component": "",
+          "messages": [
+            "PASS: S3-R8 satisfied. pySHACL returned no violation."
+          ]
+        }
+      ]
+    }
+  ],
+  "generated_outputs": {
+    "visual_report_data": "C:\\Users\\tareqc\\Downloads\\Behavioral Testing\\validation_output\\visual_report_data.json",
+    "validation_results_graph": "C:\\Users\\tareqc\\Downloads\\Behavioral Testing\\validation_output\\validation_results_graph.ttl",
+    "rdf_trace_graph": "C:\\Users\\tareqc\\Downloads\\Behavioral Testing\\validation_output\\rdf_trace_graph.ttl"
+  }
+}

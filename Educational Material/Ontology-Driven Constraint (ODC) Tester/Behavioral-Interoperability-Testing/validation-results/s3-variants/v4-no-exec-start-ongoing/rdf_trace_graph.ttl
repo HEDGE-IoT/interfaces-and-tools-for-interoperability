@@ -1,0 +1,130 @@
+@prefix bito: <https://w3id.org/bito#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <https://w3id.org/bito/example/flexible-start/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix val: <https://w3id.org/bito/example/flexible-start/validation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+val:RDFTraceGraph_Scenario_3 a val:RDFTraceGraph ;
+    dcterms:created "2026-06-26T16:51:20.629049+00:00"^^xsd:dateTime ;
+    bito:acceptanceOutcome "accepted" ;
+    bito:acceptedAt "2025-07-15T10:45:02+00:00"^^xsd:dateTime ;
+    bito:hasVerdict bito:INCONCLUSIVE ;
+    bito:observedExecutionEnd "2025-07-15T13:29:40+00:00"^^xsd:dateTime ;
+    bito:observedRunStatus "ONGOING" ;
+    bito:requestTimestamp "2025-07-15T10:45:00+00:00"^^xsd:dateTime ;
+    bito:requestedStartTime "2025-07-15T12:00:00+00:00"^^xsd:dateTime ;
+    val:canonicalTriggeringInteraction ex:ObservedEvent_Scenario3_SelectPowerSequence ;
+    val:finalBehavioralVerdict "INCONCLUSIVE" ;
+    val:hasTraceStep val:TraceStep_1,
+        val:TraceStep_2,
+        val:TraceStep_3 ;
+    val:observedExecution ex:ObservedExecution_Scenario_3 ;
+    val:traceEvidence ex:TraceEvidence_Scenario_3 ;
+    val:tracesScenario ex:Scenario_3 .
+
+val:TraceEvent_001_S3_R1 a val:TraceEvent ;
+    rdfs:label "S3-R1: PASS" ;
+    dcterms:identifier "S3-R1" ;
+    sh:resultMessage "PASS: S3-R1 satisfied. pySHACL returned no violation." ;
+    bito:hasVerdict bito:PASS ;
+    val:status "PASS" ;
+    val:validationStep "Step1-InitialStateAndPreconditions" .
+
+val:TraceEvent_002_S3_R2 a val:TraceEvent ;
+    rdfs:label "S3-R2: PASS" ;
+    dcterms:identifier "S3-R2" ;
+    sh:resultMessage "PASS: S3-R2 satisfied. pySHACL returned no violation." ;
+    bito:hasVerdict bito:PASS ;
+    val:status "PASS" ;
+    val:validationStep "Step1-InitialStateAndPreconditions" .
+
+val:TraceEvent_003_S3_R3 a val:TraceEvent ;
+    rdfs:label "S3-R3: PASS" ;
+    dcterms:identifier "S3-R3" ;
+    sh:resultMessage "PASS: S3-R3 satisfied. pySHACL returned no violation." ;
+    bito:hasVerdict bito:PASS ;
+    val:status "PASS" ;
+    val:validationStep "Step1-InitialStateAndPreconditions" .
+
+val:TraceEvent_004_S3_R4 a val:TraceEvent ;
+    rdfs:label "S3-R4: PASS" ;
+    dcterms:identifier "S3-R4" ;
+    sh:resultMessage "PASS: S3-R4 satisfied. pySHACL returned no violation." ;
+    bito:hasVerdict bito:PASS ;
+    val:status "PASS" ;
+    val:validationStep "Step1-InitialStateAndPreconditions" .
+
+val:TraceEvent_005_S3_G1 a val:TraceEvent ;
+    rdfs:label "S3-G1: PASS" ;
+    dcterms:identifier "S3-G1" ;
+    sh:resultMessage "PASS: S3-G1 satisfied. pySHACL returned no violation." ;
+    bito:hasVerdict bito:PASS ;
+    val:status "PASS" ;
+    val:validationStep "Step2-AcceptedStateTransition" .
+
+val:TraceEvent_006_S3_R5 a val:TraceEvent ;
+    rdfs:label "S3-R5: PASS" ;
+    dcterms:identifier "S3-R5" ;
+    sh:resultMessage "PASS: S3-R5 satisfied. pySHACL returned no violation." ;
+    bito:hasVerdict bito:PASS ;
+    val:status "PASS" ;
+    val:validationStep "Step2-AcceptedStateTransition" .
+
+val:TraceEvent_007_S3_R6 a val:TraceEvent ;
+    rdfs:label "S3-R6: PASS" ;
+    dcterms:identifier "S3-R6" ;
+    sh:resultMessage "PASS: S3-R6 satisfied. pySHACL returned no violation." ;
+    bito:hasVerdict bito:PASS ;
+    val:status "PASS" ;
+    val:validationStep "Step2-AcceptedStateTransition" .
+
+val:TraceEvent_008_S3_R7 a val:TraceEvent ;
+    rdfs:label "S3-R7: INCONCLUSIVE" ;
+    dcterms:identifier "S3-R7" ;
+    sh:resultMessage "S3-R7 INCONCLUSIVE: observed execution start time is missing." ;
+    bito:hasVerdict bito:INCONCLUSIVE ;
+    val:status "INCONCLUSIVE" ;
+    val:validationStep "Step3-ExecutionTimingAndOutcome" .
+
+val:TraceEvent_009_S3_R8 a val:TraceEvent ;
+    rdfs:label "S3-R8: FAIL" ;
+    dcterms:identifier "S3-R8" ;
+    sh:resultMessage "S3-R8 FAIL: observedRunStatus must be COMPLETED." ;
+    bito:hasVerdict bito:FAIL ;
+    val:status "FAIL" ;
+    val:validationStep "Step3-ExecutionTimingAndOutcome" .
+
+val:TraceStep_1 a val:TraceStep ;
+    rdfs:label "Initial State and Preconditions" ;
+    bito:hasVerdict bito:PASS ;
+    val:hasTraceEvent val:TraceEvent_001_S3_R1,
+        val:TraceEvent_002_S3_R2,
+        val:TraceEvent_003_S3_R3,
+        val:TraceEvent_004_S3_R4 ;
+    val:nextStep val:TraceStep_2 ;
+    val:status "PASS" ;
+    val:stepNumber 1 ;
+    val:validationStep "Step1-InitialStateAndPreconditions" .
+
+val:TraceStep_2 a val:TraceStep ;
+    rdfs:label "Accepted State Transition" ;
+    bito:hasVerdict bito:PASS ;
+    val:hasTraceEvent val:TraceEvent_005_S3_G1,
+        val:TraceEvent_006_S3_R5,
+        val:TraceEvent_007_S3_R6 ;
+    val:nextStep val:TraceStep_3 ;
+    val:status "PASS" ;
+    val:stepNumber 2 ;
+    val:validationStep "Step2-AcceptedStateTransition" .
+
+val:TraceStep_3 a val:TraceStep ;
+    rdfs:label "Execution Timing and Final Outcome" ;
+    bito:hasVerdict bito:INCONCLUSIVE ;
+    val:hasTraceEvent val:TraceEvent_008_S3_R7,
+        val:TraceEvent_009_S3_R8 ;
+    val:status "INCONCLUSIVE" ;
+    val:stepNumber 3 ;
+    val:validationStep "Step3-ExecutionTimingAndOutcome" .
+

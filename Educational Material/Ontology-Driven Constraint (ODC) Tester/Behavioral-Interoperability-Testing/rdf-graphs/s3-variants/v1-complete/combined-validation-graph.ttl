@@ -1,0 +1,308 @@
+@prefix bito: <https://w3id.org/bito#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <https://w3id.org/bito/example/flexible-start/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix s4ener: <https://saref.etsi.org/saref4ener/> .
+@prefix saref: <https://saref.etsi.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://w3id.org/bito/example/flexible-start/actor/SmartAppliance> a saref:Appliance,
+        saref:Device ;
+    rdfs:label "SmartAppliance" .
+
+<https://w3id.org/bito/example/flexible-start/device/000000000001/entity/0/power-profile> a s4ener:PowerProfile ;
+    s4ener:nodeRemoteControllable true ;
+    s4ener:supportsReselection true .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/0> a s4ener:Slot ;
+    saref:hasDescription "" ;
+    saref:hasIdentifier 0 ;
+    s4ener:belongsTo <https://w3id.org/bito/example/flexible-start/power-sequence/44> ;
+    s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+    s4ener:hasSlotValue <https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/0/value> .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/1> a s4ener:Slot ;
+    saref:hasDescription "" ;
+    saref:hasIdentifier 1 ;
+    s4ener:belongsTo <https://w3id.org/bito/example/flexible-start/power-sequence/44> ;
+    s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+    s4ener:hasSlotValue <https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/1/value> .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/2> a s4ener:Slot ;
+    saref:hasDescription "" ;
+    saref:hasIdentifier 2 ;
+    s4ener:belongsTo <https://w3id.org/bito/example/flexible-start/power-sequence/44> ;
+    s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+    s4ener:hasSlotValue <https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/2/value> .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/3> a s4ener:Slot ;
+    saref:hasDescription "" ;
+    saref:hasIdentifier 3 ;
+    s4ener:belongsTo <https://w3id.org/bito/example/flexible-start/power-sequence/44> ;
+    s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+    s4ener:hasSlotValue <https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/3/value> .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/4> a s4ener:Slot ;
+    saref:hasDescription "" ;
+    saref:hasIdentifier 4 ;
+    s4ener:belongsTo <https://w3id.org/bito/example/flexible-start/power-sequence/44> ;
+    s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+    s4ener:hasSlotValue <https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/4/value> .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/5> a s4ener:Slot ;
+    saref:hasDescription "" ;
+    saref:hasIdentifier 5 ;
+    s4ener:belongsTo <https://w3id.org/bito/example/flexible-start/power-sequence/44> ;
+    s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+    s4ener:hasSlotValue <https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/5/value> .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/6> a s4ener:Slot ;
+    saref:hasDescription "" ;
+    saref:hasIdentifier 6 ;
+    s4ener:belongsTo <https://w3id.org/bito/example/flexible-start/power-sequence/44> ;
+    s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+    s4ener:hasSlotValue <https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/6/value> .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/7> a s4ener:Slot ;
+    saref:hasDescription "" ;
+    saref:hasIdentifier 7 ;
+    s4ener:belongsTo <https://w3id.org/bito/example/flexible-start/power-sequence/44> ;
+    s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+    s4ener:hasSlotValue <https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/7/value> .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/8> a s4ener:Slot ;
+    saref:hasDescription "" ;
+    saref:hasIdentifier 8 ;
+    s4ener:belongsTo <https://w3id.org/bito/example/flexible-start/power-sequence/44> ;
+    s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+    s4ener:hasSlotValue <https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/8/value> .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/9> a s4ener:Slot ;
+    saref:hasDescription "" ;
+    saref:hasIdentifier 9 ;
+    s4ener:belongsTo <https://w3id.org/bito/example/flexible-start/power-sequence/44> ;
+    s4ener:hasDefaultDuration "PT15M"^^xsd:duration ;
+    s4ener:hasSlotValue <https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/9/value> .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/45/slot/0> a s4ener:Slot ;
+    saref:hasDescription "" ;
+    saref:hasIdentifier 0 ;
+    s4ener:belongsTo <https://w3id.org/bito/example/flexible-start/power-sequence/45> ;
+    s4ener:hasDefaultDuration "PT30M"^^xsd:duration ;
+    s4ener:hasSlotValue <https://w3id.org/bito/example/flexible-start/power-sequence/45/slot/0/value> .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/45/slot/1> a s4ener:Slot ;
+    saref:hasDescription "" ;
+    saref:hasIdentifier 1 ;
+    s4ener:belongsTo <https://w3id.org/bito/example/flexible-start/power-sequence/45> ;
+    s4ener:hasDefaultDuration "PT30M"^^xsd:duration ;
+    s4ener:hasSlotValue <https://w3id.org/bito/example/flexible-start/power-sequence/45/slot/1/value> .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/45/slot/2> a s4ener:Slot ;
+    saref:hasDescription "" ;
+    saref:hasIdentifier 2 ;
+    s4ener:belongsTo <https://w3id.org/bito/example/flexible-start/power-sequence/45> ;
+    s4ener:hasDefaultDuration "PT30M"^^xsd:duration ;
+    s4ener:hasSlotValue <https://w3id.org/bito/example/flexible-start/power-sequence/45/slot/2/value> .
+
+<https://w3id.org/bito/example/flexible-start/snapshot/after-scenario-3/sequence/44> a bito:BehavioralElement ;
+    dcterms:description "State snapshot after Scenario 3 selection request" ;
+    prov:specializationOf <https://w3id.org/bito/example/flexible-start/power-sequence/44> ;
+    saref:hasState s4ener:Inactive ;
+    s4ener:hasEarliestStartTime "2025-07-15T08:00:00+00:00"^^xsd:dateTime ;
+    s4ener:hasLatestEndTime "2025-07-15T14:30:00+00:00"^^xsd:dateTime .
+
+<https://w3id.org/bito/example/flexible-start/snapshot/after-scenario-3/sequence/45> a bito:BehavioralElement ;
+    dcterms:description "State snapshot after Scenario 3 selection request" ;
+    prov:specializationOf <https://w3id.org/bito/example/flexible-start/power-sequence/45> ;
+    saref:hasState s4ener:Scheduled ;
+    s4ener:hasEarliestStartTime "2025-07-15T08:00:00+00:00"^^xsd:dateTime ;
+    s4ener:hasEndTime "2025-07-15T13:30:00+00:00"^^xsd:dateTime ;
+    s4ener:hasLatestEndTime "2025-07-15T14:30:00+00:00"^^xsd:dateTime ;
+    s4ener:hasStartTime "2025-07-15T12:00:00+00:00"^^xsd:dateTime .
+
+<https://w3id.org/bito/example/flexible-start/snapshot/initial/sequence/44> a bito:BehavioralElement ;
+    dcterms:description "Initial plan state snapshot" ;
+    prov:specializationOf <https://w3id.org/bito/example/flexible-start/power-sequence/44> ;
+    saref:hasState s4ener:Scheduled ;
+    s4ener:hasEarliestStartTime "2025-07-15T08:00:00+00:00"^^xsd:dateTime ;
+    s4ener:hasEndTime "2025-07-15T12:30:00+00:00"^^xsd:dateTime ;
+    s4ener:hasLatestEndTime "2025-07-15T14:30:00+00:00"^^xsd:dateTime ;
+    s4ener:hasStartTime "2025-07-15T10:00:00+00:00"^^xsd:dateTime .
+
+<https://w3id.org/bito/example/flexible-start/snapshot/initial/sequence/45> a bito:BehavioralElement ;
+    dcterms:description "Initial plan state snapshot" ;
+    prov:specializationOf <https://w3id.org/bito/example/flexible-start/power-sequence/45> ;
+    saref:hasState s4ener:Inactive ;
+    s4ener:hasEarliestStartTime "2025-07-15T08:00:00+00:00"^^xsd:dateTime ;
+    s4ener:hasLatestEndTime "2025-07-15T14:30:00+00:00"^^xsd:dateTime .
+
+<https://w3id.org/bito/example/flexible-start/usecase/flexibleStartForWhiteGoods> a bito:UseCase ;
+    rdfs:label "flexibleStartForWhiteGoods" ;
+    dcterms:hasVersion "v1" ;
+    dcterms:identifier "flexibleStartForWhiteGoods" ;
+    bito:hasScenario ex:Scenario_3 ;
+    bito:useCaseVersion "1.0.0" .
+
+ex:ObservedStateChange_Scenario3_FormerPreferredSequence a bito:ObservedStateChange ;
+    prov:specializationOf <https://w3id.org/bito/example/flexible-start/power-sequence/44> ;
+    saref:hasState s4ener:Inactive ;
+    bito:observedPlanUpdatedAt "2025-07-15T10:45:04+00:00"^^xsd:dateTime .
+
+ex:ObservedStateChange_Scenario3_SelectedSequence a bito:ObservedStateChange ;
+    prov:specializationOf <https://w3id.org/bito/example/flexible-start/power-sequence/45> ;
+    saref:hasState s4ener:Scheduled ;
+    s4ener:hasEndTime "2025-07-15T13:30:00+00:00"^^xsd:dateTime ;
+    s4ener:hasStartTime "2025-07-15T12:00:00+00:00"^^xsd:dateTime ;
+    bito:observedPlanUpdatedAt "2025-07-15T10:45:04+00:00"^^xsd:dateTime .
+
+ex:Scenario_3 a bito:Scenario ;
+    rdfs:label "Scenario 3 - Select Alternative Power Sequence" ;
+    bito:hasIUT <https://w3id.org/bito/example/flexible-start/device/000000000001/entity/0> ;
+    bito:hasInteractingActorSystem <https://w3id.org/bito/example/flexible-start/actor/CCM> ;
+    bito:hasObservedExecution ex:ObservedExecution_Scenario_3 ;
+    bito:hasTriggeringInteraction ex:ObservedEvent_Scenario3_SelectPowerSequence ;
+    bito:realizedByUseCaseFunction ex:UCF_Select_Power_Sequence ;
+    bito:scenarioNumber 3 .
+
+ex:UCF_Select_Power_Sequence a bito:UseCaseFunction ;
+    rdfs:label "Select alternative power sequence" ;
+    bito:ucfName "UCF_Select_Power_Sequence" .
+
+<https://w3id.org/bito/example/flexible-start/event/scenario3/select-sequence/45> a prov:Activity,
+        bito:ObservedEvent ;
+    bito:hasIUT <https://w3id.org/bito/example/flexible-start/device/000000000001/entity/0> ;
+    bito:requestedPowerSequence <https://w3id.org/bito/example/flexible-start/power-sequence/45> ;
+    bito:requestedStartTime "2025-07-15T12:00:00+00:00"^^xsd:dateTime .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/0/value> a saref:PropertyValue ;
+    saref:hasValue 40.0 ;
+    saref:isMeasuredIn ex:Watt .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/1/value> a saref:PropertyValue ;
+    saref:hasValue 244.0 ;
+    saref:isMeasuredIn ex:Watt .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/2/value> a saref:PropertyValue ;
+    saref:hasValue 1972.0 ;
+    saref:isMeasuredIn ex:Watt .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/3/value> a saref:PropertyValue ;
+    saref:hasValue 368.0 ;
+    saref:isMeasuredIn ex:Watt .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/4/value> a saref:PropertyValue ;
+    saref:hasValue 36.0 ;
+    saref:isMeasuredIn ex:Watt .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/5/value> a saref:PropertyValue ;
+    saref:hasValue 388.0 ;
+    saref:isMeasuredIn ex:Watt .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/6/value> a saref:PropertyValue ;
+    saref:hasValue 848.0 ;
+    saref:isMeasuredIn ex:Watt .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/7/value> a saref:PropertyValue ;
+    saref:hasValue 16.0 ;
+    saref:isMeasuredIn ex:Watt .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/8/value> a saref:PropertyValue ;
+    saref:hasValue 4.0 ;
+    saref:isMeasuredIn ex:Watt .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44/slot/9/value> a saref:PropertyValue ;
+    saref:hasValue 0.0 ;
+    saref:isMeasuredIn ex:Watt .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/45/slot/0/value> a saref:PropertyValue ;
+    saref:hasValue 800.0 ;
+    saref:isMeasuredIn ex:Watt .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/45/slot/1/value> a saref:PropertyValue ;
+    saref:hasValue 1200.0 ;
+    saref:isMeasuredIn ex:Watt .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/45/slot/2/value> a saref:PropertyValue ;
+    saref:hasValue 400.0 ;
+    saref:isMeasuredIn ex:Watt .
+
+ex:ObservedEvent_Scenario3_SelectPowerSequence a prov:Activity,
+        bito:ObservedEvent ;
+    prov:wasAssociatedWith <https://w3id.org/bito/example/flexible-start/actor/CCM> ;
+    prov:wasDerivedFrom <https://w3id.org/bito/example/flexible-start/event/scenario3/select-sequence/45> ;
+    bito:acceptanceOutcome "accepted" ;
+    bito:acceptedAt "2025-07-15T10:45:02+00:00"^^xsd:dateTime ;
+    bito:hasIUT <https://w3id.org/bito/example/flexible-start/device/000000000001/entity/0> ;
+    bito:hasObservedExecution ex:ObservedExecution_Scenario_3 ;
+    bito:hasTraceEvidence ex:TraceEvidence_Scenario_3 ;
+    bito:interactionEndpoint "POST /v1/usecaseInterfaces/flexibleStartForWhiteGoods/v1/selectPowerSequence" ;
+    bito:observedInteractionKind "alternative sequence selection request" ;
+    bito:requestTimestamp "2025-07-15T10:45:00+00:00"^^xsd:dateTime ;
+    bito:requestedPowerSequence <https://w3id.org/bito/example/flexible-start/power-sequence/45> ;
+    bito:requestedStartTime "2025-07-15T12:00:00+00:00"^^xsd:dateTime .
+
+ex:ObservedExecution_Scenario_3 a bito:ObservedExecution ;
+    bito:evidenceMode "independentScenarioSession" ;
+    bito:hasIUT <https://w3id.org/bito/example/flexible-start/device/000000000001/entity/0> ;
+    bito:hasObservedEvent ex:ObservedEvent_Scenario3_SelectPowerSequence ;
+    bito:hasObservedStateChange ex:ObservedStateChange_Scenario3_FormerPreferredSequence,
+        ex:ObservedStateChange_Scenario3_SelectedSequence ;
+    bito:hasTraceEvidence ex:TraceEvidence_Scenario_3 ;
+    bito:observedExecutionEnd "2025-07-15T13:29:40+00:00"^^xsd:dateTime ;
+    bito:observedExecutionStart "2025-07-15T12:00:20+00:00"^^xsd:dateTime ;
+    bito:observedRunStatus "COMPLETED" .
+
+ex:TraceEvidence_Scenario_3 a prov:Entity,
+        bito:TraceEvidence ;
+    dcterms:identifier "TraceEvidence_Scenario_3" ;
+    bito:evidenceMode "independentScenarioSession" ;
+    bito:evidencePreservesInteractionContext true ;
+    bito:evidencePreservesObservedBehavior true ;
+    bito:observedExecutionEnd "2025-07-15T13:29:40+00:00"^^xsd:dateTime ;
+    bito:observedExecutionStart "2025-07-15T12:00:20+00:00"^^xsd:dateTime ;
+    bito:observedFormerPreferredPowerSequence <https://w3id.org/bito/example/flexible-start/power-sequence/44> ;
+    bito:observedPlanUpdatedAt "2025-07-15T10:45:04+00:00"^^xsd:dateTime ;
+    bito:observedRunStatus "COMPLETED" ;
+    bito:observedSelectedPowerSequence <https://w3id.org/bito/example/flexible-start/power-sequence/45> .
+
+<https://w3id.org/bito/example/flexible-start/actor/CCM> a prov:Agent ;
+    rdfs:label "CCM" .
+
+<https://w3id.org/bito/example/flexible-start/alternatives-group/1> a s4ener:AlternativesGroup ;
+    saref:consistsOf <https://w3id.org/bito/example/flexible-start/power-sequence/44>,
+        <https://w3id.org/bito/example/flexible-start/power-sequence/45> ;
+    saref:hasIdentifier 1 .
+
+<https://w3id.org/bito/example/flexible-start/value-source/calculatedValue> a prov:Entity ;
+    rdfs:label "calculatedValue" .
+
+<https://w3id.org/bito/example/flexible-start/device/000000000001/entity/0> a saref:Appliance,
+        saref:Device ;
+    saref:hasIdentifier "000000000001" ;
+    bito:entityId 0 ;
+    bito:entityType "Dishwasher" .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/45> a s4ener:PowerSequence ;
+    saref:hasDescription "Eco program" ;
+    saref:hasIdentifier 45 ;
+    s4ener:belongsTo <https://w3id.org/bito/example/flexible-start/alternatives-group/1> ;
+    s4ener:hasValueSource <https://w3id.org/bito/example/flexible-start/value-source/calculatedValue> ;
+    s4ener:isPausable false ;
+    s4ener:isStoppable false ;
+    s4ener:sequenceRemoteControllable true .
+
+ex:Watt a saref:PowerUnit,
+        saref:UnitOfMeasure ;
+    rdfs:label "W" .
+
+<https://w3id.org/bito/example/flexible-start/power-sequence/44> a s4ener:PowerSequence ;
+    saref:hasDescription "" ;
+    saref:hasIdentifier 44 ;
+    s4ener:belongsTo <https://w3id.org/bito/example/flexible-start/alternatives-group/1> ;
+    s4ener:hasValueSource <https://w3id.org/bito/example/flexible-start/value-source/calculatedValue> ;
+    s4ener:isPausable false ;
+    s4ener:isStoppable false ;
+    s4ener:sequenceRemoteControllable true .
+

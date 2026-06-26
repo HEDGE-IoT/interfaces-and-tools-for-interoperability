@@ -1,0 +1,586 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix val: <https://w3id.org/bito/example/flexible-start/validation/> .
+@prefix bito: <https://w3id.org/bito#> .
+@prefix ex: <https://w3id.org/bito/example/flexible-start/> .
+@prefix saref: <https://saref.etsi.org/core/> .
+@prefix s4ener: <https://saref.etsi.org/saref4ener/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+
+#################################################################
+# Step 1: Initial State and Preconditions
+#################################################################
+
+val:Shape_S3_R1_SelectedSequenceInitiallyInactive
+    a sh:NodeShape ;
+    sh:targetNode ex:ObservedEvent_Scenario3_SelectPowerSequence ;
+    dcterms:identifier "S3-R1" ;
+    val:validationStep "Step1-InitialStateAndPreconditions" ;
+    rdfs:label "S3-R1 - Selected sequence is initially inactive" ;
+
+    sh:sparql [
+        sh:message "S3-R1 INCONCLUSIVE: requestedPowerSequence is missing from the observed request event." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                FILTER NOT EXISTS {
+                    $this bito:requestedPowerSequence ?seq .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R1 FAIL: Scenario 3 request must target alternative sequence 45." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:requestedPowerSequence ?seq .
+                FILTER(?seq != <https://w3id.org/bito/example/flexible-start/power-sequence/45>)
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R1 INCONCLUSIVE: initial-state snapshot for selected sequence 45 is missing." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:requestedPowerSequence ?seq .
+                FILTER NOT EXISTS {
+                    ?initialSnapshot
+                        dcterms:description "Initial plan state snapshot" ;
+                        prov:specializationOf ?seq ;
+                        saref:hasState ?state .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R1 FAIL: selected sequence 45 must be Inactive in the initial snapshot." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:requestedPowerSequence ?seq .
+                ?initialSnapshot
+                    dcterms:description "Initial plan state snapshot" ;
+                    prov:specializationOf ?seq ;
+                    saref:hasState ?state .
+                FILTER(?state != s4ener:Inactive)
+            }
+        """ ;
+    ] .
+
+val:Shape_S3_R2_RequestedStartTimeWithinAllowedWindow
+    a sh:NodeShape ;
+    sh:targetNode ex:ObservedEvent_Scenario3_SelectPowerSequence ;
+    dcterms:identifier "S3-R2" ;
+    val:validationStep "Step1-InitialStateAndPreconditions" ;
+    rdfs:label "S3-R2 - Requested start time is within the allowed window" ;
+
+    sh:sparql [
+        sh:message "S3-R2 INCONCLUSIVE: requestedStartTime is missing from the observed request event." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                FILTER NOT EXISTS {
+                    $this bito:requestedStartTime ?requestedStart .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R2 INCONCLUSIVE: selected sequence or initial allowed time window is missing." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:requestedPowerSequence ?seq .
+                FILTER NOT EXISTS {
+                    ?initialSnapshot
+                        dcterms:description "Initial plan state snapshot" ;
+                        prov:specializationOf ?seq ;
+                        s4ener:hasEarliestStartTime ?earliestStart ;
+                        s4ener:hasLatestEndTime ?latestEnd .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R2 INCONCLUSIVE: updated scheduled snapshot with start and end time is missing for the selected sequence." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:requestedPowerSequence ?seq .
+                FILTER NOT EXISTS {
+                    ?updatedSnapshot
+                        dcterms:description "State snapshot after Scenario 3 selection request" ;
+                        prov:specializationOf ?seq ;
+                        s4ener:hasStartTime ?updatedStart ;
+                        s4ener:hasEndTime ?updatedEnd .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R2 FAIL: requested start time must be within the allowed window and must match the updated planned start time." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this
+                    bito:requestedPowerSequence ?seq ;
+                    bito:requestedStartTime ?requestedStart .
+
+                ?initialSnapshot
+                    dcterms:description "Initial plan state snapshot" ;
+                    prov:specializationOf ?seq ;
+                    s4ener:hasEarliestStartTime ?earliestStart ;
+                    s4ener:hasLatestEndTime ?latestEnd .
+
+                ?updatedSnapshot
+                    dcterms:description "State snapshot after Scenario 3 selection request" ;
+                    prov:specializationOf ?seq ;
+                    s4ener:hasStartTime ?updatedStart ;
+                    s4ener:hasEndTime ?updatedEnd .
+
+                FILTER (
+                    ?requestedStart < ?earliestStart ||
+                    ?updatedEnd > ?latestEnd ||
+                    ?updatedStart != ?requestedStart
+                )
+            }
+        """ ;
+    ] .
+
+val:Shape_S3_R3_RemoteControlPreconditions
+    a sh:NodeShape ;
+    sh:targetNode ex:ObservedEvent_Scenario3_SelectPowerSequence ;
+    dcterms:identifier "S3-R3" ;
+    val:validationStep "Step1-InitialStateAndPreconditions" ;
+    rdfs:label "S3-R3 - Remote-control preconditions hold" ;
+
+    sh:sparql [
+        sh:message "S3-R3 INCONCLUSIVE: requestedPowerSequence is missing from the observed request event." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                FILTER NOT EXISTS {
+                    $this bito:requestedPowerSequence ?seq .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R3 INCONCLUSIVE: nodeRemoteControllable declaration is missing from the power profile." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                FILTER NOT EXISTS {
+                    <https://w3id.org/bito/example/flexible-start/device/000000000001/entity/0/power-profile>
+                        s4ener:nodeRemoteControllable ?nodeRemoteControllable .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R3 FAIL: the power profile must be remotely controllable." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                <https://w3id.org/bito/example/flexible-start/device/000000000001/entity/0/power-profile>
+                    s4ener:nodeRemoteControllable ?nodeRemoteControllable .
+                FILTER(?nodeRemoteControllable != true)
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R3 INCONCLUSIVE: sequenceRemoteControllable declaration is missing for the selected sequence." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:requestedPowerSequence ?seq .
+                FILTER NOT EXISTS {
+                    ?seq s4ener:sequenceRemoteControllable ?sequenceRemoteControllable .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R3 FAIL: the selected power sequence must be remotely controllable." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:requestedPowerSequence ?seq .
+                ?seq s4ener:sequenceRemoteControllable ?sequenceRemoteControllable .
+                FILTER(?sequenceRemoteControllable != true)
+            }
+        """ ;
+    ] .
+
+val:Shape_S3_R4_ReselectionPolicy
+    a sh:NodeShape ;
+    sh:targetNode ex:ObservedEvent_Scenario3_SelectPowerSequence ;
+    dcterms:identifier "S3-R4" ;
+    val:validationStep "Step1-InitialStateAndPreconditions" ;
+    rdfs:label "S3-R4 - Reselection policy is respected" ;
+
+    sh:sparql [
+        sh:message "S3-R4 INCONCLUSIVE: supportsReselection declaration is missing from the power profile." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                FILTER NOT EXISTS {
+                    <https://w3id.org/bito/example/flexible-start/device/000000000001/entity/0/power-profile>
+                        s4ener:supportsReselection ?supportsReselection .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R4 FAIL: more than one accepted selection request is not allowed when supportsReselection is false." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                <https://w3id.org/bito/example/flexible-start/device/000000000001/entity/0/power-profile>
+                    s4ener:supportsReselection false .
+
+                {
+                    SELECT (COUNT(?request) AS ?acceptedSelectionCount)
+                    WHERE {
+                        ?request
+                            bito:observedInteractionKind "alternative sequence selection request" ;
+                            bito:acceptanceOutcome "accepted" .
+                    }
+                }
+
+                FILTER (?acceptedSelectionCount > 1)
+            }
+        """ ;
+    ] .
+
+#################################################################
+# Step 2: Accepted State Transition
+#################################################################
+
+val:Shape_S3_G1_AcceptanceGate
+    a sh:NodeShape ;
+    sh:targetNode ex:ObservedEvent_Scenario3_SelectPowerSequence ;
+    dcterms:identifier "S3-G1" ;
+    val:validationStep "Step2-AcceptedStateTransition" ;
+    rdfs:label "S3-G1 - Acceptance gate" ;
+
+    sh:sparql [
+        sh:message "S3-G1 INCONCLUSIVE: acceptanceOutcome is missing from the observed request event." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                FILTER NOT EXISTS {
+                    $this bito:acceptanceOutcome ?outcome .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-G1 FAIL: the observed selection request must have acceptanceOutcome accepted." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:acceptanceOutcome ?outcome .
+                FILTER(?outcome != "accepted")
+            }
+        """ ;
+    ] .
+
+val:Shape_S3_R5_SelectedSequenceBecomesScheduled
+    a sh:NodeShape ;
+    sh:targetNode ex:ObservedEvent_Scenario3_SelectPowerSequence ;
+    dcterms:identifier "S3-R5" ;
+    val:validationStep "Step2-AcceptedStateTransition" ;
+    rdfs:label "S3-R5 - Selected sequence becomes scheduled" ;
+
+    sh:sparql [
+        sh:message "S3-R5 INCONCLUSIVE: requestedPowerSequence is missing from the observed request event." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                FILTER NOT EXISTS {
+                    $this bito:requestedPowerSequence ?seq .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R5 INCONCLUSIVE: updated state snapshot for the selected sequence is missing." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:requestedPowerSequence ?seq .
+                FILTER NOT EXISTS {
+                    ?updatedSnapshot
+                        dcterms:description "State snapshot after Scenario 3 selection request" ;
+                        prov:specializationOf ?seq ;
+                        saref:hasState ?updatedState .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R5 FAIL: selected sequence must be Scheduled in the updated state snapshot." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:requestedPowerSequence ?seq .
+                ?updatedSnapshot
+                    dcterms:description "State snapshot after Scenario 3 selection request" ;
+                    prov:specializationOf ?seq ;
+                    saref:hasState ?updatedState .
+                FILTER(?updatedState != s4ener:Scheduled)
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R5 INCONCLUSIVE: observed state change for the selected sequence is missing." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:requestedPowerSequence ?seq .
+                FILTER NOT EXISTS {
+                    ?observedStateChange
+                        a bito:ObservedStateChange ;
+                        prov:specializationOf ?seq ;
+                        saref:hasState ?observedState .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R5 FAIL: selected sequence must be observed as Scheduled after acceptance." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:requestedPowerSequence ?seq .
+                ?observedStateChange
+                    a bito:ObservedStateChange ;
+                    prov:specializationOf ?seq ;
+                    saref:hasState ?observedState .
+                FILTER(?observedState != s4ener:Scheduled)
+            }
+        """ ;
+    ] .
+
+val:Shape_S3_R6_FormerPreferredSequenceBecomesInactive
+    a sh:NodeShape ;
+    sh:targetNode ex:ObservedEvent_Scenario3_SelectPowerSequence ;
+    dcterms:identifier "S3-R6" ;
+    val:validationStep "Step2-AcceptedStateTransition" ;
+    rdfs:label "S3-R6 - Former preferred sequence becomes inactive" ;
+
+    sh:sparql [
+        sh:message "S3-R6 INCONCLUSIVE: trace evidence link is missing from the observed request event." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                FILTER NOT EXISTS {
+                    $this bito:hasTraceEvidence ?traceEvidence .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R6 INCONCLUSIVE: former preferred sequence reference is missing from trace evidence." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:hasTraceEvidence ?traceEvidence .
+                FILTER NOT EXISTS {
+                    ?traceEvidence bito:observedFormerPreferredPowerSequence ?formerSeq .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R6 INCONCLUSIVE: updated state snapshot for the former preferred sequence is missing." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:hasTraceEvidence ?traceEvidence .
+                ?traceEvidence bito:observedFormerPreferredPowerSequence ?formerSeq .
+                FILTER NOT EXISTS {
+                    ?updatedSnapshot
+                        dcterms:description "State snapshot after Scenario 3 selection request" ;
+                        prov:specializationOf ?formerSeq ;
+                        saref:hasState ?updatedState .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R6 FAIL: former preferred sequence must be Inactive in the updated state snapshot." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:hasTraceEvidence ?traceEvidence .
+                ?traceEvidence bito:observedFormerPreferredPowerSequence ?formerSeq .
+                ?updatedSnapshot
+                    dcterms:description "State snapshot after Scenario 3 selection request" ;
+                    prov:specializationOf ?formerSeq ;
+                    saref:hasState ?updatedState .
+                FILTER(?updatedState != s4ener:Inactive)
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R6 INCONCLUSIVE: observed state change for the former preferred sequence is missing." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:hasTraceEvidence ?traceEvidence .
+                ?traceEvidence bito:observedFormerPreferredPowerSequence ?formerSeq .
+                FILTER NOT EXISTS {
+                    ?observedStateChange
+                        a bito:ObservedStateChange ;
+                        prov:specializationOf ?formerSeq ;
+                        saref:hasState ?observedState .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R6 FAIL: former preferred sequence must be observed as Inactive after acceptance." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:hasTraceEvidence ?traceEvidence .
+                ?traceEvidence bito:observedFormerPreferredPowerSequence ?formerSeq .
+                ?observedStateChange
+                    a bito:ObservedStateChange ;
+                    prov:specializationOf ?formerSeq ;
+                    saref:hasState ?observedState .
+                FILTER(?observedState != s4ener:Inactive)
+            }
+        """ ;
+    ] .
+
+#################################################################
+# Step 3: Execution Timing and Final Outcome
+#################################################################
+
+val:Shape_S3_R7_ExecutionStartNotBeforeUpdatedPlan
+    a sh:NodeShape ;
+    sh:targetNode ex:ObservedEvent_Scenario3_SelectPowerSequence ;
+    dcterms:identifier "S3-R7" ;
+    val:validationStep "Step3-ExecutionTimingAndOutcome" ;
+    rdfs:label "S3-R7 - Execution starts after updated planned start" ;
+
+    sh:sparql [
+        sh:message "S3-R7 INCONCLUSIVE: observed execution link is missing from the observed request event." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                FILTER NOT EXISTS {
+                    $this bito:hasObservedExecution ?observedExecution .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R7 INCONCLUSIVE: observed execution start time is missing." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:hasObservedExecution ?observedExecution .
+                FILTER NOT EXISTS {
+                    ?observedExecution bito:observedExecutionStart ?actualExecutionStart .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R7 INCONCLUSIVE: updated planned start time for the selected sequence is missing." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:requestedPowerSequence ?seq .
+                FILTER NOT EXISTS {
+                    ?updatedSnapshot
+                        dcterms:description "State snapshot after Scenario 3 selection request" ;
+                        prov:specializationOf ?seq ;
+                        s4ener:hasStartTime ?updatedPlannedStart .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R7 FAIL: observed execution start must not be earlier than the updated planned start time." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this
+                    bito:requestedPowerSequence ?seq ;
+                    bito:hasObservedExecution ?observedExecution .
+
+                ?updatedSnapshot
+                    dcterms:description "State snapshot after Scenario 3 selection request" ;
+                    prov:specializationOf ?seq ;
+                    s4ener:hasStartTime ?updatedPlannedStart .
+
+                ?observedExecution bito:observedExecutionStart ?actualExecutionStart .
+
+                FILTER (?actualExecutionStart < ?updatedPlannedStart)
+            }
+        """ ;
+    ] .
+
+val:Shape_S3_R8_RunStatusCompleted
+    a sh:NodeShape ;
+    sh:targetNode ex:ObservedExecution_Scenario_3 ;
+    dcterms:identifier "S3-R8" ;
+    val:validationStep "Step3-ExecutionTimingAndOutcome" ;
+    rdfs:label "S3-R8 - Observed run status is COMPLETED" ;
+
+    sh:sparql [
+        sh:message "S3-R8 INCONCLUSIVE: observedRunStatus is missing from the observed execution." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                FILTER NOT EXISTS {
+                    $this bito:observedRunStatus ?runStatus .
+                }
+            }
+        """ ;
+    ] ;
+
+    sh:sparql [
+        sh:message "S3-R8 FAIL: observedRunStatus must be COMPLETED." ;
+        sh:select """
+            SELECT $this
+            WHERE {
+                $this bito:observedRunStatus ?runStatus .
+                FILTER(?runStatus != "COMPLETED")
+            }
+        """ ;
+    ] .

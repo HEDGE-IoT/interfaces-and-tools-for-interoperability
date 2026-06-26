@@ -1,0 +1,29 @@
+{
+  "deviceId": "000000000001",
+  "entityId": 0,
+  "entityType": "Dishwasher",
+  "useCase": "flexibleStartForWhiteGoods",
+  "evidenceMode": "independentScenarioSession",
+  "scenario": 3,
+  "scenarioName": "UCF_Select_Power_Sequence",
+  "evidence": {
+    "interactingActorSystem": "CCM",
+    "observedInteractionKind": "alternative sequence selection request",
+    "interactionEndpoint": "POST /v1/usecaseInterfaces/flexibleStartForWhiteGoods/v1/selectPowerSequence",
+    "requestTimestamp": "2025-07-15T10:45:00Z",
+    "requestedSequenceId": 45,
+    "requestedStartTime": "2025-07-15T12:00:00Z",
+    "acceptanceOutcome": "accepted",
+    "acceptedAt": "2025-07-15T10:45:02Z",
+    "observedSelectedSequenceId": 45,
+    "observedSelectedSequenceState": "scheduled",
+    "observedFormerPreferredSequenceId": 44,
+    "observedFormerPreferredSequenceState": "inactive",
+    "observedPlanUpdatedAt": "2025-07-15T10:45:04Z",
+    "observedUpdatedStartTime": "2025-07-15T12:00:00Z",
+    "observedUpdatedEndTime": "2025-07-15T13:30:00Z",
+    "observedExecutionStart": "2025-07-15T12:00:20Z",
+    "observedExecutionEnd": "2025-07-15T13:29:40Z",
+    "observedRunStatus": "COMPLETED"
+  }
+}

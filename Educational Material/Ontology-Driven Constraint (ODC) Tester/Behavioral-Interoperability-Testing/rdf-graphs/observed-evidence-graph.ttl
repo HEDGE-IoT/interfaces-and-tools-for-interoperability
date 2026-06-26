@@ -1,0 +1,65 @@
+@prefix bito: <https://w3id.org/bito#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <https://w3id.org/bito/example/flexible-start/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://w3id.org/rml/> .
+@prefix s4ener: <https://saref.etsi.org/saref4ener/> .
+@prefix saref: <https://saref.etsi.org/core/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex:ObservedEvent_Scenario3_SelectPowerSequence a prov:Activity, bito:ObservedEvent;
+  prov:wasAssociatedWith <https://w3id.org/bito/example/flexible-start/actor/CCM>;
+  bito:acceptanceOutcome "accepted";
+  bito:acceptedAt "2025-07-15T10:45:02Z"^^xsd:dateTime;
+  bito:hasIUT <https://w3id.org/bito/example/flexible-start/device/000000000001/entity/0>;
+  bito:hasObservedExecution ex:ObservedExecution_Scenario_3;
+  bito:hasTraceEvidence ex:TraceEvidence_Scenario_3;
+  bito:interactionEndpoint "POST /v1/usecaseInterfaces/flexibleStartForWhiteGoods/v1/selectPowerSequence";
+  bito:observedInteractionKind "alternative sequence selection request";
+  bito:requestTimestamp "2025-07-15T10:45:00Z"^^xsd:dateTime;
+  bito:requestedPowerSequence <https://w3id.org/bito/example/flexible-start/power-sequence/45>;
+  bito:requestedStartTime "2025-07-15T12:00:00Z"^^xsd:dateTime .
+
+ex:ObservedExecution_Scenario_3 a bito:ObservedExecution;
+  bito:evidenceMode "independentScenarioSession";
+  bito:hasIUT <https://w3id.org/bito/example/flexible-start/device/000000000001/entity/0>;
+  bito:hasObservedEvent ex:ObservedEvent_Scenario3_SelectPowerSequence;
+  bito:hasObservedStateChange ex:ObservedStateChange_Scenario3_FormerPreferredSequence,
+    ex:ObservedStateChange_Scenario3_SelectedSequence;
+  bito:hasTraceEvidence ex:TraceEvidence_Scenario_3;
+  bito:observedExecutionEnd "2025-07-15T13:29:40Z"^^xsd:dateTime;
+  bito:observedExecutionStart "2025-07-15T12:00:20Z"^^xsd:dateTime;
+  bito:observedRunStatus "COMPLETED" .
+
+ex:ObservedStateChange_Scenario3_FormerPreferredSequence a bito:ObservedStateChange;
+  prov:specializationOf <https://w3id.org/bito/example/flexible-start/power-sequence/44>;
+  saref:hasState s4ener:Inactive;
+  bito:observedPlanUpdatedAt "2025-07-15T10:45:04Z"^^xsd:dateTime .
+
+ex:ObservedStateChange_Scenario3_SelectedSequence a bito:ObservedStateChange;
+  prov:specializationOf <https://w3id.org/bito/example/flexible-start/power-sequence/45>;
+  saref:hasState s4ener:Scheduled;
+  s4ener:hasEndTime "2025-07-15T13:30:00Z"^^xsd:dateTime;
+  s4ener:hasStartTime "2025-07-15T12:00:00Z"^^xsd:dateTime;
+  bito:observedPlanUpdatedAt "2025-07-15T10:45:04Z"^^xsd:dateTime .
+
+ex:Scenario_3 a bito:Scenario;
+  bito:hasInteractingActorSystem <https://w3id.org/bito/example/flexible-start/actor/CCM>;
+  bito:hasObservedExecution ex:ObservedExecution_Scenario_3;
+  bito:hasTriggeringInteraction ex:ObservedEvent_Scenario3_SelectPowerSequence .
+
+ex:TraceEvidence_Scenario_3 a prov:Entity, bito:TraceEvidence;
+  dcterms:identifier "TraceEvidence_Scenario_3";
+  bito:evidenceMode "independentScenarioSession";
+  bito:evidencePreservesInteractionContext true;
+  bito:evidencePreservesObservedBehavior true;
+  bito:observedExecutionEnd "2025-07-15T13:29:40Z"^^xsd:dateTime;
+  bito:observedExecutionStart "2025-07-15T12:00:20Z"^^xsd:dateTime;
+  bito:observedFormerPreferredPowerSequence <https://w3id.org/bito/example/flexible-start/power-sequence/44>;
+  bito:observedPlanUpdatedAt "2025-07-15T10:45:04Z"^^xsd:dateTime;
+  bito:observedRunStatus "COMPLETED";
+  bito:observedSelectedPowerSequence <https://w3id.org/bito/example/flexible-start/power-sequence/45> .
+
+<https://w3id.org/bito/example/flexible-start/actor/CCM> a prov:Agent;
+  rdfs:label "CCM" .

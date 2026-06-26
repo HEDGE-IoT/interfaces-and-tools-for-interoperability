@@ -1,0 +1,406 @@
+[
+    {
+        "request": "GET /v1/entities HTTP/1.1",
+        "host": "test.en50631.example.com",
+        "response": [
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "entityType": "Dishwasher",
+                "usecasesOverview": [
+                    {
+                        "name": "flexibleStartForWhiteGoods",
+                        "usecaseMajorVersion": "v1",
+                        "actor": "SmartAppliance"
+                    }
+                ],
+                "featuresOverview": {
+                    "featureObjTypes": [
+                        "powerSequence",
+                        "powerTimeSlot",
+                        "powerSequenceNode",
+                        "powerSequenceAlternativesRelation"
+                    ],
+                    "featureTypes": [
+                        "PowerSequences"
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "request": "GET /v1/usecases HTTP/1.1",
+        "host": "test.en50631.example.com",
+        "response": [
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "usecase": {
+                    "name": "flexibleStartForWhiteGoods",
+                    "usecaseVersion": "1.0.0",
+                    "usecaseMajorVersion": "v1",
+                    "actor": "SmartAppliance",
+                    "scenarioSupport": [
+                        3
+                    ],
+                    "isOnThisEntity": true,
+                    "childEntities": []
+                }
+            }
+        ]
+    },
+    {
+        "request": "GET /v1/features/powerSequenceNode?deviceId=000000000001 HTTP/1.1",
+        "host": "test.en50631.example.com",
+        "response": [
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerSequenceNode",
+                "featureType": "PowerSequences",
+                "data": {
+                    "nodeRemoteControllable": true,
+                    "supportsReselection": true
+                }
+            }
+        ]
+    },
+    {
+        "request": "GET /v1/features/powerSequenceAlternativesRelation?deviceId=000000000001 HTTP/1.1",
+        "host": "test.en50631.example.com",
+        "response": [
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerSequenceAlternativesRelation",
+                "featureType": "PowerSequences",
+                "data": {
+                    "alternativesId": 1,
+                    "sequenceId": [
+                        44,
+                        45
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "request": "GET /v1/features/powerSequence?deviceId=000000000001 HTTP/1.1",
+        "host": "test.en50631.example.com",
+        "response": [
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerSequence",
+                "featureType": "PowerSequences",
+                "data": {
+                    "sequenceId": 44,
+                    "description": "",
+                    "powerUnit": "W",
+                    "valueSource": "calculatedValue",
+                    "state": "scheduled",
+                    "sequenceRemoteControllable": true,
+                    "startTime": "2025-07-15T10:00:00Z",
+                    "endTime": "2025-07-15T12:30:00Z",
+                    "earliestStartTime": "2025-07-15T08:00:00Z",
+                    "latestEndTime": "2025-07-15T14:30:00Z",
+                    "isPausable": false,
+                    "isStoppable": false
+                }
+            },
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerSequence",
+                "featureType": "PowerSequences",
+                "data": {
+                    "sequenceId": 45,
+                    "description": "Eco program",
+                    "powerUnit": "W",
+                    "valueSource": "calculatedValue",
+                    "state": "inactive",
+                    "sequenceRemoteControllable": true,
+                    "earliestStartTime": "2025-07-15T08:00:00Z",
+                    "latestEndTime": "2025-07-15T14:30:00Z",
+                    "isPausable": false,
+                    "isStoppable": false
+                }
+            }
+        ]
+    },
+    {
+        "request": "GET /v1/features/powerTimeSlot?deviceId=000000000001 HTTP/1.1",
+        "host": "test.en50631.example.com",
+        "response": [
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerTimeSlot",
+                "featureType": "PowerSequences",
+                "data": {
+                    "sequenceId": 44,
+                    "slotNumber": 0,
+                    "defaultDuration": "PT15M",
+                    "description": "",
+                    "power": {
+                        "number": 40,
+                        "scale": 0
+                    }
+                }
+            },
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerTimeSlot",
+                "featureType": "PowerSequences",
+                "data": {
+                    "sequenceId": 44,
+                    "slotNumber": 1,
+                    "defaultDuration": "PT15M",
+                    "description": "",
+                    "power": {
+                        "number": 244,
+                        "scale": 0
+                    }
+                }
+            },
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerTimeSlot",
+                "featureType": "PowerSequences",
+                "data": {
+                    "sequenceId": 44,
+                    "slotNumber": 2,
+                    "defaultDuration": "PT15M",
+                    "description": "",
+                    "power": {
+                        "number": 1972,
+                        "scale": 0
+                    }
+                }
+            },
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerTimeSlot",
+                "featureType": "PowerSequences",
+                "data": {
+                    "sequenceId": 44,
+                    "slotNumber": 3,
+                    "defaultDuration": "PT15M",
+                    "description": "",
+                    "power": {
+                        "number": 368,
+                        "scale": 0
+                    }
+                }
+            },
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerTimeSlot",
+                "featureType": "PowerSequences",
+                "data": {
+                    "sequenceId": 44,
+                    "slotNumber": 4,
+                    "defaultDuration": "PT15M",
+                    "description": "",
+                    "power": {
+                        "number": 36,
+                        "scale": 0
+                    }
+                }
+            },
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerTimeSlot",
+                "featureType": "PowerSequences",
+                "data": {
+                    "sequenceId": 44,
+                    "slotNumber": 5,
+                    "defaultDuration": "PT15M",
+                    "description": "",
+                    "power": {
+                        "number": 388,
+                        "scale": 0
+                    }
+                }
+            },
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerTimeSlot",
+                "featureType": "PowerSequences",
+                "data": {
+                    "sequenceId": 44,
+                    "slotNumber": 6,
+                    "defaultDuration": "PT15M",
+                    "description": "",
+                    "power": {
+                        "number": 848,
+                        "scale": 0
+                    }
+                }
+            },
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerTimeSlot",
+                "featureType": "PowerSequences",
+                "data": {
+                    "sequenceId": 44,
+                    "slotNumber": 7,
+                    "defaultDuration": "PT15M",
+                    "description": "",
+                    "power": {
+                        "number": 16,
+                        "scale": 0
+                    }
+                }
+            },
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerTimeSlot",
+                "featureType": "PowerSequences",
+                "data": {
+                    "sequenceId": 44,
+                    "slotNumber": 8,
+                    "defaultDuration": "PT15M",
+                    "description": "",
+                    "power": {
+                        "number": 4,
+                        "scale": 0
+                    }
+                }
+            },
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerTimeSlot",
+                "featureType": "PowerSequences",
+                "data": {
+                    "sequenceId": 44,
+                    "slotNumber": 9,
+                    "defaultDuration": "PT15M",
+                    "description": "",
+                    "power": {
+                        "number": 0,
+                        "scale": 0
+                    }
+                }
+            },
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerTimeSlot",
+                "featureType": "PowerSequences",
+                "data": {
+                    "sequenceId": 45,
+                    "slotNumber": 0,
+                    "defaultDuration": "PT30M",
+                    "description": "",
+                    "power": {
+                        "number": 800,
+                        "scale": 0
+                    }
+                }
+            },
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerTimeSlot",
+                "featureType": "PowerSequences",
+                "data": {
+                    "sequenceId": 45,
+                    "slotNumber": 1,
+                    "defaultDuration": "PT30M",
+                    "description": "",
+                    "power": {
+                        "number": 1200,
+                        "scale": 0
+                    }
+                }
+            },
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerTimeSlot",
+                "featureType": "PowerSequences",
+                "data": {
+                    "sequenceId": 45,
+                    "slotNumber": 2,
+                    "defaultDuration": "PT30M",
+                    "description": "",
+                    "power": {
+                        "number": 400,
+                        "scale": 0
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "request": "POST /v1/usecaseInterfaces/flexibleStartForWhiteGoods/v1/selectPowerSequence HTTP/1.1",
+        "host": "test.en50631.example.com",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "deviceId": "000000000001",
+            "entityId": 0,
+            "data": {
+                "selectPowerSequence": {
+                    "sequenceId": 45,
+                    "startTime": "2025-07-15T12:00:00Z"
+                }
+            }
+        }
+    },
+    {
+        "request": "GET /v1/features/powerSequence?deviceId=000000000001 HTTP/1.1",
+        "host": "test.en50631.example.com",
+        "response": [
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerSequence",
+                "featureType": "PowerSequences",
+                "data": {
+                    "sequenceId": 44,
+                    "description": "",
+                    "powerUnit": "W",
+                    "valueSource": "calculatedValue",
+                    "state": "inactive",
+                    "sequenceRemoteControllable": true,
+                    "earliestStartTime": "2025-07-15T08:00:00Z",
+                    "latestEndTime": "2025-07-15T14:30:00Z",
+                    "isPausable": false,
+                    "isStoppable": false
+                }
+            },
+            {
+                "deviceId": "000000000001",
+                "entityId": 0,
+                "featureObjType": "powerSequence",
+                "featureType": "PowerSequences",
+                "data": {
+                    "sequenceId": 45,
+                    "description": "Eco program",
+                    "powerUnit": "W",
+                    "valueSource": "calculatedValue",
+                    "state": "scheduled",
+                    "sequenceRemoteControllable": true,
+                    "startTime": "2025-07-15T12:00:00Z",
+                    "endTime": "2025-07-15T13:30:00Z",
+                    "earliestStartTime": "2025-07-15T08:00:00Z",
+                    "latestEndTime": "2025-07-15T14:30:00Z",
+                    "isPausable": false,
+                    "isStoppable": false
+                }
+            }
+        ]
+    }
+]

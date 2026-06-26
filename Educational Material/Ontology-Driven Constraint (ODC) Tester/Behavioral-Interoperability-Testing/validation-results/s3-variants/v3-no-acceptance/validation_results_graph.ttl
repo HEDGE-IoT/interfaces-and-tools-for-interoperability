@@ -1,0 +1,142 @@
+@prefix bito: <https://w3id.org/bito#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ex: <https://w3id.org/bito/example/flexible-start/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix val: <https://w3id.org/bito/example/flexible-start/validation/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+val:ValidationSession_Scenario_3 a val:ValidationSession ;
+    dcterms:created "2026-06-26T16:49:29.645931+00:00"^^xsd:dateTime ;
+    dcterms:identifier "Scenario_3_Behavioral_Validation" ;
+    bito:hasVerdict bito:INCONCLUSIVE ;
+    val:finalBehavioralVerdict "INCONCLUSIVE" ;
+    val:hasStepResult val:Step_1_Result,
+        val:Step_2_Result,
+        val:Step_3_Result ;
+    val:hasVisualizationData "C:\\Users\\tareqc\\Downloads\\Behavioral Testing\\validation_output\\visual_report_data.json" ;
+    val:usedDataGraph "C:\\Users\\tareqc\\Downloads\\Behavioral Testing\\rdf\\combined_validation_graph.ttl" ;
+    val:usedShapesGraph "C:\\Users\\tareqc\\Downloads\\Behavioral Testing\\shapes\\scenario_3_shacl_shapes.ttl" ;
+    val:validatesScenario ex:Scenario_3 .
+
+val:CheckResult_S3_G1 a bito:ValidationResult ;
+    rdfs:label "Acceptance gate: request acceptance outcome is accepted" ;
+    dcterms:identifier "S3-G1" ;
+    sh:resultMessage "S3-G1 INCONCLUSIVE: acceptanceOutcome is missing from the observed request event." ;
+    bito:basedOnTraceEvidence ex:TraceEvidence_Scenario_3 ;
+    bito:hasVerdict bito:INCONCLUSIVE ;
+    val:sourceShape "val:Shape_S3_G1_AcceptanceGate" ;
+    val:status "INCONCLUSIVE" ;
+    val:targetNode "ex:ObservedEvent_Scenario3_SelectPowerSequence" ;
+    val:validationStep "Step2-AcceptedStateTransition" .
+
+val:CheckResult_S3_R1 a bito:ValidationResult ;
+    rdfs:label "selected sequence 45 is initially inactive" ;
+    dcterms:identifier "S3-R1" ;
+    sh:resultMessage "PASS: S3-R1 satisfied. pySHACL returned no violation." ;
+    bito:basedOnTraceEvidence ex:TraceEvidence_Scenario_3 ;
+    bito:hasVerdict bito:PASS ;
+    val:sourceShape "val:Shape_S3_R1_SelectedSequenceInitiallyInactive" ;
+    val:status "PASS" ;
+    val:targetNode "ex:ObservedEvent_Scenario3_SelectPowerSequence" ;
+    val:validationStep "Step1-InitialStateAndPreconditions" .
+
+val:CheckResult_S3_R2 a bito:ValidationResult ;
+    rdfs:label "requested start time is inside the allowed window" ;
+    dcterms:identifier "S3-R2" ;
+    sh:resultMessage "PASS: S3-R2 satisfied. pySHACL returned no violation." ;
+    bito:basedOnTraceEvidence ex:TraceEvidence_Scenario_3 ;
+    bito:hasVerdict bito:PASS ;
+    val:sourceShape "val:Shape_S3_R2_RequestedStartTimeWithinAllowedWindow" ;
+    val:status "PASS" ;
+    val:targetNode "ex:ObservedEvent_Scenario3_SelectPowerSequence" ;
+    val:validationStep "Step1-InitialStateAndPreconditions" .
+
+val:CheckResult_S3_R3 a bito:ValidationResult ;
+    rdfs:label "remote-control preconditions are satisfied" ;
+    dcterms:identifier "S3-R3" ;
+    sh:resultMessage "PASS: S3-R3 satisfied. pySHACL returned no violation." ;
+    bito:basedOnTraceEvidence ex:TraceEvidence_Scenario_3 ;
+    bito:hasVerdict bito:PASS ;
+    val:sourceShape "val:Shape_S3_R3_RemoteControlPreconditions" ;
+    val:status "PASS" ;
+    val:targetNode "ex:ObservedEvent_Scenario3_SelectPowerSequence" ;
+    val:validationStep "Step1-InitialStateAndPreconditions" .
+
+val:CheckResult_S3_R4 a bito:ValidationResult ;
+    rdfs:label "reselection policy is respected" ;
+    dcterms:identifier "S3-R4" ;
+    sh:resultMessage "PASS: S3-R4 satisfied. pySHACL returned no violation." ;
+    bito:basedOnTraceEvidence ex:TraceEvidence_Scenario_3 ;
+    bito:hasVerdict bito:PASS ;
+    val:sourceShape "val:Shape_S3_R4_ReselectionPolicy" ;
+    val:status "PASS" ;
+    val:targetNode "ex:ObservedEvent_Scenario3_SelectPowerSequence" ;
+    val:validationStep "Step1-InitialStateAndPreconditions" .
+
+val:CheckResult_S3_R5 a bito:ValidationResult ;
+    rdfs:label "selected sequence 45 became scheduled" ;
+    dcterms:identifier "S3-R5" ;
+    sh:resultMessage "SKIPPED because the Acceptance gate did not pass, therefore the accepted state-transition checks cannot be evaluated." ;
+    bito:basedOnTraceEvidence ex:TraceEvidence_Scenario_3 ;
+    bito:hasVerdict val:SKIPPED_BLOCKED ;
+    val:status "SKIPPED" ;
+    val:validationStep "Step2-AcceptedStateTransition" .
+
+val:CheckResult_S3_R6 a bito:ValidationResult ;
+    rdfs:label "former preferred sequence 44 became inactive" ;
+    dcterms:identifier "S3-R6" ;
+    sh:resultMessage "SKIPPED because the Acceptance gate did not pass, therefore the accepted state-transition checks cannot be evaluated." ;
+    bito:basedOnTraceEvidence ex:TraceEvidence_Scenario_3 ;
+    bito:hasVerdict val:SKIPPED_BLOCKED ;
+    val:status "SKIPPED" ;
+    val:validationStep "Step2-AcceptedStateTransition" .
+
+val:CheckResult_S3_R7 a bito:ValidationResult ;
+    rdfs:label "execution started after the updated planned start time" ;
+    dcterms:identifier "S3-R7" ;
+    sh:resultMessage "SKIPPED because the previous behavior step did not pass." ;
+    bito:basedOnTraceEvidence ex:TraceEvidence_Scenario_3 ;
+    bito:hasVerdict val:SKIPPED_BLOCKED ;
+    val:status "SKIPPED" ;
+    val:validationStep "Step3-ExecutionTimingAndOutcome" .
+
+val:CheckResult_S3_R8 a bito:ValidationResult ;
+    rdfs:label "run status is COMPLETED" ;
+    dcterms:identifier "S3-R8" ;
+    sh:resultMessage "SKIPPED because the previous behavior step did not pass." ;
+    bito:basedOnTraceEvidence ex:TraceEvidence_Scenario_3 ;
+    bito:hasVerdict val:SKIPPED_BLOCKED ;
+    val:status "SKIPPED" ;
+    val:validationStep "Step3-ExecutionTimingAndOutcome" .
+
+val:Step_1_Result a val:StepResult ;
+    rdfs:label "Initial State and Preconditions" ;
+    bito:hasVerdict bito:PASS ;
+    val:hasCheckResult val:CheckResult_S3_R1,
+        val:CheckResult_S3_R2,
+        val:CheckResult_S3_R3,
+        val:CheckResult_S3_R4 ;
+    val:status "PASS" ;
+    val:stepNumber 1 ;
+    val:validationStep "Step1-InitialStateAndPreconditions" .
+
+val:Step_2_Result a val:StepResult ;
+    rdfs:label "Accepted State Transition" ;
+    bito:hasVerdict bito:INCONCLUSIVE ;
+    val:hasCheckResult val:CheckResult_S3_G1,
+        val:CheckResult_S3_R5,
+        val:CheckResult_S3_R6 ;
+    val:status "INCONCLUSIVE" ;
+    val:stepNumber 2 ;
+    val:validationStep "Step2-AcceptedStateTransition" .
+
+val:Step_3_Result a val:StepResult ;
+    rdfs:label "Execution Timing and Final Outcome" ;
+    bito:hasVerdict val:SKIPPED_BLOCKED ;
+    val:hasCheckResult val:CheckResult_S3_R7,
+        val:CheckResult_S3_R8 ;
+    val:status "SKIPPED" ;
+    val:stepNumber 3 ;
+    val:validationStep "Step3-ExecutionTimingAndOutcome" .
+

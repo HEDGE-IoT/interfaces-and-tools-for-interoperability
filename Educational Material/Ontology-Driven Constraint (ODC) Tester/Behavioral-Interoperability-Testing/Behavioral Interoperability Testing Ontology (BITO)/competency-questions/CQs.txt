@@ -1,0 +1,21 @@
+Competency Questions (CQs)
+
+1. CQs for Scenario Behavior Modeling:
+	• CQ1: What is the considered use case and scenario? 
+	• CQ2: What is the IUT in the considered scenario? 
+	• CQ3: Which external actor or system interacts with the IUT in the scenario? 
+	• CQ4: Which states and transitions define the behavior of the IUT in the scenario? 
+	• CQ5: Which trigger or interaction initiates or influences the behavior? 
+	• CQ6: Which behavioral constraints apply to the scenario behavior? 
+	• CQ7: What is the expected operational outcome of the scenario? 
+
+2. CQs for Observed Execution Assessment:
+	• CQ8: Which events were observed during execution of the scenario? 
+	• CQ9: In what order did the observed events occur? 
+	• CQ10: Which timestamps are associated with the observed events or state changes? 
+	• CQ11: Which state changes were observed during execution? 
+	• CQ12: Which observed execution data is available as trace evidence? 
+		• CQ12a: Does the available observed execution data preserve both the relevant execution-side interaction context and the corresponding observed behavior of the IUT for the considered scenario?
+	• CQ13: Does the observed execution satisfy the defined behavioral constraints? 
+	• CQ14: Does the observed execution achieve the expected operational outcome? 
+	• CQ15: What verdict is derived from the available trace evidence? 

@@ -1,0 +1,641 @@
+@prefix rr:      <http://www.w3.org/ns/r2rml#> .
+@prefix rml:     <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql:      <http://semweb.mmlab.be/ns/ql#> .
+
+@prefix ex:      <https://w3id.org/bito/example/flexible-start/> .
+@prefix bito:     <https://w3id.org/bito#> .
+@prefix saref:   <https://saref.etsi.org/core/> .
+@prefix s4ener:  <https://saref.etsi.org/saref4ener/> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@base <https://w3id.org/bito/example/flexible-start/mapping/> .
+
+#################################################################
+# 1. Device / appliance / entity
+#################################################################
+
+<#DeviceEntityMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source ".../Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[?(@.request == 'GET /v1/entities HTTP/1.1')].response[*]"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/bito/example/flexible-start/device/{deviceId}/entity/{entityId}" ;
+        rr:class saref:Device ;
+        rr:class saref:Appliance
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate saref:hasIdentifier ;
+        rr:objectMap [ rml:reference "deviceId" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:entityId ;
+        rr:objectMap [ rml:reference "entityId" ; rr:datatype xsd:integer ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:entityType ;
+        rr:objectMap [ rml:reference "entityType" ]
+    ] .
+
+#################################################################
+# 2. Declared actor role: SmartAppliance
+#################################################################
+
+<#SmartApplianceActorMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[?(@.request == 'GET /v1/usecases HTTP/1.1')].response[*].usecase"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/bito/example/flexible-start/actor/{actor}" ;
+        rr:class saref:Device ;
+        rr:class saref:Appliance
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [ rml:reference "actor" ]
+    ] .
+
+#################################################################
+# 3. Use case
+#################################################################
+
+<#UseCaseMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[?(@.request == 'GET /v1/usecases HTTP/1.1')].response[*].usecase"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/bito/example/flexible-start/usecase/{name}" ;
+        rr:class bito:UseCase
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [ rml:reference "name" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dcterms:identifier ;
+        rr:objectMap [ rml:reference "name" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:useCaseVersion ;
+        rr:objectMap [ rml:reference "usecaseVersion" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dcterms:hasVersion ;
+        rr:objectMap [ rml:reference "usecaseMajorVersion" ]
+    ] .
+
+#################################################################
+# 4. Scenario 3
+#################################################################
+
+<#Scenario3Mapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[?(@.request == 'GET /v1/usecases HTTP/1.1')].response[*]"
+    ] ;
+    rr:subjectMap [
+        rr:constant ex:Scenario_3 ;
+        rr:class bito:Scenario
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:scenarioNumber ;
+        rr:objectMap [ rr:constant 3 ; rr:datatype xsd:integer ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [ rr:constant "Scenario 3 - Select Alternative Power Sequence" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:hasIUT ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/device/{deviceId}/entity/{entityId}" ;
+            rr:termType rr:IRI
+        ]
+    ] .
+
+<#UseCaseScenarioLinkMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[?(@.request == 'GET /v1/usecases HTTP/1.1')].response[*].usecase"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/bito/example/flexible-start/usecase/{name}" ;
+        rr:class bito:UseCase
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:hasScenario ;
+        rr:objectMap [ rr:constant ex:Scenario_3 ]
+    ] .
+
+#################################################################
+# 5. Use-case function for Scenario 3
+#################################################################
+
+<#UseCaseFunctionScenario3Mapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[?(@.body.data.selectPowerSequence)]"
+    ] ;
+    rr:subjectMap [
+        rr:constant ex:UCF_Select_Power_Sequence ;
+        rr:class bito:UseCaseFunction
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:ucfName ;
+        rr:objectMap [ rr:constant "UCF_Select_Power_Sequence" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [ rr:constant "Select alternative power sequence" ]
+    ] .
+
+<#Scenario3FunctionLinkMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[?(@.body.data.selectPowerSequence)]"
+    ] ;
+    rr:subjectMap [
+        rr:constant ex:Scenario_3 ;
+        rr:class bito:Scenario
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:realizedByUseCaseFunction ;
+        rr:objectMap [ rr:constant ex:UCF_Select_Power_Sequence ]
+    ] .
+
+#################################################################
+# 6. Power sequence node / power profile
+#################################################################
+
+<#PowerSequenceNodeMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$..response[?(@.featureObjType == 'powerSequenceNode')]"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/bito/example/flexible-start/device/{deviceId}/entity/{entityId}/power-profile" ;
+        rr:class s4ener:PowerProfile
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:nodeRemoteControllable ;
+        rr:objectMap [ rml:reference "data.nodeRemoteControllable" ; rr:datatype xsd:boolean ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:supportsReselection ;
+        rr:objectMap [ rml:reference "data.supportsReselection" ; rr:datatype xsd:boolean ]
+    ] .
+
+#################################################################
+# 7. Alternatives group and membership
+#################################################################
+
+<#AlternativesGroupMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$..response[?(@.featureObjType == 'powerSequenceAlternativesRelation')]"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/bito/example/flexible-start/alternatives-group/{data.alternativesId}" ;
+        rr:class s4ener:AlternativesGroup
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate saref:hasIdentifier ;
+        rr:objectMap [ rml:reference "data.alternativesId" ; rr:datatype xsd:integer ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate saref:consistsOf ;
+        rr:objectMap [
+            rr:constant <https://w3id.org/bito/example/flexible-start/power-sequence/44> ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate saref:consistsOf ;
+        rr:objectMap [
+            rr:constant <https://w3id.org/bito/example/flexible-start/power-sequence/45> ;
+            rr:termType rr:IRI
+        ]
+    ] .
+
+<#PowerSequence44BelongsToAlternativesGroupMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$..response[?(@.featureObjType == 'powerSequenceAlternativesRelation')]"
+    ] ;
+    rr:subjectMap [
+        rr:constant <https://w3id.org/bito/example/flexible-start/power-sequence/44> ;
+        rr:class s4ener:PowerSequence
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:belongsTo ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/alternatives-group/{data.alternativesId}" ;
+            rr:termType rr:IRI
+        ]
+    ] .
+
+<#PowerSequence45BelongsToAlternativesGroupMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$..response[?(@.featureObjType == 'powerSequenceAlternativesRelation')]"
+    ] ;
+    rr:subjectMap [
+        rr:constant <https://w3id.org/bito/example/flexible-start/power-sequence/45> ;
+        rr:class s4ener:PowerSequence
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:belongsTo ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/alternatives-group/{data.alternativesId}" ;
+            rr:termType rr:IRI
+        ]
+    ] .
+
+#################################################################
+# 8. Base power sequence resources
+#################################################################
+
+<#PowerSequenceBaseMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$..response[?(@.featureObjType == 'powerSequence')]"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/bito/example/flexible-start/power-sequence/{data.sequenceId}" ;
+        rr:class s4ener:PowerSequence
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate saref:hasIdentifier ;
+        rr:objectMap [ rml:reference "data.sequenceId" ; rr:datatype xsd:integer ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate saref:hasDescription ;
+        rr:objectMap [ rml:reference "data.description" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:sequenceRemoteControllable ;
+        rr:objectMap [ rml:reference "data.sequenceRemoteControllable" ; rr:datatype xsd:boolean ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:isPausable ;
+        rr:objectMap [ rml:reference "data.isPausable" ; rr:datatype xsd:boolean ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:isStoppable ;
+        rr:objectMap [ rml:reference "data.isStoppable" ; rr:datatype xsd:boolean ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:hasValueSource ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/value-source/{data.valueSource}" ;
+            rr:termType rr:IRI
+        ]
+    ] .
+
+<#ValueSourceMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$..response[?(@.featureObjType == 'powerSequence' && @.data.valueSource)]"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/bito/example/flexible-start/value-source/{data.valueSource}" ;
+        rr:class prov:Entity
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [ rml:reference "data.valueSource" ]
+    ] .
+
+#################################################################
+# 9. Initial sequence state snapshots - before Scenario 3 request
+#################################################################
+
+<#InitialScheduledStateSnapshotMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[4].response[?(@.featureObjType == 'powerSequence' && @.data.state == 'scheduled')]"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/bito/example/flexible-start/snapshot/initial/sequence/{data.sequenceId}" ;
+        rr:class bito:BehavioralElement
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prov:specializationOf ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/power-sequence/{data.sequenceId}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dcterms:description ;
+        rr:objectMap [ rr:constant "Initial plan state snapshot" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate saref:hasState ;
+        rr:objectMap [ rr:constant s4ener:Scheduled ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:hasStartTime ;
+        rr:objectMap [ rml:reference "data.startTime" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:hasEndTime ;
+        rr:objectMap [ rml:reference "data.endTime" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:hasEarliestStartTime ;
+        rr:objectMap [ rml:reference "data.earliestStartTime" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:hasLatestEndTime ;
+        rr:objectMap [ rml:reference "data.latestEndTime" ; rr:datatype xsd:dateTime ]
+    ] .
+
+<#InitialInactiveStateSnapshotMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[4].response[?(@.featureObjType == 'powerSequence' && @.data.state == 'inactive')]"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/bito/example/flexible-start/snapshot/initial/sequence/{data.sequenceId}" ;
+        rr:class bito:BehavioralElement
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prov:specializationOf ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/power-sequence/{data.sequenceId}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dcterms:description ;
+        rr:objectMap [ rr:constant "Initial plan state snapshot" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate saref:hasState ;
+        rr:objectMap [ rr:constant s4ener:Inactive ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:hasEarliestStartTime ;
+        rr:objectMap [ rml:reference "data.earliestStartTime" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:hasLatestEndTime ;
+        rr:objectMap [ rml:reference "data.latestEndTime" ; rr:datatype xsd:dateTime ]
+    ] .
+
+#################################################################
+# 10. Scenario 3 request event
+#################################################################
+
+<#Scenario3RequestEventMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[?(@.body.data.selectPowerSequence)]"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/bito/example/flexible-start/event/scenario3/select-sequence/{body.data.selectPowerSequence.sequenceId}" ;
+        rr:class bito:ObservedEvent ;
+        rr:class prov:Activity
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:requestedPowerSequence ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/power-sequence/{body.data.selectPowerSequence.sequenceId}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:requestedStartTime ;
+        rr:objectMap [
+            rml:reference "body.data.selectPowerSequence.startTime" ;
+            rr:datatype xsd:dateTime
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:hasIUT ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/device/{body.deviceId}/entity/{body.entityId}" ;
+            rr:termType rr:IRI
+        ]
+    ] .
+
+<#Scenario3TriggerLinkMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[?(@.body.data.selectPowerSequence)]"
+    ] ;
+    rr:subjectMap [
+        rr:constant ex:Scenario_3 ;
+        rr:class bito:Scenario
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate bito:hasTriggeringInteraction ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/event/scenario3/select-sequence/{body.data.selectPowerSequence.sequenceId}" ;
+            rr:termType rr:IRI
+        ]
+    ] .
+
+#################################################################
+# 11. Updated sequence state snapshots - after Scenario 3 request
+#################################################################
+
+<#AfterScenario3ScheduledStateSnapshotMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[7].response[?(@.featureObjType == 'powerSequence' && @.data.state == 'scheduled')]"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/bito/example/flexible-start/snapshot/after-scenario-3/sequence/{data.sequenceId}" ;
+        rr:class bito:BehavioralElement
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prov:specializationOf ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/power-sequence/{data.sequenceId}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dcterms:description ;
+        rr:objectMap [ rr:constant "State snapshot after Scenario 3 selection request" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate saref:hasState ;
+        rr:objectMap [ rr:constant s4ener:Scheduled ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:hasStartTime ;
+        rr:objectMap [ rml:reference "data.startTime" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:hasEndTime ;
+        rr:objectMap [ rml:reference "data.endTime" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:hasEarliestStartTime ;
+        rr:objectMap [ rml:reference "data.earliestStartTime" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:hasLatestEndTime ;
+        rr:objectMap [ rml:reference "data.latestEndTime" ; rr:datatype xsd:dateTime ]
+    ] .
+
+<#AfterScenario3InactiveStateSnapshotMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$[7].response[?(@.featureObjType == 'powerSequence' && @.data.state == 'inactive')]"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/bito/example/flexible-start/snapshot/after-scenario-3/sequence/{data.sequenceId}" ;
+        rr:class bito:BehavioralElement
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate prov:specializationOf ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/power-sequence/{data.sequenceId}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate dcterms:description ;
+        rr:objectMap [ rr:constant "State snapshot after Scenario 3 selection request" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate saref:hasState ;
+        rr:objectMap [ rr:constant s4ener:Inactive ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:hasEarliestStartTime ;
+        rr:objectMap [ rml:reference "data.earliestStartTime" ; rr:datatype xsd:dateTime ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:hasLatestEndTime ;
+        rr:objectMap [ rml:reference "data.latestEndTime" ; rr:datatype xsd:dateTime ]
+    ] .
+
+#################################################################
+# 12. Power time slots and slot values
+#################################################################
+
+<#PowerTimeSlotMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$..response[?(@.featureObjType == 'powerTimeSlot')]"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/bito/example/flexible-start/power-sequence/{data.sequenceId}/slot/{data.slotNumber}" ;
+        rr:class s4ener:Slot
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate saref:hasIdentifier ;
+        rr:objectMap [ rml:reference "data.slotNumber" ; rr:datatype xsd:integer ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate saref:hasDescription ;
+        rr:objectMap [ rml:reference "data.description" ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:belongsTo ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/power-sequence/{data.sequenceId}" ;
+            rr:termType rr:IRI
+        ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:hasDefaultDuration ;
+        rr:objectMap [ rml:reference "data.defaultDuration" ; rr:datatype xsd:duration ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate s4ener:hasSlotValue ;
+        rr:objectMap [
+            rr:template "https://w3id.org/bito/example/flexible-start/power-sequence/{data.sequenceId}/slot/{data.slotNumber}/value" ;
+            rr:termType rr:IRI
+        ]
+    ] .
+
+<#SlotValueMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$..response[?(@.featureObjType == 'powerTimeSlot')]"
+    ] ;
+    rr:subjectMap [
+        rr:template "https://w3id.org/bito/example/flexible-start/power-sequence/{data.sequenceId}/slot/{data.slotNumber}/value" ;
+        rr:class saref:PropertyValue
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate saref:hasValue ;
+        rr:objectMap [ rml:reference "data.power.number" ; rr:datatype xsd:decimal ]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate saref:isMeasuredIn ;
+        rr:objectMap [ rr:constant ex:Watt ]
+    ] .
+
+#################################################################
+# 13. Watt unit resource
+#################################################################
+
+<#WattUnitMapping>
+    a rr:TriplesMap ;
+    rml:logicalSource [
+        rml:source "C:/Users/tareqc/Downloads/Behavioral Testing/input/simulated_dataset_scenario_3.json" ;
+        rml:referenceFormulation ql:JSONPath ;
+        rml:iterator "$..response[?(@.featureObjType == 'powerTimeSlot')]"
+    ] ;
+    rr:subjectMap [
+        rr:constant ex:Watt ;
+        rr:class saref:UnitOfMeasure ;
+        rr:class saref:PowerUnit
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate rdfs:label ;
+        rr:objectMap [ rr:constant "W" ]
+    ] .
