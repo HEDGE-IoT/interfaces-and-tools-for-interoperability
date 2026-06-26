@@ -43,7 +43,7 @@ Behavioral Interoperability Testing Ontology (BITO)/
 
 ## Citation
 
-If you use or refer to BITO or the related behavioral interoperability testing artifacts, please cite the related paper:
+Please cite the following paper when referring to the artifacts provided in this repository:
 
 ```bibtex
 @inproceedings{chy2026behavioralinteroperability,
@@ -54,7 +54,7 @@ If you use or refer to BITO or the related behavioral interoperability testing a
 }
 ```
 
-The citation will be updated with the final proceedings details, DOI, page numbers, and publication URL once available.
+This citation will be updated with the final proceedings details, DOI, page numbers, and publication URL once available.
 
 ## Contributors
 
