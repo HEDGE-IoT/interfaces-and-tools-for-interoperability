@@ -1,9 +1,8 @@
 # Behavioral Interoperability Testing
 
-This folder contains the artifacts for ontology-driven behavioral interoperability testing in the energy domain. The implemented example focuses on the Flexible Start use case, Scenario 3, where the expected behavior of a device is validated against observed evidence using RDF, RML, SHACL, SPARQL, and ontology-based traceability.
+This directory contains the artifacts for ontology-driven behavioral interoperability testing in the energy domain. The implemented example focuses on the Flexible Start use case, Scenario 3, where the expected behavior of a device is validated against observed evidence using RDF, RML, SHACL, SPARQL, and ontology-based traceability.
 
-The goal of this artifact set is to show how semantic interoperability testing can be extended toward behavioral interoperability testing by checking whether observed runtime or simulated evidence conforms to expected scenario-level behavior.
-
+The artifact set demonstrates how semantic interoperability testing can be extended toward behavioral interoperability testing by checking whether runtime or simulated evidence conforms to expected scenario-level behavior.
 
 ## Repository structure
 
@@ -62,19 +61,19 @@ Behavioral-Interoperability-Testing/
 
 ## Folder description
 
-| Folder                                                 | Description                                                                                                                                                                                                 |
-| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Behavioral Interoperability Testing Ontology (BITO)/` | Contains the BITO ontology and ontology-level artifacts, including ontology files, generated documentation, conceptual diagrams, competency questions, SPARQL/DL queries, and ontology validation evidence. |
-| `json-input-data/`                                     | Contains the JSON input files used in the implemented Scenario 3 workflow. One file represents the scenario input data, and the other represents observed evidence.                                         |
-| `rml-mappings/`                                        | Contains the RML mapping rules used to transform the JSON input data and observed evidence into RDF graphs.                                                                                                 |
-| `rdf-graphs/`                                          | Contains generated RDF graphs used as validation input. This includes the dataset graph, observed evidence graph, combined validation graph, and controlled Scenario 3 variant graphs.                      |
-| `shacl-shapes/`                                        | Contains the SHACL shapes used to validate Scenario 3 behavioral rules. Some constraints use SHACL core features, while complex checks use embedded SPARQL constraints.                                     |
-| `validation-results/` | Contains the validation outputs generated from the SHACL/SPARQL validation workflow. This folder includes the main validation artifacts and the Scenario 3 controlled evidence variant results. For each variant, the outputs include RDF validation result graphs, RDF trace graphs, visual report data, and human-readable HTML validation reports. |
-| `technical-documentation/`                             | Contains technical documentation explaining the behavioral modeling principles, solution architecture, implemented use case, behavioral rules, RML mappings, and SHACL validation catalog.                             |
+| Folder                                                 | Description                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Behavioral Interoperability Testing Ontology (BITO)/` | Contains the Behavioral Interoperability Testing Ontology, referred to as BITO, together with ontology-level artifacts such as ontology files, generated documentation, conceptual diagrams, competency questions, SPARQL/DL queries, and ontology validation evidence.                                                                                                                                        |
+| `json-input-data/`                                     | Contains the two JSON source files used in the implemented Flexible Start Scenario 3 workflow. The scenario input JSON describes the device, request, available power sequences, and scenario-specific input information. The observed evidence JSON describes the evidence used for behavioral validation, including observed events, acceptance information, execution evidence, timestamps, and run status. |
+| `rml-mappings/`                                        | Contains the RML mapping rules used to transform the JSON input data and observed evidence into RDF graphs.                                                                                                                                                                                                                                                                                                    |
+| `rdf-graphs/`                                          | Contains the RDF graphs generated from the JSON data and RML mappings. These graphs are used as validation input and include the dataset graph, observed evidence graph, combined validation graph, and controlled Scenario 3 variant graphs.                                                                                                                                                                  |
+| `shacl-shapes/`                                        | Contains the SHACL shapes used to validate the behavioral rules for Scenario 3. The shapes include SHACL core constraints and embedded SPARQL constraints for more complex validation conditions.                                                                                                                                                                                                              |
+| `validation-results/`                                  | Contains the validation outputs generated from the SHACL/SPARQL validation workflow, including the outputs for the Scenario 3 controlled evidence variants. Each variant folder provides the corresponding RDF validation result graph, RDF trace graph, visual report data, and human-readable HTML validation report.                                                                                        |
+| `technical-documentation/`                             | Contains technical documentation describing the behavioral modeling principles, solution architecture, implemented use case, behavioral rules, RML mappings, and SHACL validation catalog.                                                                                                                                                                                                                     |
 
 ## Citation
 
-If you use or refer to the artifacts in this repository, please cite the related paper:
+Please cite the following paper when referring to the artifacts provided in this repository:
 
 ```bibtex
 @inproceedings{chy2026behavioralinteroperability,
@@ -85,10 +84,8 @@ If you use or refer to the artifacts in this repository, please cite the related
 }
 ```
 
-The citation will be updated with the final proceedings details, DOI, page numbers, and publication URL once available.
+This citation will be updated with the final proceedings details, DOI, page numbers, and publication URL once available.
 
 ## Funding acknowledgement
 
-This work is prepared in the context of the HEDGE-IoT project, funded by the European Union's Horizon Europe research and innovation programme under Grant Agreement No. 101136216.
-
-
+This work has been prepared in the context of the HEDGE-IoT project, funded by the European Union's Horizon Europe research and innovation programme under Grant Agreement No. 101136216.
