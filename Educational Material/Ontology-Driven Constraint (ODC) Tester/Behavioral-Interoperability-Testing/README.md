@@ -71,20 +71,7 @@ Behavioral-Interoperability-Testing/
 | `validation-results/`                                  | Contains the validation outputs generated from the SHACL/SPARQL validation workflow, including the outputs for the Scenario 3 controlled evidence variants. Each variant folder provides the corresponding RDF validation result graph, RDF trace graph, visual report data, and human-readable HTML validation report.                                                                                        |
 | `technical-documentation/`                             | Contains technical documentation describing the behavioral modeling principles, solution architecture, implemented use case, behavioral rules, RML mappings, and SHACL validation catalog.                                                                                                                                                                                                                     |
 
-## Citation
 
-Please cite the following paper when referring to the artifacts provided in this repository:
-
-```bibtex
-@inproceedings{chy2026behavioralinteroperability,
-  title     = {From Semantic to Behavioral Interoperability Testing: An Ontology-Driven Constraint Validation Framework},
-  author    = {Chy, Tareq Md Rabiul Hossain and Bouter, Cornelis and Daniele, Laura and Kung, Antonio and Genest, Olivier and Lamboro, Henon Mengistu and Cornec, Léo and Rabrait, Cécile and Gyrard, Amélie},
-  booktitle = {Proceedings of the SAGE Workshop 2026},
-  year      = {2026}
-}
-```
-
-This citation will be updated with the final proceedings details, DOI, page numbers, and publication URL once available.
 
 ## Funding acknowledgement
 
