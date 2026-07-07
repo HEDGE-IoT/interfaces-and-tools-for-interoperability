@@ -41,27 +41,6 @@ Behavioral Interoperability Testing Ontology (BITO)/
 | `ontology-validation/`  | Contains ontology validation and verification evidence, including OOPS! pitfall checking, HermiT consistency checking, and competency-question checking results. |
 
 
-## Citation
-
-Please cite the following paper when referring to the artifacts provided in this repository:
-
-```bibtex
-@inproceedings{chy2026behavioralinteroperability,
-  title     = {From Semantic to Behavioral Interoperability Testing: An Ontology-Driven Constraint Validation Framework},
-  author    = {Chy, Tareq Md Rabiul Hossain and Bouter, Cornelis and Daniele, Laura and Kung, Antonio and Genest, Olivier and Lamboro, Henon Mengistu and Cornec, Léo and Rabrait, Cécile and Gyrard, Amélie},
-  booktitle = {Proceedings of the SAGE Workshop 2026},
-  year      = {2026}
-}
-```
-
-This citation will be updated with the final proceedings details, DOI, page numbers, and publication URL once available.
-
-## Contributors
-
-* Tareq Md Rabiul Hossain Chy, Trialog
-* Cornelis Bouter, TNO
-* Laura Daniele, TNO
-
 ## Funding acknowledgement
 
 This work is prepared in the context of the HEDGE-IoT project, funded by the European Union's Horizon Europe research and innovation programme under Grant Agreement No. 101136216.
